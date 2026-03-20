@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend Vision — Spring Money</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: rgb(32 72 82);
+      --primary-dark: rgb(20 48 58);
+      --primary-light: rgb(64 128 148);
+      --accent: #10B981;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --text-code: #0f172a;
+      --code-bg: #f1f5f9;
+      --tab-active-bg: #ffffff;
+      --radius: 8px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 24px 32px;
+      border-bottom: 3px solid var(--primary-light);
+    }
+    header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
+    header p  { font-size: 13px; opacity: 0.75; margin-top: 4px; }
+
+    /* ── Layout ── */
+    .shell { display: flex; min-height: calc(100vh - 76px); }
+
+    /* ── Sidebar tabs ── */
+    nav.sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      background: var(--primary-dark);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      height: calc(100vh - 76px);
+      overflow-y: auto;
+    }
+    nav.sidebar .nav-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.4);
+      padding: 8px 20px 4px;
+    }
+    nav.sidebar button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.72);
+      padding: 10px 20px;
+      font-size: 13.5px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      border-left: 3px solid transparent;
+    }
+    nav.sidebar button:hover { background: rgba(255,255,255,0.07); color: white; }
+    nav.sidebar button.active {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border-left-color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    /* ── Content area ── */
+    main { flex: 1; padding: 36px 40px; max-width: 960px; overflow-y: auto; }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── Typography ── */
+    h2 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+    h3 { font-size: 16px; font-weight: 700; margin: 24px 0 8px; color: var(--primary-dark); }
+    h4 { font-size: 14px; font-weight: 700; margin: 18px 0 6px; color: var(--text); }
+    p  { margin-bottom: 12px; color: var(--text); }
+    ul, ol { margin: 8px 0 12px 22px; }
+    li { margin-bottom: 4px; }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .card-sm {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+    }
+    .card-sm h4 { margin-top: 0; }
+
+    /* ── Tables ── */
+    .table-wrap { overflow-x: auto; margin-bottom: 20px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    th {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    td { padding: 9px 14px; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f8fafc; }
+
+    /* ── Code blocks ── */
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      font-size: 12.5px;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      overflow-x: auto;
+      margin-bottom: 16px;
+      line-height: 1.65;
+    }
+    code {
+      background: var(--code-bg);
+      color: var(--primary-dark);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 12.5px;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+    pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+    /* ── Badges / tags ── */
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-right: 4px;
+    }
+    .badge-green  { background: #d1fae5; color: #065f46; }
+    .badge-blue   { background: #dbeafe; color: #1e40af; }
+    .badge-gray   { background: #f1f5f9; color: #475569; }
+    .badge-orange { background: #ffedd5; color: #9a3412; }
+
+    /* ── Check / cross ── */
+    .yes { color: #10b981; font-weight: 700; }
+    .no  { color: #ef4444; font-weight: 700; }
+
+    /* ── FAQ ── */
+    details {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      background: var(--surface);
+    }
+    summary {
+      padding: 14px 18px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    summary::before { content: '▶'; font-size: 10px; color: var(--primary-light); transition: transform 0.2s; }
+    details[open] summary::before { transform: rotate(90deg); }
+    .faq-body { padding: 0 18px 16px; color: var(--text); font-size: 14px; }
+
+    /* ── Diagram box ── */
+    .diagram {
+      background: #0f172a;
+      color: #94a3b8;
+      border-radius: var(--radius);
+      padding: 20px;
+      font-family: monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+
+    /* ── Tier cards ── */
+    .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .tier-card {
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 2px solid;
+    }
+    .tier-a { border-color: #10b981; background: #f0fdf4; }
+    .tier-b { border-color: #3b82f6; background: #eff6ff; }
+    .tier-c { border-color: #8b5cf6; background: #f5f3ff; }
+    .tier-card h4 { margin-top: 0; font-size: 16px; }
+
+    /* ── Team ── */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-bottom: 24px; }
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      border-top: 3px solid var(--primary);
+    }
+    .team-card .role { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
+    .team-card h4 { margin: 0 0 6px; font-size: 14px; }
+
+    /* ── Scrollbar ── */
+    nav.sidebar::-webkit-scrollbar { width: 4px; }
+    nav.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Spring Money — Frontend Vision</h1>
+  <p>Multi-Tenant SaaS Frontend Architecture for Wealth Management Platform</p>
+</header>
+
+<div class="shell">
+  <!-- ── Sidebar ── -->
+  <nav class="sidebar">
+    <div class="nav-label">Sections</div>
+    <button class="active" onclick="show('overview', this)">Overview</button>
+    <button onclick="show('environments', this)">Environments</button>
+    <button onclick="show('multitenant', this)">Multi-Tenant</button>
+    <button onclick="show('apps', this)">App Architecture</button>
+    <button onclick="show('deployment', this)">Deployment</button>
+    <button onclick="show('security', this)">Security</button>
+    <button onclick="show('infrastructure', this)">Infrastructure</button>
+    <button onclick="show('monorepo', this)">Monorepo & Packages</button>
+    <button onclick="show('tenants', this)">Tenant Tiers</button>
+    <button onclick="show('team', this)">Team Structure</button>
+    <button onclick="show('faq', this)">Developer FAQ</button>
+    <button onclick="show('summary', this)">What Changes Per Tenant</button>
+    <button onclick="show('appendix', this)">Appendix: Repo Map</button>
+  </nav>
+
+  <!-- ── Content ── -->
+  <main>
+
+    <!-- ── Overview ── -->
+    <section id="overview" class="tab-panel active">
+      <h2>Overview</h2>
+      <p class="section-subtitle">Architecture Objective — serving Advisors and Clients across Web and Mobile from a single shared codebase per app.</p>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>Objective</th><th>Description</th></tr>
+          <tr><td><strong>Scalability</strong></td><td>Support 40–100+ advisor firms without forking code</td></tr>
+          <tr><td><strong>Tenant Isolation</strong></td><td>Each firm gets its own branding, feature set, and data boundaries</td></tr>
+          <tr><td><strong>Single Codebase</strong></td><td>One repo per app; tenants differ only in config + assets</td></tr>
+          <tr><td><strong>Mobile-First</strong></td><td>Native iOS + Android apps per client, published under client's App Store account</td></tr>
+          <tr><td><strong>Maintainability</strong></td><td>Zero divergence between tenant branches — eliminated by config-driven architecture</td></tr>
+          <tr><td><strong>Rapid Onboarding</strong></td><td>New tenant live in &lt; 1 day after assets + config are added</td></tr>
+        </table>
+      </div>
+
+      <h3>4 Frontend Apps</h3>
+      <div class="card-grid">
+        <div class="card-sm">
+          <span class="badge badge-blue">WEB</span>
+          <h4>Advisor Web Portal</h4>
+          <p style="font-size:13px;color:var(--text-muted)">Next.js 15+ · <code>manthan-ria-planner-portal</code></p>
+        </div>
+        <div class="card-sm">
+          <span class="badge badge-blue">WEB</span>
+          <h4>Client Web Portal</h4>
+          <p style="font-size:13px;color:var(--text-muted)">Next.js 16 · <code>manthan-ria-client-web-portal</code></p>
+        </div>
+        <div class="card-sm">
+          <span class="badge badge-green">MOBILE</span>
+          <h4>Client Mobile App</h4>
+          <p style="font-size:13px;color:var(--text-muted)">Expo / RN · <code>manthan-ria-app</code></p>
+        </div>
+        <div class="card-sm">
+          <span class="badge badge-orange">MOBILE · NEW</span>
+          <h4>Advisor Mobile App</h4>
+          <p style="font-size:13px;color:var(--text-muted)">Expo / RN · <code>manthan-ria-advisor-app</code></p>
+        </div>
+      </div>
+
+      <h3>Shared Architecture Principles</h3>
+      <div class="card">
+        <ol>
+          <li><strong>Core Product First</strong> — Core features stay in <code>main</code>; tenant differences are config, never code forks</li>
+          <li><strong>Customizations Isolated</strong> — Branding, section ordering, field visibility, feature toggling via config objects</li>
+          <li><strong>BFF Pattern</strong> — All external API calls go through Next.js API routes (web) or <code>/app/api/</code> SDK modules (mobile)</li>
+          <li><strong>Tier-Based Components</strong> — Tier 1 (base/dumb) → Tier 2 (functional) → Tier 3 (business logic)</li>
+          <li><strong>Feature Flag Gates</strong> — Every tenant-specific UI element is wrapped in <code>&lt;FeatureGate&gt;</code> — never raw conditionals</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ── Environments ── -->
+    <section id="environments" class="tab-panel">
+      <h2>Environments</h2>
+      <p class="section-subtitle">Three-tier environment topology: Shared QA → Per-Tenant UAT → Per-Tenant PROD</p>
+
+      <div class="diagram">
+                       GitHub (main branch)
+                               │
+              ┌────────────────┼──────────────────┐
+              │                │                   │
+         Shared QA         Per-Tenant          Per-Tenant
+      (all tenants)          UAT                  PROD
+              │                │                   │
+    tenant switcher    nswealth-uat.x       nswealth.x
+     in UI to pick     prudeno-uat.x        prudeno.x
+     any tenant        advent-uat.x         advent.x
+      </div>
+
+      <div class="card-grid">
+        <div class="card-sm">
+          <span class="badge badge-gray">Shared QA</span>
+          <h4>qa.springmoney.in</h4>
+          <p style="font-size:13px">Internal QA testing. Floating tenant switcher widget. Auto-deploys on every push to <code>main</code>.</p>
+        </div>
+        <div class="card-sm">
+          <span class="badge badge-blue">Per-Tenant UAT</span>
+          <h4>[tenant]-uat.[domain]</h4>
+          <p style="font-size:13px">e.g. <code>nswealth-uat.nswealth.in</code>. Staging Frappe site per tenant. Manual trigger after QA sign-off.</p>
+        </div>
+        <div class="card-sm">
+          <span class="badge badge-green">Per-Tenant PROD</span>
+          <h4>[tenant].[domain]</h4>
+          <p style="font-size:13px">e.g. <code>app.nswealth.in</code>. Live advisors and clients. Manual approval gate after UAT.</p>
+        </div>
+      </div>
+
+      <h3>URL Naming Convention</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>App</th><th>QA</th><th>UAT</th><th>PROD</th></tr>
+          <tr><td>Advisor Web</td><td><code>qa-advisor.springmoney.in</code></td><td><code>nswealth-uat.nswealth.in</code></td><td><code>app.nswealth.in</code></td></tr>
+          <tr><td>Client Web</td><td><code>qa-client.springmoney.in</code></td><td><code>client-uat.nswealth.in</code></td><td><code>client.nswealth.in</code></td></tr>
+          <tr><td>Client Mobile</td><td>TestFlight / internal</td><td>UAT build on TestFlight</td><td>App Store (client account)</td></tr>
+          <tr><td>Advisor Mobile</td><td>TestFlight / internal</td><td>UAT build on TestFlight</td><td>App Store (client account)</td></tr>
+        </table>
+      </div>
+
+      <h3>Environment Variables (Web)</h3>
+      <pre># Shared QA
+NEXT_PUBLIC_CLIENT_ID=qa
+NEXT_PUBLIC_FRAPPE_BASE_URL=...
+
+# Per-Tenant UAT
+NEXT_PUBLIC_CLIENT_ID=nswealth-uat
+NEXT_PUBLIC_FRAPPE_BASE_URL=https://nswealthuat.frappe.cloud
+
+# Per-Tenant PROD
+NEXT_PUBLIC_CLIENT_ID=nswealth-prod
+NEXT_PUBLIC_FRAPPE_BASE_URL=https://nswealth.frappe.cloud</pre>
+    </section>
+
+    <!-- ── Multi-Tenant ── -->
+    <section id="multitenant" class="tab-panel">
+      <h2>Multi-Tenant</h2>
+      <p class="section-subtitle">Moving from git-branch divergence to a single config-driven codebase.</p>
+
+      <div class="card" style="border-left: 4px solid #ef4444;">
+        <h4 style="color:#ef4444">❌ Problem: Git Branches = Divergence</h4>
+        <p>Each tenant has its own git branch (<code>ria-nswealth</code>, <code>ria-prudeno</code>…). Bug fixes applied to one branch are missed in others. Impossible to onboard tenant #5+ without exponential maintenance overhead.</p>
+      </div>
+
+      <div class="card" style="border-left: 4px solid #10b981;">
+        <h4 style="color:#10b981">✅ Target: Config-Driven Single Repo</h4>
+        <pre style="margin-top:10px">main branch
+  └── config/features/client-configs.ts
+        ├── nswealth: { branding, features, sectionConfig }
+        ├── prudeno:  { branding, features, sectionConfig }
+        └── advent:   { branding, features, sectionConfig }</pre>
+      </div>
+
+      <h3>Three Levels of Tenant Customization</h3>
+
+      <h4>Level 1 — Branding (Colors, Logo, Firm Name)</h4>
+      <pre>branding: {
+  firmName: 'NS Wealth',
+  logoPath: '/tenant-assets/nswealth/logo.svg',
+  primaryColor: '32 72 82',       // R G B — injected as CSS var
+  primaryDark: '20 48 58',
+  primaryLight: '64 128 148',
+  favicon: '/tenant-assets/nswealth/favicon.ico',
+}</pre>
+
+      <h4>Level 2 — Structural Customization (Tabs, Sections, Ordering)</h4>
+      <pre>sectionConfig: {
+  profile: {
+    accordions: [
+      { key: 'personal_details', label: 'Personal Details' },
+      { key: 'assets', label: 'Assets' },
+      { key: 'health_lifestyle', featureFlag: 'data_collection.health_lifestyle' }
+    ]
+  },
+  planning: {
+    tabs: [
+      { key: 'asset_mapping', label: 'Asset Mapping' },
+      { key: 'financial_plan', variant: 'coming_soon' },
+      { key: 'tools', featureFlag: 'planning.retirement_expense_tracker' }
+    ]
+  }
+}</pre>
+
+      <h4>Level 3 — Field-Level Customization</h4>
+      <pre>fieldConfig: {
+  'personal_details.basic': {
+    visibleFields: ['name', 'dob', 'pan', 'tax_id', 'citizenship'],
+    layout: 'two-col'
+  }
+}</pre>
+
+      <h3>Mobile Multi-Tenancy</h3>
+      <div class="card">
+        <p>Same codebase, separate build configs per tenant → each tenant gets their own App Store listing.</p>
+        <p><strong>Android (AAB)</strong>: GitHub Actions on self-hosted EC2 runner</p>
+        <p><strong>iOS (IPA)</strong>: GitHub Actions on <code>macos-latest</code> + EAS Build (one EAS profile per tenant in <code>eas.json</code>)</p>
+        <p>Each tenant's app submitted under the <strong>client's own</strong> Apple Developer / Google Play account.</p>
+      </div>
+    </section>
+
+    <!-- ── App Architecture ── -->
+    <section id="apps" class="tab-panel">
+      <h2>App Architecture</h2>
+      <p class="section-subtitle">Four apps, two surfaces, one shared architecture pattern.</p>
+
+      <h3>Advisor Web Portal</h3>
+      <div class="card">
+        <p><code>manthan-ria-planner-portal</code> · Next.js 15+ · App Router · TypeScript</p>
+        <p>TailwindCSS + CSS variables · React Query + Context · React Hook Form · OTP auth</p>
+        <h4>Key Modules</h4>
+        <ul>
+          <li><code>app/accounts/[id]/</code> — Client internal page (Profile / Planning / Portfolio tabs)</li>
+          <li><code>app/clients/</code> — Client list with filters and bulk actions</li>
+          <li><code>app/crm/</code> — Leads, Deals, Contacts, Organizations, Notes, Tasks, Call Logs</li>
+          <li><code>app/task-center/</code> — Task management</li>
+          <li><code>app/reconciliation/</code> — CAS import, RTA feed</li>
+          <li><code>app/api/</code> — BFF routes — all external API calls</li>
+          <li><code>config/features/</code> — Multi-tenant feature flags + branding + section config</li>
+        </ul>
+      </div>
+
+      <h3>Client Web Portal</h3>
+      <div class="card">
+        <p><code>manthan-ria-client-web-portal</code> · Next.js 16 + Turbopack · App Router</p>
+        <h4>Key Modules</h4>
+        <ul>
+          <li><code>app/dashboard/</code> — Portfolio overview, action centre</li>
+          <li><code>app/portfolio/</code> — Holdings, allocation, performance charts</li>
+          <li><code>app/goals/</code> — Financial goals</li>
+          <li><code>app/onboarding/</code> — KYC, risk profile, agreements, fee payment</li>
+          <li><code>app/account-aggregator/</code> — Bank linkage via AA</li>
+          <li><code>app/data-collection-dashboard/</code> — Multi-step data collection</li>
+        </ul>
+      </div>
+
+      <h3>Client Mobile App</h3>
+      <div class="card">
+        <p><code>manthan-ria-app</code> · Expo SDK 54 · React Native 0.81.5 · Expo Router v6</p>
+        <p>NativeWind v4 · GitHub Actions EC2 (Android) + macOS runner (iOS)</p>
+        <h4>Key Screens</h4>
+        <ul>
+          <li>Login (OTP auth) · Onboarding (KYC, risk profile) · Dashboard · Account Aggregator · Data Collection · Visitor/demo mode</li>
+        </ul>
+      </div>
+
+      <h3>Advisor Mobile App (New — To Be Built)</h3>
+      <div class="card" style="border: 1px dashed var(--primary-light);">
+        <p>Expo SDK 54 · React Native · Start from same base as <code>manthan-ria-app</code></p>
+        <h4>Priority Screens</h4>
+        <ul>
+          <li>Client list with search/filter · Client profile view (read-only initially) · Task centre · CRM quick actions · Notifications</li>
+        </ul>
+      </div>
+
+      <h3>Component Hierarchy (3 Tiers)</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Tier</th><th>Examples</th><th>Logic</th></tr>
+          <tr><td><strong>Tier 1 — Base</strong></td><td>TextInput, SelectInput, DataTable, BaseAccordion</td><td>Zero business logic</td></tr>
+          <tr><td><strong>Tier 2 — Functional</strong></td><td>EmailInput (validation), CityDropdown (fetches cities)</td><td>Light logic only</td></tr>
+          <tr><td><strong>Tier 3 — Business</strong></td><td>UserAdditionForm, PlanCreator wizard</td><td>Full business rules</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── Deployment ── -->
+    <section id="deployment" class="tab-panel">
+      <h2>Deployment</h2>
+      <p class="section-subtitle">Web + Mobile CI/CD pipeline via GitHub Actions on AWS EC2.</p>
+
+      <h3>Web Portal Pipeline</h3>
+      <div class="diagram">Developer push
+    ▼
+GitHub (main) → GitHub Actions
+    ▼
+Docker image → ECR / GHCR
+    ├──► Shared QA EC2 (auto)
+    ├──► Per-Tenant UAT EC2 (manual trigger)
+    └──► Per-Tenant PROD EC2 (approval gate)
+              └── Blue-green swap via Traefik</div>
+
+      <h3>Infrastructure Option Comparison</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Option</th><th>Zero Downtime</th><th>Complexity</th><th>Cost</th><th>Verdict</th></tr>
+          <tr><td><strong>Traefik + Docker Compose</strong></td><td class="yes">✅</td><td>Low</td><td>~EC2 only</td><td><span class="badge badge-green">Recommended</span></td></tr>
+          <tr><td>Docker Swarm</td><td class="yes">✅</td><td>Medium</td><td>~EC2 only</td><td>Good alternative</td></tr>
+          <tr><td>Kubernetes (K8s)</td><td class="yes">✅</td><td>Very High</td><td>Higher</td><td>Overkill &lt;50 tenants</td></tr>
+          <tr><td>Vercel</td><td class="yes">✅</td><td>Very Low</td><td>$$$ per tenant</td><td>Only if EC2 painful</td></tr>
+        </table>
+      </div>
+
+      <h3>Traefik + Docker Compose Setup</h3>
+      <pre>services:
+  traefik:
+    image: traefik:v3
+    ports: ["80:80", "443:443"]
+
+  nswealth-advisor-uat:
+    image: springmoney/advisor-portal:latest
+    environment:
+      - NEXT_PUBLIC_CLIENT_ID=nswealth-uat
+    labels:
+      - "traefik.http.routers.nswealth-advisor-uat.rule=Host(`nswealth-uat.nswealth.in`)"
+
+  prudeno-advisor-uat:
+    image: springmoney/advisor-portal:latest
+    environment:
+      - NEXT_PUBLIC_CLIENT_ID=prudeno-uat
+    labels:
+      - "traefik.http.routers.prudeno-advisor-uat.rule=Host(`prudeno-uat.prudeno.in`)"</pre>
+
+      <h3>Zero-Downtime Update Flow</h3>
+      <ol>
+        <li>GitHub Actions builds new Docker image, tags with git SHA</li>
+        <li>SSH into EC2 → pulls new image</li>
+        <li><code>docker-compose up -d --no-deps --build [service]</code> → Traefik drains and switches</li>
+        <li>Old container stops only after new is healthy (<code>/api/health</code>)</li>
+      </ol>
+
+      <h3>Mobile — Android (AAB)</h3>
+      <div class="diagram">Developer push / manual trigger
+    ▼
+GitHub Actions (self-hosted EC2)
+  Node + Java 17 + Android SDK
+  Inject env vars from GitHub Secrets
+  ./gradlew bundleRelease
+    ▼
+.aab → S3 (builds/[timestamp]/[TENANT]-[version].aab)
+    └──► Slack notification → Developer submits to Google Play</div>
+
+      <h3>Mobile — iOS (IPA)</h3>
+      <div class="diagram">Developer push / manual trigger
+    ▼
+GitHub Actions (macos-latest)
+  eas build --profile [nswealth-prod] --platform ios
+    ▼
+.ipa → submitted to client's Apple Developer account via EAS Submit</div>
+
+      <h3>Deployment Steps</h3>
+      <ol>
+        <li>Developer pushes code to <code>main</code></li>
+        <li>GitHub Actions: lint → tests → build</li>
+        <li>QA: auto-deploy shared QA container</li>
+        <li>UAT: PM manually triggers for specific tenant</li>
+        <li>QA team verifies on UAT</li>
+        <li>Tech Lead approves PROD deployment</li>
+        <li>Zero-downtime swap via Traefik</li>
+        <li>Smoke test via <code>/api/health</code></li>
+      </ol>
+    </section>
+
+    <!-- ── Security ── -->
+    <section id="security" class="tab-panel">
+      <h2>Security</h2>
+      <p class="section-subtitle">Multi-layered security across tenant isolation, auth, and API access control.</p>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>Principle</th><th>Implementation</th></tr>
+          <tr><td><strong>Tenant Isolation</strong></td><td><code>NEXT_PUBLIC_CLIENT_ID</code> determines which Frappe site (DB) is called — never mixed</td></tr>
+          <tr><td><strong>API Route Protection</strong></td><td>All external calls via Next.js BFF; <code>requireFeature()</code> blocks disabled features</td></tr>
+          <tr><td><strong>OTP Authentication</strong></td><td>OTPless integration — no passwords stored; session cookies are httpOnly</td></tr>
+          <tr><td><strong>Feature-Based Access</strong></td><td><code>FeatureGate</code> + <code>requireFeature()</code> — 403 if feature disabled for tenant</td></tr>
+          <tr><td><strong>No Hardcoded Credentials</strong></td><td>All API keys in env vars / GitHub Secrets / EAS secrets; never in code</td></tr>
+          <tr><td><strong>HTTPS</strong></td><td>Traefik + Let's Encrypt auto-renews SSL per subdomain</td></tr>
+          <tr><td><strong>Audit Logging</strong></td><td>All API calls through BFF — request logs capture tenant + user ID</td></tr>
+        </table>
+      </div>
+
+      <h3>Security Architecture Layers</h3>
+      <div class="diagram">Browser / Mobile App
+      │ HTTPS (TLS 1.3 via Traefik)
+      ▼
+Next.js BFF (API Routes)
+      │ requireFeature() → 403 if disabled
+      │ Session validation
+      ▼
+Frappe ERPNext (per-tenant site)
+      │ Role-based permissions (Advisor Admin, Advisor Staff, Client, Spring Money Support)
+      │ Site-level DB isolation (separate DB per advisor firm)
+      ▼
+Data Layer</div>
+
+      <h3>Mobile Security</h3>
+      <div class="card">
+        <ul>
+          <li>API calls from mobile go through the same API Suite BFF — not directly to Frappe</li>
+          <li><code>EXPO_PUBLIC_*</code> vars are build-time — sensitive keys never exposed at runtime</li>
+          <li>GitHub Secrets store Android keystore + API credentials — never in repo</li>
+          <li>EAS Secrets store iOS per-tenant credentials for App Store submission</li>
+          <li>Biometric auth support (FaceID / Fingerprint) for mobile login</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Infrastructure ── -->
+    <section id="infrastructure" class="tab-panel">
+      <h2>Infrastructure</h2>
+      <p class="section-subtitle">AWS ap-south-1 (Mumbai) — EC2 + Docker Compose + Traefik + S3 + EAS.</p>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>App</th><th>Hosting</th><th>Instance</th></tr>
+          <tr><td>Advisor Web Portal</td><td>AWS EC2</td><td>t3.medium (per tenant deployment)</td></tr>
+          <tr><td>Client Web Portal</td><td>AWS EC2</td><td>t3.medium (per tenant deployment)</td></tr>
+          <tr><td>Client Mobile (Android)</td><td>Self-hosted EC2 runner + S3</td><td>Shared with web infra EC2</td></tr>
+          <tr><td>Client Mobile (iOS)</td><td>GitHub-hosted macOS + EAS</td><td>EAS for iOS only</td></tr>
+          <tr><td>Advisor Mobile (Android)</td><td>Self-hosted EC2 runner + S3</td><td>Shared with web infra EC2</td></tr>
+          <tr><td>Advisor Mobile (iOS)</td><td>GitHub-hosted macOS + EAS</td><td>EAS for iOS only</td></tr>
+        </table>
+      </div>
+
+      <h3>Proposed EC2 Layout</h3>
+      <div class="diagram">AWS Region: ap-south-1 (Mumbai)
+
+EC2: springmoney-qa (t3.medium)
+  └── Docker Compose
+        ├── traefik
+        ├── advisor-portal-qa   (CLIENT_ID=qa)
+        └── client-portal-qa    (CLIENT_ID=qa)
+
+EC2: springmoney-uat (t3.medium)
+  └── Docker Compose
+        ├── traefik
+        ├── nswealth-advisor-uat
+        ├── nswealth-client-uat
+        ├── prudeno-advisor-uat
+        └── advent-advisor-uat
+
+EC2: springmoney-prod (t3.large / c5.xlarge)
+  └── Docker Compose
+        ├── traefik
+        ├── nswealth-advisor-prod
+        ├── nswealth-client-prod
+        └── prudeno-advisor-prod</div>
+
+      <h3>Cost at 10 Tenants</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Component</th><th>Cost/month</th></tr>
+          <tr><td>QA EC2 (t3.medium)</td><td>~₹2,500</td></tr>
+          <tr><td>UAT EC2 (t3.medium)</td><td>~₹2,500</td></tr>
+          <tr><td>PROD EC2 (t3.large)</td><td>~₹5,000</td></tr>
+          <tr><td>S3 (build artifacts)</td><td>~₹500</td></tr>
+          <tr><td>EAS Build (iOS only)</td><td>~$29/month (~₹2,400)</td></tr>
+          <tr><td>Route 53 / DNS</td><td>~₹500</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>~₹13,400/month</strong></td></tr>
+        </table>
+      </div>
+
+      <div class="card" style="background:#f0fdf4;border-color:#10b981">
+        <p>Same EC2 serves all tenants via Docker containers — no per-tenant infra cost for web. Android AAB builds reuse existing EC2 self-hosted runner — no additional infra cost.</p>
+      </div>
+
+      <h3>Autoheal &amp; Zero Downtime</h3>
+      <pre>services:
+  autoheal:
+    image: willfarrell/autoheal
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=autoheal
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock</pre>
+      <p>Each app container has <code>HEALTHCHECK</code> → <code>/api/health</code> (returns 200). <code>autoheal</code> restarts any container that fails. Traefik zero-downtime: new container is healthy before old is stopped.</p>
+    </section>
+
+    <!-- ── Monorepo ── -->
+    <section id="monorepo" class="tab-panel">
+      <h2>Monorepo, Shared Packages &amp; Micro-Frontends</h2>
+      <p class="section-subtitle">Moving from 4 separate repos to a single Turborepo monorepo with shared packages.</p>
+
+      <h3>Proposed Monorepo Structure (Turborepo)</h3>
+      <pre>spring-money-frontend/
+  apps/
+    advisor-web/        ← manthan-ria-planner-portal (Next.js 15)
+    client-web/         ← manthan-ria-client-web-portal (Next.js 16)
+    advisor-mobile/     ← manthan-ria-advisor-app (Expo 54)
+    client-mobile/      ← manthan-ria-app (Expo 54)
+  packages/
+    config/             ← feature flags, tenant configs, branding (SHARED)
+    ui-web/             ← React component library (web only)
+    ui-mobile/          ← React Native component library (mobile only)
+    design-tokens/      ← platform-agnostic design system
+    api-client/         ← TypeScript types for all API responses (SHARED)
+    validation/         ← shared validation rules + per-tenant JSONs
+  turbo.json
+  package.json</pre>
+
+      <h3>What Gets Shared</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Package</th><th>Contents</th><th>Used by</th></tr>
+          <tr><td><code>@spring/config</code></td><td>Feature flags, client-configs, branding, sectionConfig, fieldConfig</td><td>All 4 apps</td></tr>
+          <tr><td><code>@spring/api-client</code></td><td>TypeScript types for Frappe/API Suite responses, request utilities</td><td>All 4 apps</td></tr>
+          <tr><td><code>@spring/validation</code></td><td>Validation rule engine + per-tenant JSON files</td><td>All 4 apps</td></tr>
+          <tr><td><code>@spring/design-tokens</code></td><td>Color palette, spacing scale, typography — platform-agnostic</td><td>ui-web + ui-mobile</td></tr>
+          <tr><td><code>@spring/ui-web</code></td><td>React components (TextInput, DataTable, SidePanel…)</td><td>advisor-web + client-web</td></tr>
+          <tr><td><code>@spring/ui-mobile</code></td><td>React Native components (Input, Card, Modal…)</td><td>advisor-mobile + client-mobile</td></tr>
+        </table>
+      </div>
+
+      <h3>Design Tokens</h3>
+      <pre>// packages/design-tokens/tokens.ts
+export const tokens = {
+  colors: {
+    primary: { DEFAULT: 'rgb(32 72 82)', dark: 'rgb(20 48 58)', light: 'rgb(64 128 148)' },
+    status: { success: '#10B981', error: '#EF4444', warning: '#F59E0B' },
+  },
+  spacing: { xs: 4, sm: 8, md: 16, lg: 24, xl: 32 },
+  typography: {
+    fontFamily: { sans: 'Inter', mono: 'JetBrains Mono' },
+    fontSize: { xs: 12, sm: 14, base: 16, lg: 18, xl: 20 },
+  }
+}</pre>
+
+      <h3>Migration Path</h3>
+      <ol>
+        <li>Create new monorepo with Turborepo</li>
+        <li>Move <code>config/features/</code> from advisor-web into <code>packages/config/</code> — update imports</li>
+        <li>Move shared TypeScript types into <code>packages/api-client/</code></li>
+        <li>Copy existing apps into <code>apps/</code> directory (with git history via <code>git subtree</code>)</li>
+        <li>Gradually extract shared components into <code>packages/ui-web/</code> and <code>packages/ui-mobile/</code></li>
+      </ol>
+
+      <h3>Micro-Frontends (Future Architecture)</h3>
+      <div class="card" style="border-left: 4px solid #f59e0b; background: #fffbeb;">
+        <p><strong>Not now.</strong> Multi-zones add build complexity and shared state management overhead. The current monorepo approach achieves most benefits without deployment complexity.</p>
+        <p><strong>Trigger to revisit:</strong> Team grows to 3+ squads each owning a major section, or release cadences diverge significantly.</p>
+      </div>
+    </section>
+
+    <!-- ── Tenant Tiers ── -->
+    <section id="tenants" class="tab-panel">
+      <h2>Tenant Tiers</h2>
+      <p class="section-subtitle">Three categories of financial firms with different onboarding complexity and customization needs.</p>
+
+      <div class="tier-grid">
+        <div class="tier-card tier-a">
+          <h4>Tier A</h4>
+          <p style="font-size:13px;font-weight:600">Small MFDs · &lt;₹100cr AUM</p>
+          <p style="font-size:13px">Branding + feature hiding only. Standard section layout.</p>
+          <p style="font-size:13px;font-weight:700;color:#065f46">SLA: &lt; 1 day</p>
+        </div>
+        <div class="tier-card tier-b">
+          <h4>Tier B</h4>
+          <p style="font-size:13px;font-weight:600">Large MFDs + RIAs</p>
+          <p style="font-size:13px">Branding + structural config + field config + validation rules.</p>
+          <p style="font-size:13px;font-weight:700;color:#1e40af">SLA: &lt; 1 week</p>
+        </div>
+        <div class="tier-card tier-c">
+          <h4>Tier C</h4>
+          <p style="font-size:13px;font-weight:600">Big PMS / AMCs · Planned</p>
+          <p style="font-size:13px">Full custom + on-premises deployment. All of A + B.</p>
+          <p style="font-size:13px;font-weight:700;color:#6d28d9">SLA: &lt; 3 weeks</p>
+        </div>
+      </div>
+
+      <h3>Capability Matrix</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Capability</th><th>Tier A</th><th>Tier B</th><th>Tier C</th></tr>
+          <tr><td>Branding (colors, logo, favicon)</td><td class="yes">✅</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+          <tr><td>Feature flag toggling</td><td class="yes">✅</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+          <tr><td>Mobile app (own store account)</td><td class="yes">✅</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+          <tr><td>Section/tab ordering</td><td class="no">❌</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+          <tr><td>Field-level customization</td><td class="no">❌</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+          <tr><td>Custom validation rules</td><td class="no">❌</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+          <tr><td>Net-new custom components</td><td class="no">❌</td><td>Limited</td><td class="yes">✅</td></tr>
+          <tr><td>On-premises deployment</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+          <tr><td>Dedicated support SLA</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+        </table>
+      </div>
+
+      <h3>Tier A — Onboarding Process (&lt; 1 day)</h3>
+      <ol>
+        <li>Client submits branding assets + color codes via onboarding form</li>
+        <li>Add config entry in <code>client-configs.ts</code> + branding assets</li>
+        <li>DNS record added for subdomain</li>
+        <li>Traefik label added to docker-compose + container deployed</li>
+        <li>Mobile AAB/IPA built with tenant build config → handed to client</li>
+        <li><strong>Done — no code changes, no custom development</strong></li>
+      </ol>
+    </section>
+
+    <!-- ── Team ── -->
+    <section id="team" class="tab-panel">
+      <h2>Team Structure</h2>
+      <p class="section-subtitle">Frontend engineering team focused on four apps across web and mobile.</p>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="role">1 person</div>
+          <h4>Frontend Tech Lead</h4>
+          <p style="font-size:13px">Architecture across all 4 apps, multi-tenant system design, PR reviews, DevOps/infra decisions.</p>
+        </div>
+        <div class="team-card">
+          <div class="role">1 person</div>
+          <h4>App Developer</h4>
+          <p style="font-size:13px">Client + Advisor mobile apps (React Native Expo). Mobile build pipelines (GitHub Actions, EC2 runner).</p>
+        </div>
+        <div class="team-card">
+          <div class="role">1 person</div>
+          <h4>Web Developer</h4>
+          <p style="font-size:13px">Advisor + Client web portals. Multi-tenant config system, BFF API routes, sectionConfig.</p>
+        </div>
+        <div class="team-card">
+          <div class="role">1 person</div>
+          <h4>UI/UX Engineer</h4>
+          <p style="font-size:13px">Design system, animations, micro-interactions across all 4 apps. Owns <code>@spring/ui-web</code> + <code>@spring/ui-mobile</code> + Storybook.</p>
+        </div>
+        <div class="team-card">
+          <div class="role">2 people</div>
+          <h4>QA Engineers</h4>
+          <p style="font-size:13px">Web + mobile testing across all tenants and environments. Regression + cross-tenant validation.</p>
+        </div>
+      </div>
+
+      <h3>Engineering Philosophy — 3 Strict Principles</h3>
+      <div class="card">
+        <ol>
+          <li><strong>Core Product First</strong>: All features go to <code>main</code>. Never develop on tenant branches.</li>
+          <li><strong>Config Not Code</strong>: Any tenant difference = a config change, never a code fork.</li>
+          <li><strong>Feature Flag Everything</strong>: Any UI that is tenant-conditional must be behind <code>&lt;FeatureGate&gt;</code>.</li>
+        </ol>
+      </div>
+
+      <h3>Time Breakdown (Target)</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Activity</th><th>% Time</th></tr>
+          <tr><td>Core platform development</td><td>35%</td></tr>
+          <tr><td>Mobile apps</td><td>15%</td></tr>
+          <tr><td>Tenant onboarding / config</td><td>15%</td></tr>
+          <tr><td>Bug fixes &amp; maintenance</td><td>15%</td></tr>
+          <tr><td>UI refinement (animations, polish)</td><td>10%</td></tr>
+          <tr><td>DevOps / infra</td><td>10%</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section id="faq" class="tab-panel">
+      <h2>Developer FAQ</h2>
+      <p class="section-subtitle">Common questions about multi-tenant architecture and day-to-day workflows.</p>
+
+      <details>
+        <summary>Q1: Why not use separate branches per tenant?</summary>
+        <div class="faq-body">Branch-based multi-tenancy causes divergence. A bug fix on <code>main</code> must be manually cherry-picked to every tenant branch — impossible at 10+ tenants. Config-driven architecture puts the difference in a data structure, not code.</div>
+      </details>
+
+      <details>
+        <summary>Q2: How do I add a new tenant?</summary>
+        <div class="faq-body">
+          <ol>
+            <li>Add a client config entry in <code>config/features/client-configs.ts</code></li>
+            <li>Add branding assets in <code>public/tenant-assets/[tenant]/</code></li>
+            <li>Add <code>.env</code> file for the new tenant's Frappe URLs</li>
+            <li>Add Traefik label for new subdomain in <code>docker-compose.yml</code></li>
+            <li><strong>Done — no code changes.</strong></li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>Q3: How do I add a new section that only one tenant needs?</summary>
+        <div class="faq-body">
+          <ol>
+            <li>Add a feature flag key in <code>config/features/types.ts</code></li>
+            <li>Build the section component</li>
+            <li>Register it in <code>config/features/component-registry.ts</code></li>
+            <li>Add it to that tenant's <code>sectionConfig.profile.accordions</code></li>
+            <li>Set <code>featureFlag</code> to guard it — other tenants see nothing.</li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>Q4: How do mobile builds work for multiple tenants?</summary>
+        <div class="faq-body">
+          <p><strong>Android:</strong> GitHub Actions workflow on self-hosted EC2 runner. Manually triggered with <code>versionCode</code> + <code>version</code> inputs. Per-tenant env vars and keystore injected from GitHub Secrets. <code>gradlew bundleRelease</code> → <code>.aab</code> uploaded to S3 → Slack notification → developer submits to client's Google Play Console.</p>
+          <p style="margin-top:8px"><strong>iOS:</strong> EAS Build on GitHub-hosted <code>macos-latest</code>. Each tenant = one EAS build profile in <code>eas.json</code>. <code>eas build --profile nswealth-prod --platform ios</code> → <code>.ipa</code> → client manages their own App Store listing.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Q5: How do I test locally for a specific tenant?</summary>
+        <div class="faq-body">
+          <p>Set <code>NEXT_PUBLIC_CLIENT_ID=prudeno-uat</code> in <code>.env.local</code> and restart dev server.</p>
+          <p>For mobile: set <code>EXPO_PUBLIC_CLIENT_ID=prudeno-uat</code> in <code>.env</code> and run <code>npx expo start</code>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Q6: How do I test for ALL tenants quickly?</summary>
+        <div class="faq-body">Use the Shared QA environment — it has a floating tenant switcher (dev-only UI widget) that changes <code>CLIENT_ID</code> at runtime without redeployment.</div>
+      </details>
+
+      <details>
+        <summary>Q7: Can the same Next.js Docker image serve multiple tenants?</summary>
+        <div class="faq-body"><code>NEXT_PUBLIC_CLIENT_ID</code> is a build-time variable baked into the image. Each tenant requires its own image build. This is intentional: tenant config is compiled in, preventing runtime leakage. Each container runs independently.</div>
+      </details>
+
+      <details>
+        <summary>Q8: Why a monorepo instead of separate repos?</summary>
+        <div class="faq-body">Separate repos cause the same problem as separate git branches: <code>config/features/client-configs.ts</code> would need updating in 4 places for every new tenant. TypeScript API types would diverge. The monorepo puts <code>@spring/config</code>, <code>@spring/api-client</code>, and <code>@spring/validation</code> in shared packages — one change, reflected in all apps.</div>
+      </details>
+
+      <details>
+        <summary>Q9: Where should I add new API calls?</summary>
+        <div class="faq-body">
+          <p><strong>Web:</strong> Always add a Next.js API route in <code>app/api/[feature]/route.ts</code> — never call external APIs directly from client components.</p>
+          <p><strong>Mobile:</strong> Add an API function in <code>app/api/[feature]/</code> SDK module — consumed via React hooks.</p>
+          <p>Wrap with <code>requireFeature()</code> if the API is tenant-specific.</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- ── Summary ── -->
+    <section id="summary" class="tab-panel">
+      <h2>What Changes Per Tenant</h2>
+      <p class="section-subtitle">Complete reference of what is and isn't customizable per tenant.</p>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>Element</th><th>Customizable</th><th>Mechanism</th></tr>
+          <tr><td>Brand colors (buttons, borders, active states)</td><td class="yes">✅</td><td>CSS vars via ThemeProvider</td></tr>
+          <tr><td>Logo (sidebar, login page, mobile splash)</td><td class="yes">✅</td><td>Branding config → dynamic src</td></tr>
+          <tr><td>Firm name / page title</td><td class="yes">✅</td><td>Branding config</td></tr>
+          <tr><td>Favicon</td><td class="yes">✅</td><td>Branding config</td></tr>
+          <tr><td>Sidebar nav items (CRM, Reconciliation…)</td><td class="yes">✅</td><td>Feature flags</td></tr>
+          <tr><td>Profile accordion ORDER</td><td class="yes">✅</td><td><code>sectionConfig.profile.accordions</code> ordering</td></tr>
+          <tr><td>Which accordions/sections appear</td><td class="yes">✅</td><td>sectionConfig + feature flags</td></tr>
+          <tr><td>Planning sub-tabs (which, order, variant)</td><td class="yes">✅</td><td><code>sectionConfig.planning.tabs</code></td></tr>
+          <tr><td>Fields shown within a subsection</td><td class="yes">✅</td><td><code>fieldConfig</code> per section key</td></tr>
+          <tr><td>Validation rules per field</td><td class="yes">✅</td><td><code>lib/validation/rules/clients/[tenant]/</code></td></tr>
+          <tr><td>Tenant-specific API routes (credit cards, EPF…)</td><td class="yes">✅</td><td>BFF routes with <code>requireFeature()</code></td></tr>
+          <tr><td>Mobile app bundle ID + store account</td><td class="yes">✅</td><td>Per-tenant build config (GitHub Secrets / EAS profile)</td></tr>
+          <tr><td>Mobile app name + icon on home screen</td><td class="yes">✅</td><td>Build env vars + app.json per profile</td></tr>
+          <tr><td>Layout structure (sidebar + main area)</td><td class="no">❌</td><td>Same for all tenants</td></tr>
+          <tr><td>Component visual hierarchy</td><td class="no">❌</td><td>Same for all tenants</td></tr>
+          <tr><td>Navigation framework</td><td class="no">❌</td><td>Same for all tenants</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── Appendix ── -->
+    <section id="appendix" class="tab-panel">
+      <h2>Appendix: Repo Map</h2>
+      <p class="section-subtitle">Current state of all manthan repositories and their future in the monorepo.</p>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>Repo</th><th>Purpose</th><th>Stack</th><th>Status</th></tr>
+          <tr>
+            <td><code>manthan-ria-planner-portal</code></td>
+            <td>Advisor Web Portal</td>
+            <td>Next.js 15</td>
+            <td><span class="badge badge-green">Live</span> multi-branch → migrate to config</td>
+          </tr>
+          <tr>
+            <td><code>manthan-ria-client-web-portal</code></td>
+            <td>Client Web Portal</td>
+            <td>Next.js 16</td>
+            <td><span class="badge badge-green">Live</span> feature flags partially done</td>
+          </tr>
+          <tr>
+            <td><code>manthan-ria-app</code></td>
+            <td>Client Mobile App</td>
+            <td>Expo 54 / RN</td>
+            <td><span class="badge badge-green">Live</span> multi-branch → migrate to per-tenant build config</td>
+          </tr>
+          <tr>
+            <td><code>manthan-ria-advisor-app</code></td>
+            <td>Advisor Mobile App</td>
+            <td>Expo 54 / RN</td>
+            <td><span class="badge badge-orange">To be built</span></td>
+          </tr>
+          <tr>
+            <td><code>humfauji-app</code></td>
+            <td>HumFauji Client App</td>
+            <td>Expo 54 / RN</td>
+            <td><span class="badge badge-blue">Live</span> single-tenant, separate product</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card" style="background:#eff6ff;border-color:#3b82f6">
+        <h4 style="color:#1e40af">Future: Turborepo Monorepo</h4>
+        <p>All 4 manthan apps → single monorepo (<code>spring-money-frontend</code>) with shared <code>packages/</code> for config, API client, validation, design tokens, and component libraries.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav.sidebar button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
