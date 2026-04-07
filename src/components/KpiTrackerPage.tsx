@@ -32,8 +32,8 @@ export default function KpiTrackerPage({ activeSection }: Props) {
       <div className="flex gap-1 bg-bg-primary border border-border-secondary rounded-xl p-1 mb-6 shadow-card overflow-x-auto">
         {[
           { id: 'kpi-overview', label: '🎯 Overview' },
-          { id: 'kpi-1-standardization', label: '📦 Standardization' },
-          { id: 'kpi-2-ui-platform', label: '🎨 UI Platform' },
+          { id: 'kpi-1-standardization', label: '📦 Monorepo Setup' },
+          { id: 'kpi-2-ui-platform', label: '🎨 Component Library' },
           { id: 'kpi-3-reliability', label: '🚀 Reliability' },
           { id: 'kpi-4-leadership', label: '👥 Leadership' },
         ].map(tab => (
