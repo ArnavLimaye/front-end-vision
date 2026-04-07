@@ -7,11 +7,11 @@ export default function KpiTrackerPage({ activeSection }: Props) {
   return (
     <div className="max-w-5xl mx-auto px-8 py-8">
       {/* Dark header banner */}
-      <div className="relative bg-dark-gradient rounded-2xl p-8 mb-6 overflow-hidden">
+      <div className="relative bg-dark-gradient rounded-2xl p-8 mb-6 overflow-hidden shadow-card">
         <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-primary/10 blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
         <div className="relative z-10">
           <h2 className="text-2xl font-bold text-white tracking-tight">📊 KPI Tracker</h2>
-          <p className="text-sm text-white/60 mt-1">Frontend Engineering — Spring Money OS · April 2026</p>
+          <p className="text-sm text-white/60 mt-1">Frontend Engineering — Spring Money OS</p>
           <div className="flex gap-8 mt-6 flex-wrap">
             {[
               { label: 'ARR', value: k.summary.arr, accent: true },
@@ -20,7 +20,7 @@ export default function KpiTrackerPage({ activeSection }: Props) {
               { label: 'Eng Team', value: k.summary.teamSize },
             ].map(item => (
               <div key={item.label}>
-                <p className="text-xs text-white/50 uppercase tracking-wider">{item.label}</p>
+                <p className="text-xs text-white/50 uppercase tracking-wider font-medium">{item.label}</p>
                 <p className={`text-2xl font-extrabold mt-1 tracking-tight ${item.accent ? 'text-primary-light' : 'text-white'}`}>{item.value}</p>
               </div>
             ))}
@@ -29,19 +29,20 @@ export default function KpiTrackerPage({ activeSection }: Props) {
       </div>
 
       {/* Tab sub-nav */}
-      <div className="flex gap-1 bg-bg-primary border border-border-secondary rounded-xl p-1 mb-6 shadow-card">
+      <div className="flex gap-1 bg-bg-primary border border-border-secondary rounded-xl p-1 mb-6 shadow-card overflow-x-auto">
         {[
           { id: 'kpi-overview', label: '🎯 Overview' },
-          { id: 'kpi-progress', label: '📈 Progress' },
-          { id: 'kpi-milestones', label: '🏁 Milestones' },
-          { id: 'kpi-risks', label: '⚠️ Risks' },
+          { id: 'kpi-1-standardization', label: '📦 Standardization' },
+          { id: 'kpi-2-ui-platform', label: '🎨 UI Platform' },
+          { id: 'kpi-3-reliability', label: '🚀 Reliability' },
+          { id: 'kpi-4-leadership', label: '👥 Leadership' },
         ].map(tab => (
           <div
             key={tab.id}
-            className={`flex-1 text-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
+            className={`whitespace-nowrap flex-1 text-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer ${
               activeSection === tab.id
                 ? 'bg-primary text-white shadow-button'
-                : 'text-gray-text hover:bg-bg-secondary'
+                : 'text-gray-text hover:bg-bg-secondary hover:text-text-primary'
             }`}
           >
             {tab.label}
@@ -51,203 +52,153 @@ export default function KpiTrackerPage({ activeSection }: Props) {
 
       {/* Content */}
       <div className="animate-fadeIn">
-        {activeSection === 'kpi-overview' && <KpiOverview />}
-        {activeSection === 'kpi-progress' && <KpiProgress />}
-        {activeSection === 'kpi-milestones' && <KpiMilestones />}
-        {activeSection === 'kpi-risks' && <KpiRisks />}
+        {activeSection === 'kpi-overview' ? <KpiOverview /> : <KpiDetail kpiId={activeSection} />}
       </div>
     </div>
   )
 }
 
-/* ─────────────────── KPI OVERVIEW ─────────────────── */
 function KpiOverview() {
-  const tileColorMap: Record<string, string> = {
-    green: 'border-t-emerald-500',
-    blue: 'border-t-blue-500',
-    amber: 'border-t-amber-500',
-    purple: 'border-t-purple-500',
-    cyan: 'border-t-cyan-500',
-    indigo: 'border-t-indigo-500',
-    orange: 'border-t-orange-500',
-    rose: 'border-t-rose-500',
-  }
   return (
     <>
-      <div className="grid grid-cols-4 gap-3 mb-5">
-        {k.tiles.map(tile => (
-          <div
-            key={tile.label}
-            className={`bg-bg-primary border border-border-secondary rounded-2xl p-5 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 border-t-4 ${tileColorMap[tile.color]}`}
-          >
-            <p className="text-xs text-gray-header uppercase tracking-wide font-medium mb-2">{tile.label}</p>
-            <p className="text-3xl font-extrabold text-text-primary tracking-tighter leading-none mb-1.5">{tile.value}</p>
-            <p className="text-xs text-gray-text mb-2">{tile.sub}</p>
-            <span className={`inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full ${
-              tile.trendDir === 'up' ? 'bg-emerald-50 text-emerald-700' :
-              tile.trendDir === 'down' ? 'bg-red-50 text-red-700' :
-              'bg-amber-50 text-amber-700'
-            }`}>
-              {tile.trendDir === 'up' ? '↑' : tile.trendDir === 'down' ? '↓' : '→'} {tile.trend}
-            </span>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
+        {k.kpiOverview.status.map(item => (
+          <div key={item.kpi} className="bg-bg-primary border border-border-secondary rounded-2xl p-5 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 border-t-4 border-t-transparent data-[status=green]:border-t-emerald-500 data-[status=yellow]:border-t-amber-500 data-[status=red]:border-t-rose-500" data-status={item.status}>
+            <p className="text-xs text-gray-header uppercase tracking-wide font-medium mb-3 h-8 line-clamp-2">{item.kpi}</p>
+            <div className="flex justify-between items-end">
+              <div>
+                <p className="text-2xl font-extrabold text-text-primary tracking-tighter mb-1">{item.current}</p>
+                <p className="text-xs text-gray-text font-medium">Target: {item.target}</p>
+              </div>
+              <div className={`w-3 h-3 rounded-full mb-1 border-2 border-white dark:border-gray-800 ${
+                item.status === 'green' ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]' : 
+                item.status === 'yellow' ? 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]' : 
+                'bg-rose-500 shadow-[0_0_8px_rgba(225,29,72,0.5)]'
+              }`} />
+            </div>
           </div>
         ))}
       </div>
 
-      {/* Team velocity chart */}
-      <div className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card mb-4">
-        <h3 className="text-base font-bold text-text-primary mb-1">Sprint Velocity</h3>
-        <p className="text-xs text-gray-header mb-5">Story points completed per sprint</p>
-        <div className="space-y-3">
-          {k.teamVelocity.map(s => {
-            const pct = Math.round((s.points / 80) * 100)
-            const isCurrent = s.sprint.includes('curr')
-            return (
-              <div key={s.sprint} className="flex items-center gap-3">
-                <span className="text-xs text-gray-text w-24 flex-shrink-0">{s.sprint}</span>
-                <div className="flex-1 h-6 bg-bg-secondary rounded-lg overflow-hidden">
-                  <div
-                    className={`h-full rounded-lg flex items-center justify-end pr-2.5 ${isCurrent ? 'bg-primary-gradient opacity-80' : 'bg-primary-gradient'}`}
-                    style={{ width: `${pct}%` }}
-                  >
-                    <span className="text-xs font-semibold text-white">{s.points}</span>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
+      <div className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card mb-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <h3 className="text-base font-bold text-text-primary mb-1">Switch Readiness Status</h3>
+          <p className="text-sm text-gray-text">{k.kpiOverview.switchReadiness.reason}</p>
+        </div>
+        <div className={`px-4 py-2 rounded-xl text-sm font-bold tracking-wide flex-shrink-0 ${
+          k.kpiOverview.switchReadiness.status.includes('Ready') 
+            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' 
+            : k.kpiOverview.switchReadiness.status.includes('Progress')
+              ? 'bg-amber-50 text-amber-700 border border-amber-200'
+              : 'bg-rose-50 text-rose-700 border border-rose-200'
+        }`}>
+          {k.kpiOverview.switchReadiness.status}
         </div>
       </div>
     </>
   )
 }
 
-/* ─────────────────── KPI PROGRESS ─────────────────── */
-function KpiProgress() {
-  const badgeStyle = (b: string) =>
-    b === 'on-track' ? 'bg-emerald-50 text-emerald-700' :
-    b === 'at-risk' ? 'bg-amber-50 text-amber-700' : 'bg-gray-100 text-gray-500'
-
-  const badgeLabel = (b: string) =>
-    b === 'on-track' ? '✅ On Track' : b === 'at-risk' ? '⚠️ At Risk' : '⏳ Pending'
+function KpiDetail({ kpiId }: { kpiId: string }) {
+  const data = k.kpis.find(x => x.id === kpiId)
+  if (!data) return null;
 
   return (
-    <div className="grid grid-cols-2 gap-4">
-      {k.progress.map(prog => (
-        <div key={prog.title} className="bg-bg-primary border border-border-secondary rounded-2xl p-5 shadow-card hover:shadow-card-hover transition-shadow">
-          <div className="flex items-start justify-between mb-4">
-            <h3 className="text-sm font-bold text-text-primary leading-snug pr-2">{prog.title}</h3>
-            <span className={`text-xs px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ${badgeStyle(prog.badge)}`}>
-              {badgeLabel(prog.badge)}
-            </span>
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card">
+        <h2 className="text-xl font-bold text-text-primary mb-3 leading-snug">{data.title}</h2>
+        <div className="bg-primary/5 border border-primary/10 rounded-xl p-4 mb-4">
+          <p className="text-sm text-primary-dark tracking-wide font-medium">
+            <span className="font-bold">🎯 Goal:</span> {data.goal}
+          </p>
+        </div>
+        <p className="text-sm text-gray-text leading-relaxed">
+          <span className="font-semibold text-gray-header">📌 Description:</span> {data.description}
+        </p>
+      </div>
+
+      {/* Metrics Row */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {data.metrics.map(m => (
+          <div key={m.name} className="bg-bg-primary border border-border-secondary rounded-xl p-5 shadow-card-sm hover:shadow-card transition-shadow">
+            <p className="text-xs text-gray-header uppercase tracking-wider font-medium mb-2 h-8 line-clamp-2">{m.name}</p>
+            <p className="text-2xl font-extrabold text-text-primary tracking-tight mb-1">{m.current}</p>
+            <p className="text-xs text-gray-text bg-bg-secondary inline-block px-2 py-0.5 rounded-md font-medium">Target: {m.target}</p>
           </div>
-          <div className="space-y-3">
-            {prog.items.map(item => (
-              <div key={item.label}>
-                <div className="flex justify-between text-xs mb-1.5">
-                  <span className="text-gray-text">{item.label}</span>
-                  <span className="font-semibold text-text-primary">{item.pct}%</span>
+        ))}
+      </div>
+
+      {/* Execution Phases (If provided) */}
+      {data.executionPhases && (
+        <div className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card">
+          <h3 className="text-lg font-bold text-text-primary tracking-tight mb-4">⏱️ Execution Plan (Phases)</h3>
+          <div className="flex flex-col gap-3">
+            {data.executionPhases.map((phase: any, i: number) => (
+              <div key={i} className={`flex items-start gap-4 p-4 rounded-xl border ${
+                phase.status === 'current' ? 'bg-primary/5 border-primary/30 shadow-sm' : 'bg-bg-secondary border-border-secondary/50'
+              }`}>
+                <div className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
+                  phase.status === 'current' ? 'bg-primary text-white shadow-[0_0_8px_rgba(var(--color-primary),0.4)]' : 'bg-gray-300 text-gray-500'
+                }`}>
+                  {phase.status === 'current' ? <span className="text-[10px] font-bold">⚡</span> : <span className="text-[10px]">○</span>}
                 </div>
-                <div className="h-2 bg-bg-secondary rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-all duration-700"
-                    style={{ width: `${item.pct}%`, backgroundColor: item.color }}
-                  />
+                <div>
+                  <h4 className={`text-sm font-bold ${phase.status === 'current' ? 'text-primary-dark' : 'text-text-primary'}`}>
+                    {phase.phase}
+                  </h4>
+                  <p className="text-xs text-gray-text mt-1">{phase.desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      ))}
-    </div>
-  )
-}
+      )}
 
-/* ─────────────────── KPI MILESTONES ─────────────────── */
-function KpiMilestones() {
-  const statusStyle: Record<string, string> = {
-    done: 'bg-emerald-50 text-emerald-700',
-    progress: 'bg-blue-50 text-blue-700',
-    pending: 'bg-gray-100 text-gray-500',
-    'at-risk': 'bg-amber-50 text-amber-700',
-    blocked: 'bg-red-50 text-red-600',
-  }
-  const statusLabel: Record<string, string> = {
-    done: '✅ Done',
-    progress: '🔵 In Progress',
-    pending: '○ Pending',
-    'at-risk': '⚠️ At Risk',
-    blocked: '🚫 Blocked',
-  }
-
-  return (
-    <div className="bg-bg-primary border border-border-secondary rounded-2xl shadow-card overflow-hidden">
-      <table className="w-full text-sm">
-        <thead>
-          <tr className="bg-bg-secondary border-b border-border-secondary text-gray-header text-xs uppercase tracking-wide">
-            <th className="px-5 py-3 text-left font-semibold">Milestone</th>
-            <th className="px-5 py-3 text-left font-semibold">Owner</th>
-            <th className="px-5 py-3 text-left font-semibold">Due</th>
-            <th className="px-5 py-3 text-left font-semibold">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {k.milestones.map((m, i) => (
-            <tr key={i} className={`border-b border-border-secondary/50 hover:bg-bg-secondary transition-colors ${m.status === 'done' ? 'opacity-70' : ''}`}>
-              <td className="px-5 py-3.5 font-medium text-text-primary">{m.milestone}</td>
-              <td className="px-5 py-3.5 text-gray-text">{m.owner}</td>
-              <td className="px-5 py-3.5 text-gray-text font-mono text-xs">{m.due}</td>
-              <td className="px-5 py-3.5">
-                <span className={`text-xs px-2.5 py-1 rounded-full font-semibold ${statusStyle[m.status]}`}>
-                  {statusLabel[m.status]}
-                </span>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )
-}
-
-/* ─────────────────── KPI RISKS ─────────────────── */
-function KpiRisks() {
-  const sevStyle: Record<string, string> = {
-    high: 'bg-red-50 text-red-700',
-    medium: 'bg-amber-50 text-amber-700',
-    low: 'bg-emerald-50 text-emerald-700',
-  }
-
-  return (
-    <>
-      <div className="bg-bg-primary border border-border-secondary rounded-2xl p-6 mb-4 shadow-card">
-        <h3 className="text-base font-bold text-text-primary mb-1">Risk Register</h3>
-        <p className="text-xs text-gray-header mb-5">Active risks across the frontend engineering workstream</p>
-        <div className="space-y-3">
-          {k.risks.map((risk, i) => (
-            <div key={i} className="flex items-center gap-4 px-4 py-3.5 border border-border-secondary rounded-xl bg-bg-primary hover:border-primary hover:bg-primary/5 transition-all duration-200">
-              <span className={`text-xs font-bold uppercase tracking-wide px-2.5 py-1 rounded-md flex-shrink-0 w-16 text-center ${sevStyle[risk.severity]}`}>
-                {risk.severity}
-              </span>
-              <p className="flex-1 text-sm font-medium text-text-primary">{risk.title}</p>
-              <span className="text-xs text-gray-header flex-shrink-0 bg-bg-secondary px-2.5 py-1 rounded-lg">{risk.owner}</span>
+      {/* 12-Week Roadmap & Tracking */}
+      <div className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card">
+        <h3 className="text-lg font-bold text-text-primary tracking-tight mb-6">📅 12-Week Lead Roadmap & Progress</h3>
+        
+        <div className="space-y-4">
+          {data.weeklyProgress.map((wp: any, i: number) => (
+            <div key={i} className={`rounded-xl border ${wp.status === 'completed' ? 'border-primary/20 bg-primary/5' : wp.status === 'in-progress' ? 'border-amber-200 bg-amber-50/30' : 'border-border-secondary/40 bg-bg-secondary/20'} overflow-hidden`}>
+              <div className="p-4 flex flex-col sm:flex-row sm:items-center justify-between border-b border-border-secondary/30 gap-2">
+                <div className="flex items-center gap-3">
+                  <span className={`px-2.5 py-1 rounded-md text-xs font-bold ${wp.status === 'completed' ? 'bg-primary text-white' : wp.status === 'in-progress' ? 'bg-amber-100 text-amber-800 border border-amber-200' : 'bg-bg-secondary text-gray-text border border-border-secondary'}`}>{wp.week}</span>
+                  <p className="text-sm font-bold text-text-primary">{wp.focus || 'Weekly Focus'}</p>
+                </div>
+                <span className={`text-[10px] font-bold uppercase tracking-widest ${wp.status === 'completed' ? 'text-primary-dark' : wp.status === 'in-progress' ? 'text-amber-600' : 'text-gray-header'}`}>{wp.status}</span>
+              </div>
+              <div className="p-5 grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">👨‍💻 Lead Responsibilities</h4>
+                  <ul className="space-y-2">
+                    {wp.leadTasks?.map((t: string, j: number) => (
+                      <li key={j} className="text-sm text-text-secondary flex items-start gap-2 leading-relaxed font-medium">
+                        <span className="text-primary mt-0.5">•</span>
+                        <span>{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {wp.achievements && wp.achievements.length > 0 && (
+                  <div className="md:border-l md:border-border-secondary/40 md:pl-6">
+                    <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">✅ Key Outcomes</h4>
+                    <ul className="space-y-2">
+                      {wp.achievements.map((a: string, j: number) => (
+                        <li key={j} className="text-sm text-emerald-700/90 flex items-start gap-2 leading-relaxed font-medium">
+                          <span className="text-emerald-500 mt-0.5">✓</span>
+                          <span>{a}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
       </div>
-
-      <div className="grid grid-cols-3 gap-4">
-        {[
-          { severity: 'High', count: k.risks.filter(r => r.severity === 'high').length, color: 'bg-red-50 border-red-200', text: 'text-red-700' },
-          { severity: 'Medium', count: k.risks.filter(r => r.severity === 'medium').length, color: 'bg-amber-50 border-amber-200', text: 'text-amber-700' },
-          { severity: 'Low', count: k.risks.filter(r => r.severity === 'low').length, color: 'bg-emerald-50 border-emerald-200', text: 'text-emerald-700' },
-        ].map(s => (
-          <div key={s.severity} className={`${s.color} border rounded-2xl p-5 text-center`}>
-            <p className={`text-4xl font-extrabold ${s.text}`}>{s.count}</p>
-            <p className={`text-sm font-semibold mt-1 ${s.text}`}>{s.severity} Risk{s.count !== 1 ? 's' : ''}</p>
-          </div>
-        ))}
-      </div>
-    </>
+    </div>
   )
 }
