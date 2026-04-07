@@ -155,9 +155,9 @@ function KpiDetail({ kpiId }: { kpiId: string }) {
         </div>
       )}
 
-      {/* 12-Week Roadmap & Tracking */}
+      {/* Dynamic Roadmap & Tracking */}
       <div className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card">
-        <h3 className="text-lg font-bold text-text-primary tracking-tight mb-6">📅 12-Week Lead Roadmap & Progress</h3>
+        <h3 className="text-lg font-bold text-text-primary tracking-tight mb-6">📅 {data.weeklyProgress.length}-Week Lead Roadmap & Progress</h3>
         
         <div className="space-y-4">
           {data.weeklyProgress.map((wp: any, i: number) => (

@@ -172,34 +172,39 @@ export const kpiData = {
   kpis: [
     {
       id: 'kpi-1-standardization',
-      title: 'Frontend Standardization (Monorepo + Multi-Tenant)',
-      goal: 'Establish a production-ready monorepo and achieve switch readiness (≥90% readiness score) without disrupting current deployments.',
-      description: 'Creating a parallel monorepo architecture (Turborepo), standardizing multi-tenant configuration, eliminating code duplication, and gradually achieving feature parity with existing repos.',
+      title: 'KPI 1: Single Monorepo for All Tenants',
+      goal: 'Establish a single monorepo architecture that serves all frontend apps and all tenants with zero duplication, zero divergence, and shared core systems.',
+      description: 'Guiding Principles: 1. One Repo, Multiple Apps. 2. No Duplication Across Apps. 3. No Tenant Branching. 4. Safe Migration First. 5. Foundation Before Abstraction.',
       metrics: [
-        { name: 'Feature Parity', target: '≥ 90%', current: '60%' },
-        { name: 'Sync Lag', target: '≤ 3 days', current: '5 days' },
-        { name: 'Build Stability', target: '≥ 95%', current: '88%' },
-        { name: 'Shared Package Usage', target: 'High', current: 'Medium' },
-        { name: 'Dev Adoption', target: 'Full team', current: 'Pending' },
+        { name: 'Monorepo setup', target: 'Verified', current: 'Pending' },
+        { name: 'Local stability', target: 'Verified', current: 'Pending' },
+        { name: 'Deployment reliability', target: 'Verified', current: 'Pending' },
+        { name: 'Config centralization', target: 'Centralized', current: 'Pending' },
+        { name: 'API unification', target: 'Unified', current: 'Pending' },
+        { name: 'Validation centralization', target: 'Centralized', current: 'Pending' },
+        { name: 'Multi-app readiness', target: 'Verified', current: 'Pending' },
+        { name: 'Cross-app consistency', target: 'Verified', current: 'Pending' },
+        { name: 'Duplication count', target: '0', current: 'High' },
+        { name: 'Integration readiness', target: 'Ready', current: 'Pending' }
       ],
       executionPhases: [
-        { phase: 'Phase 1: Shadow Mode (Weeks 1-4)', desc: 'Monorepo exists; sync manually. Focus on Architecture Stability.', status: 'current' },
-        { phase: 'Phase 2: Sync Mode (Weeks 5-8)', desc: 'Monorepo becomes source of truth for new components.', status: 'upcoming' },
-        { phase: 'Phase 3: Switch Readiness (Weeks 9-12)', desc: 'Final stabilization, iOS release, and Switch execution.', status: 'upcoming' }
+        { phase: 'Phase 1: Monorepo Setup & Stability (Weeks 1–3)', desc: 'Move app into monorepo, run locally, ensure deployment validation and dev experience without behavior change.', status: 'current' },
+        { phase: 'Phase 2: Shared Core Systems (Weeks 4–7)', desc: 'Centralize config, API layer, validation, and multi-app integration without duplication.', status: 'upcoming' },
+        { phase: 'Phase 3: Stabilization & System Confidence (Weeks 8–9)', desc: 'Cross-app consistency audits and overall monorepo hardening.', status: 'upcoming' },
+        { phase: 'Phase 4: Integration Buffer (Weeks 10–11)', desc: 'Component library integration and final system stabilization.', status: 'upcoming' }
       ],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Turborepo Setup', status: 'completed', leadTasks: ['Setup Turborepo', 'Extract @spring/config and @spring/design-tokens', 'Review Advisor Web Skeleton PR'], achievements: ['Workspace running', 'Config extracted'] },
-        { week: 'Week 2', focus: 'CI/CD & Caching', status: 'in-progress', leadTasks: ['Audit component dependencies', 'Set up Vercel/GitHub CI caching', 'Draft Sync scripting'], achievements: ['First CI build successful'] },
-        { week: 'Week 3', focus: 'Client Web Skeleton', status: 'upcoming', leadTasks: ['Supervise Client Web skeleton migration', 'Review shared component parity'], achievements: [] },
-        { week: 'Week 4', focus: 'Shadow Parity', status: 'upcoming', leadTasks: ['Run shadow validations', 'Check sync lag metrics', 'Fix breaking structural imports'], achievements: [] },
-        { week: 'Week 5', focus: 'Component Sync', status: 'upcoming', leadTasks: ['Enforce PRs to target monorepo first', 'Lead workshop on Monorepo standards'], achievements: [] },
-        { week: 'Week 6', focus: 'Dependency Unification', status: 'upcoming', leadTasks: ['Resolve Next.js versions', 'Align Tailwind plugins'], achievements: [] },
-        { week: 'Week 7', focus: 'Data Layer', status: 'upcoming', leadTasks: ['Migrate Frappe API bindings', 'Validate type safety across apps'], achievements: [] },
-        { week: 'Week 8', focus: 'QA Sign-off 1', status: 'upcoming', leadTasks: ['End-to-End QA alignment', 'Review multi-tenant env configs'], achievements: [] },
-        { week: 'Week 9', focus: 'Parallel Deploy', status: 'upcoming', leadTasks: ['Setup blue/green containers for old vs new', 'Review error thresholds'], achievements: [] },
-        { week: 'Week 10', focus: 'UAT Feedback', status: 'upcoming', leadTasks: ['Triage UAT bugs', 'Sync lag cleanup'], achievements: [] },
-        { week: 'Week 11', focus: 'Switch Preparation', status: 'upcoming', leadTasks: ['Final architecture review', 'Communicate switch timeline to business'], achievements: [] },
-        { week: 'Week 12', focus: 'Switch Execution', status: 'upcoming', leadTasks: ['Sign-off production switch', 'Disable legacy branches'], achievements: [] }
+        { week: 'Week 1', focus: 'Monorepo Setup (Local Stability)', status: 'completed', leadTasks: ['Setup Turborepo', 'Move advisor web into apps/', 'Setup workspace (pnpm)'], achievements: ['App runs locally without issues', 'No code refactoring done'] },
+        { week: 'Week 2', focus: 'Deployment Validation (Hard Gate)', status: 'in-progress', leadTasks: ['Setup CI/CD pipeline', 'Ensure Docker/build works from root', 'Validate deployment'], achievements: ['Production parity', 'Stable build pipeline'] },
+        { week: 'Week 3', focus: 'Stability + Dev Experience', status: 'upcoming', leadTasks: ['Fix DX issues (slow builds, install)', 'Validate local workflows'], achievements: [] },
+        { week: 'Week 4', focus: 'Shared Config Centralization', status: 'upcoming', leadTasks: ['Move config to packages/config', 'Update imports in apps'], achievements: [] },
+        { week: 'Week 5', focus: 'API Layer Unification', status: 'upcoming', leadTasks: ['Move API types to packages/api-client', 'Standardize API usage'], achievements: [] },
+        { week: 'Week 6', focus: 'Validation System Centralization', status: 'upcoming', leadTasks: ['Move validation to packages/validation', 'Organize per-tenant rules'], achievements: [] },
+        { week: 'Week 7', focus: 'Multi-App Integration', status: 'upcoming', leadTasks: ['Add client web app', 'Validate shared package usage'], achievements: [] },
+        { week: 'Week 8', focus: 'Cross-App Consistency', status: 'upcoming', leadTasks: ['Audit config, API, validation usage', 'Remove any duplication'], achievements: [] },
+        { week: 'Week 9', focus: 'Monorepo Hardening', status: 'upcoming', leadTasks: ['Fix edge cases', 'Clean imports and structure', 'Strengthen CI reliability'], achievements: [] },
+        { week: 'Week 10', focus: 'Component Integration (Initial)', status: 'upcoming', leadTasks: ['Replace selective UI with shared components', 'Validate compatibility'], achievements: [] },
+        { week: 'Week 11', focus: 'Integration Completion', status: 'upcoming', leadTasks: ['Expand usage of component library', 'Final cleanup'], achievements: [] }
       ],
     },
     {
