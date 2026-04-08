@@ -204,6 +204,7 @@ export const kpiData = {
           'Full observability across web (ELK) and mobile (Crashlytics)',
           'High-performance apps across API, rendering, and BFF layers',
           'Stable, automated CI/CD pipelines',
+          'Zero downtime deployments for web apps',
           'Seamless tester & store distribution',
           'Scalable multi-tenant mobile architecture',
         ],
@@ -317,6 +318,7 @@ export const kpiData = {
         { name: 'Web Performance', target: 'Improved', current: 'Pending' },
         { name: 'Mobile Observability', target: 'Firebase active', current: 'Pending' },
         { name: 'CI/CD Pipelines', target: 'Stable', current: 'Pending' },
+        { name: 'Zero Downtime Deploys', target: 'Enabled', current: 'Pending' },
         { name: 'App Distribution', target: 'Functional', current: 'Pending' },
         { name: 'Mobile Architecture', target: 'Defined', current: 'Pending' }
       ],
@@ -328,7 +330,7 @@ export const kpiData = {
         { week: 'Weeks 1-2', focus: 'Observability Foundation', status: 'in-progress', leadTasks: ['Setup ELK Stack for Web (Elasticsearch, Logstash, Kibana)', 'Integrate Firebase Crashlytics for Mobile'], achievements: [] },
         { week: 'Weeks 3-4', focus: 'Monitoring & Alerting', status: 'upcoming', leadTasks: ['Kibana dashboards (latency, errors)', 'Slack alerts', 'Firebase Performance Monitoring'], achievements: [] },
         { week: 'Weeks 5-6', focus: 'Performance Optimization', status: 'upcoming', leadTasks: ['Optimize API latency (Web)', 'Improve rendering (Web)', 'Audit mobile performance'], achievements: [] },
-        { week: 'Weeks 7-8', focus: 'CI/CD & Distribution Foundation', status: 'upcoming', leadTasks: ['Setup Firebase App Distribution', 'Standardize GitHub Actions', 'Setup artifact storage (S3)'], achievements: [] },
+        { week: 'Weeks 7-8', focus: 'CI/CD & Distribution Foundation', status: 'upcoming', leadTasks: ['Setup Firebase App Distribution', 'Standardize GitHub Actions', 'Setup artifact storage (S3)', 'Enable zero downtime deploys (Web)'], achievements: [] },
         { week: 'Weeks 9-10', focus: 'Mobile Architecture Research', status: 'upcoming', leadTasks: ['Explore Expo multi-tenant builds', 'EAS profiles per tenant', 'iOS bundle ID strategy'], achievements: [] },
         { week: 'Weeks 11-12', focus: 'Consolidation & Readiness', status: 'upcoming', leadTasks: ['Finalize documentation', 'Define SOPs (alert/release/rollback)', 'Fix monitoring gaps'], achievements: [] }
       ],
