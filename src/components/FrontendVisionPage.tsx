@@ -52,14 +52,14 @@ export default function FrontendVisionPage({ activeSection, onTabChange }: Props
       </div>
 
       {/* Tab bar (Desktop) */}
-      <div className="hidden md:flex gap-1 bg-bg-primary border border-border-secondary rounded-xl p-1 mb-6 flex-wrap shadow-card">
+      <div className="hidden md:flex flex-1 justify-between gap-0.5 bg-bg-primary border border-border-secondary rounded-xl p-1 mb-6 shadow-card overflow-x-auto no-scrollbar">
         {d.tabs.map(tab => {
           const isActive = activeSection === tab.id
           return (
             <button
               key={tab.id}
               onClick={() => onTabChange(tab.id as ActiveSection)}
-              className={`flex items-center gap-1.5 px-3 py-[7px] rounded-lg text-sm font-medium transition-all duration-150 whitespace-nowrap ${
+              className={`flex flex-1 justify-center items-center gap-1.5 px-2 py-[7px] rounded-lg text-[13px] font-medium transition-all duration-150 whitespace-nowrap ${
                 isActive
                   ? 'bg-primary text-white shadow-button'
                   : 'text-gray-text hover:bg-bg-secondary hover:text-text-primary'
