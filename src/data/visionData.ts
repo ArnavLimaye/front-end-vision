@@ -241,29 +241,28 @@ export const kpiData = {
     },
     {
       id: 'kpi-3-reliability',
-      title: 'Platform Reliability + iOS Release',
-      goal: 'Production-grade monitoring, stable CI/CD pipelines, and successful iOS release for at least one tenant.',
-      description: 'Implementing error tracking, logging, monitoring/alerting, deployment stability, and finalizing iOS release pipeline via EAS.',
+      title: 'KPI 3: Platform Observability & Release Engineering',
+      goal: 'Establish a scalable and robust platform enabling full visibility, fast applications, automated pipelines, seamless distribution, and scalable mobile architecture.',
+      description: 'Web = Execution Focus. Mobile = Research + Stabilization. Covers ELK Stack for web, Firebase for mobile, CI/CD foundations, and multi-tenant mobile architectural definitions.',
       metrics: [
-        { name: 'Error Tracking Coverage', target: '100%', current: '100% Web, 0% Mobile' },
-        { name: 'Deployment Success Rate', target: '≥ 95%', current: '92%' },
-        { name: 'MTTR', target: 'Decreasing', current: '4.5 hrs' },
-        { name: 'iOS Build Success', target: '≥ 90%', current: '75%' },
-        { name: 'iOS Releases', target: '≥ 1', current: '0' },
+        { name: 'ELK Stack setup', target: 'Operational', current: 'Pending' },
+        { name: 'Web Performance', target: 'Improved', current: 'Pending' },
+        { name: 'Mobile Observability', target: 'Firebase active', current: 'Pending' },
+        { name: 'CI/CD Pipelines', target: 'Stable', current: 'Pending' },
+        { name: 'App Distribution', target: 'Functional', current: 'Pending' },
+        { name: 'Mobile Architecture', target: 'Defined', current: 'Pending' }
+      ],
+      executionPhases: [
+        { phase: 'Phase 1 (Months 0-3)', desc: 'Preparation & Foundation (Web Observability, Mobile Stabilization, CI/CD Foundation).', status: 'current' },
+        { phase: 'Phase 2 (Months 3-6)', desc: 'Full Implementation (Multi-tenant Mobile Architecture, Full automation, Production grade release pipelines).', status: 'upcoming' }
       ],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Web Error Tracking', status: 'completed', leadTasks: ['Configure Sentry keys per tenant', 'Verify source map uploads'], achievements: ['Sentry active on Web Apps'] },
-        { week: 'Week 2', focus: 'iOS Build Setup', status: 'in-progress', leadTasks: ['Audit EAS credentials', 'Set up Apple developer certificates'], achievements: ['Ad hoc build generated'] },
-        { week: 'Week 3', focus: 'Alerting Gates', status: 'upcoming', leadTasks: ['Setup log routing to Slack', 'Define critical 500 alert rules'], achievements: [] },
-        { week: 'Week 4', focus: 'Mobile Tracking', status: 'upcoming', leadTasks: ['Integrate Crashlytics in Expo', 'Review JS thread vs Native crashes'], achievements: [] },
-        { week: 'Week 5', focus: 'TestFlight Config', status: 'upcoming', leadTasks: ['Push first build to TestFlight', 'Review multi-tenant compliance for App Store'], achievements: [] },
-        { week: 'Week 6', focus: 'Deployment Gates', status: 'upcoming', leadTasks: ['Enforce Cypress smoke tests in CI', 'Audit QA failure cases'], achievements: [] },
-        { week: 'Week 7', focus: 'Performance 1', status: 'upcoming', leadTasks: ['Audit bundle size', 'Enforce budget limits in Webpack/Turbopack'], achievements: [] },
-        { week: 'Week 8', focus: 'iOS Release Beta', status: 'upcoming', leadTasks: ['Coordinate UAT sign-off', 'Submit to App Store Review'], achievements: [] },
-        { week: 'Week 9', focus: 'Review Feedback', status: 'upcoming', leadTasks: ['Address Apple Developer rejections (if any)'], achievements: [] },
-        { week: 'Week 10', focus: 'Performance 2', status: 'upcoming', leadTasks: ['Core Web Vitals check', 'Audit Traefik latency'], achievements: [] },
-        { week: 'Week 11', focus: 'iOS Live', status: 'upcoming', leadTasks: ['Monitor Day 1 crashes', 'Validate Live metrics'], achievements: [] },
-        { week: 'Week 12', focus: 'Reliability Wrap', status: 'upcoming', leadTasks: ['Publish MTTR report', 'Refine Alerting noise (reduce false positives)'], achievements: [] }
+        { week: 'Weeks 1-2', focus: 'Observability Foundation', status: 'in-progress', leadTasks: ['Setup ELK Stack for Web (Elasticsearch, Logstash, Kibana)', 'Integrate Firebase Crashlytics for Mobile'], achievements: [] },
+        { week: 'Weeks 3-4', focus: 'Monitoring & Alerting', status: 'upcoming', leadTasks: ['Kibana dashboards (latency, errors)', 'Slack alerts', 'Firebase Performance Monitoring'], achievements: [] },
+        { week: 'Weeks 5-6', focus: 'Performance Optimization', status: 'upcoming', leadTasks: ['Optimize API latency (Web)', 'Improve rendering (Web)', 'Audit mobile performance'], achievements: [] },
+        { week: 'Weeks 7-8', focus: 'CI/CD & Distribution Foundation', status: 'upcoming', leadTasks: ['Setup Firebase App Distribution', 'Standardize GitHub Actions', 'Setup artifact storage (S3)'], achievements: [] },
+        { week: 'Weeks 9-10', focus: 'Mobile Architecture Research', status: 'upcoming', leadTasks: ['Explore Expo multi-tenant builds', 'EAS profiles per tenant', 'iOS bundle ID strategy'], achievements: [] },
+        { week: 'Weeks 11-12', focus: 'Consolidation & Readiness', status: 'upcoming', leadTasks: ['Finalize documentation', 'Define SOPs (alert/release/rollback)', 'Fix monitoring gaps'], achievements: [] }
       ],
     },
     {
@@ -319,7 +318,7 @@ export const navItems = [
       { id: 'kpi-overview', icon: '🎯', label: 'Overview' },
       { id: 'kpi-1-standardization', icon: '📦', label: 'Monorepo Setup' },
       { id: 'kpi-2-ui-platform', icon: '🎨', label: 'Component Library' },
-      { id: 'kpi-3-reliability', icon: '🚀', label: 'Reliability + iOS' },
+      { id: 'kpi-3-reliability', icon: '🚀', label: 'Observability' },
       { id: 'kpi-4-leadership', icon: '👥', label: 'Team Leadership' },
     ],
   },

@@ -34,7 +34,7 @@ export default function KpiTrackerPage({ activeSection }: Props) {
           { id: 'kpi-overview', label: '🎯 Overview' },
           { id: 'kpi-1-standardization', label: '📦 Monorepo Setup' },
           { id: 'kpi-2-ui-platform', label: '🎨 Component Library' },
-          { id: 'kpi-3-reliability', label: '🚀 Reliability' },
+          { id: 'kpi-3-reliability', label: '🚀 Observability' },
           { id: 'kpi-4-leadership', label: '👥 Leadership' },
         ].map(tab => (
           <div
