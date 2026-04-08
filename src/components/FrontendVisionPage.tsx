@@ -1,26 +1,58 @@
 import { useState } from 'react'
 import type { ReactNode } from 'react'
 import type { ActiveSection } from '../App'
-import { frontendVisionData } from '../data/visionData'
+import { frontendVisionData, navItems } from '../data/visionData'
 
 const d = frontendVisionData
 
 interface Props { activeSection: ActiveSection; onTabChange: (s: ActiveSection) => void }
 
 export default function FrontendVisionPage({ activeSection, onTabChange }: Props) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const currentTabLabel = navItems.find(n => n.id === 'frontend-vision')?.children.find(c => c.id === activeSection)?.label || 'Overview'
+
   return (
-    <div className="max-w-5xl mx-auto px-8 py-8">
+    <div className="max-w-5xl mx-auto px-4 md:px-8 py-6 md:py-8">
       {/* Page header */}
-      <div className="flex items-start gap-4 mb-7">
-        <span className="text-4xl leading-none mt-1">🎨</span>
+      <div className="flex items-start gap-3 md:gap-4 mb-6 md:mb-7">
+        <span className="text-3xl md:text-4xl leading-none mt-1">🎨</span>
         <div>
-          <h2 className="text-2xl font-bold text-text-primary tracking-tight leading-tight">Frontend Vision</h2>
-          <p className="text-sm text-gray-header mt-1">Multi-Tenant SaaS Frontend Architecture for Wealth Management Platform</p>
+          <h2 className="text-xl md:text-2xl font-bold text-text-primary tracking-tight leading-tight">Frontend Vision</h2>
+          <p className="text-xs md:text-sm text-gray-header mt-1">Multi-Tenant SaaS Frontend Architecture for Wealth Management Platform</p>
         </div>
       </div>
 
-      {/* Tab bar */}
-      <div className="flex gap-1 bg-bg-primary border border-border-secondary rounded-xl p-1 mb-6 flex-wrap shadow-card">
+      {/* Mobile Tab menu */}
+      <div className="md:hidden relative mb-6">
+        <button 
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="w-full flex items-center justify-between p-3.5 bg-bg-primary border border-border-secondary rounded-xl shadow-card"
+        >
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-gray-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <span className="font-semibold text-text-primary text-sm">{currentTabLabel}</span>
+          </div>
+          <span className="text-gray-header text-xs">{mobileMenuOpen ? '▲' : '▼'}</span>
+        </button>
+        
+        {mobileMenuOpen && (
+          <div className="absolute top-full mt-2 left-0 right-0 bg-bg-primary border border-border-secondary rounded-xl shadow-card p-2 flex flex-col gap-1 z-30">
+            {navItems.find(n => n.id === 'frontend-vision')?.children.map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => { onTabChange(tab.id as ActiveSection); setMobileMenuOpen(false); }}
+                className={`flex items-center gap-2 px-3 py-3 rounded-lg text-sm transition-all text-left ${activeSection === tab.id ? 'bg-primary/10 text-primary font-semibold' : 'text-gray-text hover:bg-bg-secondary font-medium'}`}
+              >
+                <span>{tab.icon}</span>
+                <span>{tab.label}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Tab bar (Desktop) */}
+      <div className="hidden md:flex gap-1 bg-bg-primary border border-border-secondary rounded-xl p-1 mb-6 flex-wrap shadow-card">
         {d.tabs.map(tab => {
           const isActive = activeSection === tab.id
           return (

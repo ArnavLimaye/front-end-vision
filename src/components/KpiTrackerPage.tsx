@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import type { ActiveSection } from '../App'
-import { kpiData as k } from '../data/visionData'
+import { kpiData as k, navItems } from '../data/visionData'
 
 interface Props { 
   activeSection: ActiveSection;
@@ -7,15 +8,18 @@ interface Props {
 }
 
 export default function KpiTrackerPage({ activeSection, onTabChange }: Props) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const currentTabLabel = navItems.find(n => n.id === 'kpi-tracker')?.children.find(c => c.id === activeSection)?.label || 'Overview'
+
   return (
-    <div className="max-w-5xl mx-auto px-8 py-8">
+    <div className="max-w-5xl mx-auto px-4 md:px-8 py-6 md:py-8">
       {/* Dark header banner */}
-      <div className="relative bg-dark-gradient rounded-2xl p-8 mb-6 overflow-hidden shadow-card">
+      <div className="relative bg-dark-gradient rounded-2xl p-6 md:p-8 mb-6 overflow-hidden shadow-card">
         <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-primary/10 blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
         <div className="relative z-10">
-          <h2 className="text-2xl font-bold text-white tracking-tight">📊 KPI Tracker</h2>
-          <p className="text-sm text-white/60 mt-1">Frontend Engineering — Spring Money OS</p>
-          <div className="flex gap-8 mt-6 flex-wrap">
+          <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">📊 KPI Tracker</h2>
+          <p className="text-xs md:text-sm text-white/60 mt-1">Frontend Engineering — Spring Money OS</p>
+          <div className="flex gap-4 md:gap-8 mt-6 flex-wrap">
             {[
               { label: 'KPI 1', value: 'Monorepo', accent: true },
               { label: 'KPI 2', value: 'Components' },
@@ -23,16 +27,45 @@ export default function KpiTrackerPage({ activeSection, onTabChange }: Props) {
               { label: 'KPI 4', value: 'Leadership' },
             ].map(item => (
               <div key={item.label}>
-                <p className="text-xs text-white/50 uppercase tracking-wider font-medium">{item.label}</p>
-                <p className={`text-2xl font-extrabold mt-1 tracking-tight ${item.accent ? 'text-primary-light' : 'text-white'}`}>{item.value}</p>
+                <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider font-medium">{item.label}</p>
+                <p className={`text-xl md:text-2xl font-extrabold mt-0.5 md:mt-1 tracking-tight ${item.accent ? 'text-primary-light' : 'text-white'}`}>{item.value}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Tab sub-nav */}
-      <div className="flex gap-1 bg-bg-primary border border-border-secondary rounded-xl p-1 mb-6 shadow-card overflow-x-auto">
+      {/* Mobile Tab menu */}
+      <div className="md:hidden relative mb-6">
+        <button 
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="w-full flex items-center justify-between p-3.5 bg-bg-primary border border-border-secondary rounded-xl shadow-card"
+        >
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-gray-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <span className="font-semibold text-text-primary text-sm">{currentTabLabel}</span>
+          </div>
+          <span className="text-gray-header text-xs">{mobileMenuOpen ? '▲' : '▼'}</span>
+        </button>
+        
+        {mobileMenuOpen && (
+          <div className="absolute top-full mt-2 left-0 right-0 bg-bg-primary border border-border-secondary rounded-xl shadow-card p-2 flex flex-col gap-1 z-30">
+            {navItems.find(n => n.id === 'kpi-tracker')?.children.map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => { onTabChange?.(tab.id as ActiveSection); setMobileMenuOpen(false); }}
+                className={`flex items-center gap-2 px-3 py-3 rounded-lg text-sm transition-all text-left ${activeSection === tab.id ? 'bg-primary/10 text-primary font-semibold' : 'text-gray-text hover:bg-bg-secondary font-medium'}`}
+              >
+                <span>{tab.icon}</span>
+                <span>{tab.label}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Tab sub-nav (Desktop) */}
+      <div className="hidden md:flex gap-1 bg-bg-primary border border-border-secondary rounded-xl p-1 mb-6 shadow-card overflow-x-auto">
         {[
           { id: 'kpi-overview', label: '🎯 Overview' },
           { id: 'kpi-1-standardization', label: '📦 Monorepo Setup' },
