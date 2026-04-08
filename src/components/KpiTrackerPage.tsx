@@ -1,9 +1,12 @@
 import type { ActiveSection } from '../App'
 import { kpiData as k } from '../data/visionData'
 
-interface Props { activeSection: ActiveSection }
+interface Props { 
+  activeSection: ActiveSection;
+  onTabChange?: (section: ActiveSection) => void;
+}
 
-export default function KpiTrackerPage({ activeSection }: Props) {
+export default function KpiTrackerPage({ activeSection, onTabChange }: Props) {
   return (
     <div className="max-w-5xl mx-auto px-8 py-8">
       {/* Dark header banner */}
@@ -14,10 +17,10 @@ export default function KpiTrackerPage({ activeSection }: Props) {
           <p className="text-sm text-white/60 mt-1">Frontend Engineering — Spring Money OS</p>
           <div className="flex gap-8 mt-6 flex-wrap">
             {[
-              { label: 'ARR', value: k.summary.arr, accent: true },
-              { label: 'Target WMs', value: k.summary.targets },
-              { label: 'Active Tenants', value: k.summary.tenants },
-              { label: 'Eng Team', value: k.summary.teamSize },
+              { label: 'KPI 1', value: 'Monorepo', accent: true },
+              { label: 'KPI 2', value: 'Components' },
+              { label: 'KPI 3', value: 'Observability' },
+              { label: 'KPI 4', value: 'Leadership' },
             ].map(item => (
               <div key={item.label}>
                 <p className="text-xs text-white/50 uppercase tracking-wider font-medium">{item.label}</p>
@@ -39,6 +42,7 @@ export default function KpiTrackerPage({ activeSection }: Props) {
         ].map(tab => (
           <div
             key={tab.id}
+            onClick={() => onTabChange?.(tab.id as ActiveSection)}
             className={`whitespace-nowrap flex-1 text-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer ${
               activeSection === tab.id
                 ? 'bg-primary text-white shadow-button'

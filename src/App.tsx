@@ -18,7 +18,7 @@ export default function App() {
       <Sidebar activeSection={activeSection} onSelect={setActiveSection} />
       <main className="flex-1 overflow-y-auto content-scroll">
         {isKpi
-          ? <KpiTrackerPage activeSection={activeSection} />
+          ? <KpiTrackerPage activeSection={activeSection} onTabChange={setActiveSection} />
           : <FrontendVisionPage activeSection={activeSection} onTabChange={setActiveSection} />
         }
       </main>
