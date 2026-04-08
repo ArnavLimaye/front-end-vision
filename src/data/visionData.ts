@@ -158,16 +158,84 @@ export const kpiData = {
     teamSize: '6 Eng',
   },
   kpiOverview: {
-    status: [
-      { kpi: 'Standardization (Monorepo)', target: '90% readiness', current: '60%', status: 'yellow' },
-      { kpi: 'UI Platform', target: '70% adoption', current: '45%', status: 'yellow' },
-      { kpi: 'Reliability + iOS', target: 'Live + 1 release', current: '50%', status: 'yellow' },
-      { kpi: 'Team Leadership', target: 'High ownership', current: '65%', status: 'green' },
-    ],
-    switchReadiness: {
-      status: '🟡 In Progress',
-      reason: 'Feature parity at 60%, sync lag still needs reduction. Build stability improving.',
-    },
+    document: [
+      {
+        title: '1. Single Monorepo for Multi-Tenant Frontend',
+        outcome: [
+          'All frontend apps and tenants operate from a single monorepo',
+          'Shared core systems eliminate duplication across apps',
+          'Enables consistent, scalable platform development',
+        ],
+        pointers: [
+          'Eliminate duplication across config, API, and validation layers',
+          'No tenant-based branches — config drives all differences',
+          'Migrate first, refactor later to protect stability',
+          'Enforce shared packages across all apps',
+          'Validate deployments before progressing',
+          'Think platform-first, not app-first',
+        ]
+      },
+      {
+        title: '2. Component Library Creation & Adoption (Web + Mobile)',
+        outcome: [
+          'Unified design system across web and mobile',
+          'Level 1 & Level 2 components fully reusable',
+          'Selected Level 3 components reduce business duplication',
+          'Multi-tenant theming works seamlessly',
+          'All apps consume shared libraries with zero UI duplication',
+          'Significant improvement in development speed & scalability',
+        ],
+        pointers: [
+          'Build all UI as shared packages inside monorepo',
+          'Establish design tokens + theming system as foundation',
+          'Level 1 → stateless reusable primitives',
+          'Level 2 → forms, data, async logic',
+          'Maintain identical APIs across web & mobile components',
+          'Avoid tenant-specific logic in components',
+          'Migrate all apps to shared libraries and remove duplication',
+          'Enforce strict governance (no hardcoding, no app-level UI)',
+          'Use Storybook for testing and documentation',
+          'Frontend Lead to enforce adoption and consistency',
+        ]
+      },
+      {
+        title: '3. Platform Observability, Performance & Release Engineering',
+        outcome: [
+          'Full observability across web (ELK) and mobile (Crashlytics)',
+          'High-performance apps across API, rendering, and BFF layers',
+          'Stable, automated CI/CD pipelines',
+          'Seamless tester & store distribution',
+          'Scalable multi-tenant mobile architecture',
+        ],
+        pointers: [
+          'Phase 1 (0–3 Months): Setup ELK logging with tenant-aware monitoring; Integrate Firebase Crashlytics + performance monitoring; Optimize web performance; Standardize CI/CD; Define multi-tenant mobile architecture (EAS); Focus execution on web, stabilize mobile.',
+          'Phase 2 (3–6 Months): Automate mobile builds (Play Store + TestFlight); Expand observability and alerting; Optimize mobile performance; Enable full release pipelines with rollback + playbooks.',
+        ]
+      },
+      {
+        title: '4. Leadership (Ownership-Driven Execution)',
+        outcome: [
+          'Clear ownership across Web & Mobile with full accountability',
+          '2+ features delivered per developer per week',
+          'High autonomy — developers propose and execute solutions',
+          '<10% ticket reopen rate (only edge cases)',
+          'Strong cross-domain collaboration',
+          'Tech Lead dependency reduced to <10%',
+          'KPI 1, KPI 2, KPI 3 achieved through team execution',
+        ],
+        pointers: [
+          'Assign one owner each for Web and Mobile',
+          'Enforce end-to-end ownership (problem → solution → delivery)',
+          'Developers must propose solutions before escalation',
+          'Map every task to KPI 1, KPI 2, or KPI 3',
+          'Track 2+ feature deliveries per developer weekly',
+          'Enforce strict quality checks',
+          'Ensure cross-domain contribution every sprint',
+          'Limit Tech Lead to review, guidance, unblocking',
+          'Track autonomy, speed, and quality weekly',
+        ]
+      }
+    ]
   },
   kpis: [
     {

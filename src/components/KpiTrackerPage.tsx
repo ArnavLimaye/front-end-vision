@@ -60,42 +60,37 @@ export default function KpiTrackerPage({ activeSection }: Props) {
 
 function KpiOverview() {
   return (
-    <>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
-        {k.kpiOverview.status.map(item => (
-          <div key={item.kpi} className="bg-bg-primary border border-border-secondary rounded-2xl p-5 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 border-t-4 border-t-transparent data-[status=green]:border-t-emerald-500 data-[status=yellow]:border-t-amber-500 data-[status=red]:border-t-rose-500" data-status={item.status}>
-            <p className="text-xs text-gray-header uppercase tracking-wide font-medium mb-3 h-8 line-clamp-2">{item.kpi}</p>
-            <div className="flex justify-between items-end">
-              <div>
-                <p className="text-2xl font-extrabold text-text-primary tracking-tighter mb-1">{item.current}</p>
-                <p className="text-xs text-gray-text font-medium">Target: {item.target}</p>
-              </div>
-              <div className={`w-3 h-3 rounded-full mb-1 border-2 border-white dark:border-gray-800 ${
-                item.status === 'green' ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]' : 
-                item.status === 'yellow' ? 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]' : 
-                'bg-rose-500 shadow-[0_0_8px_rgba(225,29,72,0.5)]'
-              }`} />
-            </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-8">
+      {k.kpiOverview.document.map((doc, idx) => (
+        <div key={idx} className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card flex flex-col">
+          <h3 className="text-lg font-bold text-text-primary mb-5 border-b border-border-secondary pb-3">{doc.title}</h3>
+          
+          <div className="mb-6 flex-1">
+            <h4 className="text-xs font-extrabold text-primary uppercase tracking-widest mb-3">🎯 Outcome</h4>
+            <ul className="space-y-2.5">
+              {doc.outcome.map((item, i) => (
+                <li key={i} className="text-sm text-text-secondary flex items-start gap-2 leading-relaxed font-medium">
+                  <span className="text-emerald-500 mt-[-1px]">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        ))}
-      </div>
 
-      <div className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card mb-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <h3 className="text-base font-bold text-text-primary mb-1">Switch Readiness Status</h3>
-          <p className="text-sm text-gray-text">{k.kpiOverview.switchReadiness.reason}</p>
+          <div className="bg-bg-secondary/40 rounded-xl p-5 border border-border-secondary/50">
+            <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-widest mb-3">⚡ Execution Pointers</h4>
+            <ul className="space-y-2">
+              {doc.pointers.map((item, i) => (
+                <li key={i} className="text-sm text-gray-text flex items-start gap-2 leading-relaxed">
+                  <span className="text-primary/70 mt-0.5 text-lg leading-none">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div className={`px-4 py-2 rounded-xl text-sm font-bold tracking-wide flex-shrink-0 ${
-          k.kpiOverview.switchReadiness.status.includes('Ready') 
-            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' 
-            : k.kpiOverview.switchReadiness.status.includes('Progress')
-              ? 'bg-amber-50 text-amber-700 border border-amber-200'
-              : 'bg-rose-50 text-rose-700 border border-rose-200'
-        }`}>
-          {k.kpiOverview.switchReadiness.status}
-        </div>
-      </div>
-    </>
+      ))}
+    </div>
   )
 }
 
