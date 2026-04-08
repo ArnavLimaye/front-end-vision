@@ -267,29 +267,33 @@ export const kpiData = {
     },
     {
       id: 'kpi-4-leadership',
-      title: 'Team Leadership & Developer Growth',
-      goal: 'Develop a high-performing frontend team by improving capability, ownership, and productivity of junior developers.',
-      description: 'Upskilling juniors (architecture, UI systems), increasing their ownership, reducing lead dependency, and ensuring code quality across PRs.',
+      title: 'KPI 4: Leadership (Ownership-Driven Execution)',
+      goal: 'Build a self-sufficient frontend team with strong ownership (Web & Mobile) that independently delivers KPI 1, 2, 3.',
+      description: '1 Web Owner, 1 Mobile Owner. High execution speed, low rework, strong autonomy. Devs own problem → solution → delivery.',
       metrics: [
-        { name: 'Feature Ownership', target: '30 pts', current: '15 pts' },
-        { name: 'PR Quality', target: '25 pts', current: '20 pts' },
-        { name: 'Independent Delivery', target: '25 pts', current: '10 pts' },
-        { name: 'Code Standards Adherence', target: '20 pts', current: '15 pts' },
-        { name: 'Total Score', target: '100 / 100', current: '60 / 100' },
+        { name: 'Ownership Clarity', target: '100%', current: '100%' },
+        { name: 'Dev Autonomy', target: '90%', current: '60%' },
+        { name: 'Features/Dev/Week', target: '2+', current: '1' },
+        { name: 'Lead Dependency', target: '<10%', current: '80%' },
+        { name: 'Reopened Tickets', target: '<10%', current: '15%' },
+        { name: 'Cross-Domain', target: '100%', current: 'Partial' }
+      ],
+      executionPhases: [
+        { phase: 'Weeks 1-3: Setup & Alignment', desc: 'Detailed ownership boundaries, shift from execution to ownership, map all tasks to KPI 1,2,3.', status: 'current' },
+        { phase: 'Weeks 4-6: Independent Delivery Start', desc: 'Reduce technical leadership dependency to 40%, speed stabilization, quality enforcement.', status: 'upcoming' },
+        { phase: 'Weeks 7-10: Ownership Maturity & Success', desc: 'Cross domain contribution, System Efficiency, and hitting Leadership Success state (<10% Dependency).', status: 'upcoming' }
       ],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Initial Delegation', status: 'completed', leadTasks: ['1:1 architecture syncs', 'Delegate DataTables to Junior Devs', 'Set up architecture reading list'], achievements: ['DataTable owned by Junior', 'Initial Turborepo brief'] },
-        { week: 'Week 2', focus: 'Code Quality', status: 'in-progress', leadTasks: ['Host PR iteration working sessions', 'Define TypeScript strictness guides'], achievements: ['Fewer repetitive nit comments'] },
-        { week: 'Week 3', focus: 'Pairing: Monorepo', status: 'upcoming', leadTasks: ['Pair programming: package linking', 'Review monorepo PRs together'], achievements: [] },
-        { week: 'Week 4', focus: 'Autonomy Check', status: 'upcoming', leadTasks: ['Assign full module (e.g. Clients page) with zero hand-holding', 'Review design system usage'], achievements: [] },
-        { week: 'Week 5', focus: 'Mentoring: Mobile', status: 'upcoming', leadTasks: ['Cross-train web dev to Expo specific APIs', '1:1s focusing on native nuances'], achievements: [] },
-        { week: 'Week 6', focus: 'Mid-Point Review', status: 'upcoming', leadTasks: ['Assess 100pt scores', 'Adjust module difficulty based on velocity'], achievements: [] },
-        { week: 'Week 7', focus: 'Performance Deep Dive', status: 'upcoming', leadTasks: ['Host workshop on React renders (useMemo, React Compiler)', 'Assign render profiling task'], achievements: [] },
-        { week: 'Week 8', focus: 'API Layer', status: 'upcoming', leadTasks: ['Train on React Query optimizations', 'Set patterns for mutation consistency'], achievements: [] },
-        { week: 'Week 9', focus: 'Complex Forms', status: 'upcoming', leadTasks: ['Review complex state delegation in Forms', 'Address Zod validation nuances'], achievements: [] },
-        { week: 'Week 10', focus: 'Ownership Expansion', status: 'upcoming', leadTasks: ['Junior leads a platform sprint retro', 'Shift from contributor to feature owner'], achievements: [] },
-        { week: 'Week 11', focus: 'Final Assessments', status: 'upcoming', leadTasks: ['Review code standard adherence independently', 'Final 1:1 on 3-month growth map'], achievements: [] },
-        { week: 'Week 12', focus: 'Handoff', status: 'upcoming', leadTasks: ['Team independently manages switch logic', 'Lead shifts to purely strategic architectural reviews'], achievements: [] }
+        { week: 'Week 1', focus: 'Ownership Setup', status: 'completed', leadTasks: ['Assign Mobile & Web Owner', 'Define responsibilities clearly', 'Define "Definition of Done"'], achievements: ['Ownership clarity: 100%'] },
+        { week: 'Week 2', focus: 'Autonomy Kickoff', status: 'in-progress', leadTasks: ['Shift mindset to ownership', 'Devs propose solutions first', 'Lead avoids direct answers'], achievements: ['Dev-proposed approach ≥ 60%'] },
+        { week: 'Week 3', focus: 'KPI Alignment', status: 'upcoming', leadTasks: ['Align all work to KPI 1, 2, 3', 'Tag all tasks'], achievements: [] },
+        { week: 'Week 4', focus: 'Independent Delivery Start', status: 'upcoming', leadTasks: ['Reduce Tech Lead dependency', 'Lead shifts to review-only mode'], achievements: [] },
+        { week: 'Week 5', focus: 'Speed Stabilization', status: 'upcoming', leadTasks: ['Better task breakdown', 'Remove blockers proactively'], achievements: [] },
+        { week: 'Week 6', focus: 'Quality Enforcement', status: 'upcoming', leadTasks: ['Strong pre-QA validation by devs', 'Edge-case thinking enforced'], achievements: [] },
+        { week: 'Week 7', focus: 'Ownership Maturity', status: 'upcoming', leadTasks: ['Web owner handles web decisions', 'Mobile owner handles mobile decisions'], achievements: [] },
+        { week: 'Week 8', focus: 'Cross-Domain Contribution', status: 'upcoming', leadTasks: ['Web dev contributes to mobile/shared', 'Mobile dev contributes to config/API/shared'], achievements: [] },
+        { week: 'Week 9', focus: 'System Efficiency', status: 'upcoming', leadTasks: ['Identify bottlenecks', 'Improve workflows'], achievements: [] },
+        { week: 'Week 10', focus: 'Leadership Success State', status: 'upcoming', leadTasks: ['Lead steps back from execution', 'Team runs independently'], achievements: [] }
       ],
     }
   ],
@@ -319,7 +323,7 @@ export const navItems = [
       { id: 'kpi-1-standardization', icon: '📦', label: 'Monorepo Setup' },
       { id: 'kpi-2-ui-platform', icon: '🎨', label: 'Component Library' },
       { id: 'kpi-3-reliability', icon: '🚀', label: 'Observability' },
-      { id: 'kpi-4-leadership', icon: '👥', label: 'Team Leadership' },
+      { id: 'kpi-4-leadership', icon: '👥', label: 'Leadership' },
     ],
   },
 ]
