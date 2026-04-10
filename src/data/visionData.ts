@@ -160,19 +160,20 @@ export const kpiData = {
   kpiOverview: {
     document: [
       {
-        title: '1. Single Monorepo for Multi-Tenant Frontend',
+        title: '1. Single Monorepo for Multi-Tenant Frontend (11-Week Plan)',
         outcome: [
-          'All frontend apps and tenants operate from a single monorepo',
-          'Shared core systems eliminate duplication across apps',
-          'Enables consistent, scalable platform development',
+          'All frontend apps (Web + Mobile) in a single monorepo',
+          'Shared core systems (Config, API, Validation)',
+          'Web CI/CD stable, Android builds stable, iOS builds stable',
+          'Zero platform-specific bugs and zero duplication',
         ],
         pointers: [
-          'Eliminate duplication across config, API, and validation layers',
-          'No tenant-based branches — config drives all differences',
-          'Migrate first, refactor later to protect stability',
-          'Enforce shared packages across all apps',
-          'Validate deployments before progressing',
-          'Think platform-first, not app-first',
+          'Phase 1: Foundation Build (Weeks 1–3, Compressed)',
+          'Phase 2: Mobile Integration + Stabilization (Weeks 4–7)',
+          'Phase 3: Hardening & Confidence (Weeks 8–9)',
+          'Phase 4: Integration Buffer (Weeks 10–11)',
+          'Non-Negotiable Rule: Build → Deploy → Test → Then Proceed',
+          'Key Insight: Web proves structure, Mobile proves system maturity',
         ]
       },
       {
@@ -241,39 +242,39 @@ export const kpiData = {
   kpis: [
     {
       id: 'kpi-1-standardization',
-      title: 'KPI 1: Single Monorepo for All Tenants',
-      goal: 'Establish a single monorepo architecture that serves all frontend apps and all tenants with zero duplication, zero divergence, and shared core systems.',
-      description: 'Guiding Principles: 1. One Repo, Multiple Apps. 2. No Duplication Across Apps. 3. No Tenant Branching. 4. Safe Migration First. 5. Foundation Before Abstraction.',
+      title: 'KPI 1: 11-Week Execution Plan (Compressed + Test-Driven + Mobile Included)',
+      goal: 'Establish a unified monorepo for web + mobile apps. Web proves structure, Mobile proves system maturity. At every stage: Build → Deploy → Test → Proceed.',
+      description: 'Guiding Principles: 1. Same tenant, same behavior. 2. Zero platform-specific bugs. 3. Zero duplication. 4. Shared Config, API, Validate across all apps.',
       metrics: [
-        { name: 'Monorepo setup', target: 'Verified', current: 'Pending' },
-        { name: 'Local stability', target: 'Verified', current: 'Pending' },
-        { name: 'Deployment reliability', target: 'Verified', current: 'Pending' },
-        { name: 'Config centralization', target: 'Centralized', current: 'Pending' },
-        { name: 'API unification', target: 'Unified', current: 'Pending' },
-        { name: 'Validation centralization', target: 'Centralized', current: 'Pending' },
-        { name: 'Multi-app readiness', target: 'Verified', current: 'Pending' },
-        { name: 'Cross-app consistency', target: 'Verified', current: 'Pending' },
-        { name: 'Duplication count', target: '0', current: 'High' },
-        { name: 'Integration readiness', target: 'Ready', current: 'Pending' }
+        { name: 'Monorepo Setup (Web)', target: 'Completed', current: 'Pending' },
+        { name: 'Deployment Pipeline', target: 'Stable', current: 'Pending' },
+        { name: 'Shared Systems (Web)', target: 'Integrated', current: 'Pending' },
+        { name: 'Mobile in Monorepo', target: 'Working', current: 'Pending' },
+        { name: 'Android Build (EC2)', target: 'Stable', current: 'Pending' },
+        { name: 'iOS Build (EAS)', target: 'Stable', current: 'Pending' },
+        { name: 'Shared Systems (Mobile)', target: 'Integrated', current: 'Pending' },
+        { name: 'Zero Platform Bugs', target: 'Achieved', current: 'Pending' },
+        { name: 'Zero Tenant Bugs', target: 'Achieved', current: 'Pending' },
+        { name: 'Zero Duplication', target: 'Achieved', current: 'Pending' }
       ],
       executionPhases: [
-        { phase: 'Phase 1: Monorepo Setup & Stability (Weeks 1–3)', desc: 'Move app into monorepo, run locally, ensure deployment validation and dev experience without behavior change.', status: 'current' },
-        { phase: 'Phase 2: Shared Core Systems (Weeks 4–7)', desc: 'Centralize config, API layer, validation, and multi-app integration without duplication.', status: 'upcoming' },
-        { phase: 'Phase 3: Stabilization & System Confidence (Weeks 8–9)', desc: 'Cross-app consistency audits and overall monorepo hardening.', status: 'upcoming' },
-        { phase: 'Phase 4: Integration Buffer (Weeks 10–11)', desc: 'Component library integration and final system stabilization.', status: 'upcoming' }
+        { phase: 'Phase 1: Foundation Build (Weeks 1–3, Compressed)', desc: 'Monorepo supports Advisor Web App, Deployment Pipeline, Shared Systems (Config, API, Validation), and Initial Mobile Readiness.', status: 'current' },
+        { phase: 'Phase 2: Mobile Integration + Stabilization (Weeks 4–7)', desc: 'Mobile apps inside monorepo, builds working (Android + iOS), shared systems used across web + mobile.', status: 'upcoming' },
+        { phase: 'Phase 3: Hardening & Confidence (Weeks 8–9)', desc: 'Fix mobile build issues, standardize config + API usage, full regression testing (web + mobile).', status: 'upcoming' },
+        { phase: 'Phase 4: Integration Buffer (Weeks 10–11)', desc: 'System stable under real usage, component library integrated safely across web + mobile.', status: 'upcoming' }
       ],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Monorepo Setup (Local Stability)', status: 'completed', leadTasks: ['Setup Turborepo', 'Move advisor web into apps/', 'Setup workspace (pnpm)'], achievements: ['App runs locally without issues', 'No code refactoring done'] },
-        { week: 'Week 2', focus: 'Deployment Validation (Hard Gate)', status: 'in-progress', leadTasks: ['Setup CI/CD pipeline', 'Ensure Docker/build works from root', 'Validate deployment'], achievements: ['Production parity', 'Stable build pipeline'] },
-        { week: 'Week 3', focus: 'Stability + Dev Experience', status: 'upcoming', leadTasks: ['Fix DX issues (slow builds, install)', 'Validate local workflows'], achievements: [] },
-        { week: 'Week 4', focus: 'Shared Config Centralization', status: 'upcoming', leadTasks: ['Move config to packages/config', 'Update imports in apps'], achievements: [] },
-        { week: 'Week 5', focus: 'API Layer Unification', status: 'upcoming', leadTasks: ['Move API types to packages/api-client', 'Standardize API usage'], achievements: [] },
-        { week: 'Week 6', focus: 'Validation System Centralization', status: 'upcoming', leadTasks: ['Move validation to packages/validation', 'Organize per-tenant rules'], achievements: [] },
-        { week: 'Week 7', focus: 'Multi-App Integration', status: 'upcoming', leadTasks: ['Add client web app', 'Validate shared package usage'], achievements: [] },
-        { week: 'Week 8', focus: 'Cross-App Consistency', status: 'upcoming', leadTasks: ['Audit config, API, validation usage', 'Remove any duplication'], achievements: [] },
-        { week: 'Week 9', focus: 'Monorepo Hardening', status: 'upcoming', leadTasks: ['Fix edge cases', 'Clean imports and structure', 'Strengthen CI reliability'], achievements: [] },
-        { week: 'Week 10', focus: 'Component Integration (Initial)', status: 'upcoming', leadTasks: ['Replace selective UI with shared components', 'Validate compatibility'], achievements: [] },
-        { week: 'Week 11', focus: 'Integration Completion', status: 'upcoming', leadTasks: ['Expand usage of component library', 'Final cleanup'], achievements: [] }
+        { week: 'Week 1', focus: 'Foundation & Monorepo Setup', status: 'completed', leadTasks: ['Monorepo setup (web)', 'Local run stable', 'Web regression testing'], achievements: ['App runs locally without issues', 'No code refactoring done'] },
+        { week: 'Week 2', focus: 'Deployment Pipeline', status: 'in-progress', leadTasks: ['Deployment setup (GitHub Actions)', 'Docker/build from root', 'Deployment validation'], achievements: ['Production parity', 'Stable build pipeline'] },
+        { week: 'Week 3', focus: 'Shared Systems & Mobile Prep', status: 'upcoming', leadTasks: ['Shared systems (Config, API, Validation)', 'Add client web app', 'Audit mobile repo & align env handling', 'Tenant switching validation'], achievements: [] },
+        { week: 'Week 4', focus: 'Mobile Migration', status: 'upcoming', leadTasks: ['Move mobile app to apps/client-mobile', 'Ensure Expo runs in monorepo', 'Mobile app runtime testing'], achievements: [] },
+        { week: 'Week 5', focus: 'Mobile Deployment', status: 'upcoming', leadTasks: ['Android build (GitHub Actions + EC2)', 'iOS build (EAS)', 'Env variable correctness'], achievements: [] },
+        { week: 'Week 6', focus: 'Shared System Adoption (Mobile)', status: 'upcoming', leadTasks: ['Use shared Config', 'Use shared API', 'Use shared Validation', 'API validation'], achievements: [] },
+        { week: 'Week 7', focus: 'Cross-App Integration', status: 'upcoming', leadTasks: ['All apps in monorepo (Advisor, Client, Mobile)', 'Shared systems consistent across all', 'Cross-platform consistency testing'], achievements: [] },
+        { week: 'Week 8', focus: 'Mobile Hardening', status: 'upcoming', leadTasks: ['Fix mobile build issues', 'Standardize config + API usage', 'Clean structure'], achievements: [] },
+        { week: 'Week 9', focus: 'System Confidence', status: 'upcoming', leadTasks: ['Full regression (web + mobile)', 'Tenant-level validation', 'Failure scenario testing'], achievements: [] },
+        { week: 'Week 10', focus: 'Component Library Integration', status: 'upcoming', leadTasks: ['Integrate shared components', 'Validate across web + mobile', 'UI regression testing'], achievements: [] },
+        { week: 'Week 11', focus: 'Final Stabilization', status: 'upcoming', leadTasks: ['Navigation flows validation', 'Performance checks', 'Verify Final Success Criteria'], achievements: [] }
       ],
     },
     {
