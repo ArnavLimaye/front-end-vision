@@ -356,16 +356,16 @@ export const kpiData = {
         { phase: 'Weeks 7-10: Ownership Maturity & Success', desc: 'Cross domain contribution, System Efficiency, Zero Downtime validated in UAT/PROD.', status: 'upcoming' }
       ],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Ownership Setup', status: 'completed', leadTasks: ['Assign Mobile & Web Owner', 'Define responsibilities clearly', 'Align deployment flow (QA→UAT→PROD)'], achievements: ['Ownership clarity: 100%'] },
-        { week: 'Week 2', focus: 'Autonomy Kickoff', status: 'in-progress', leadTasks: ['Devs propose solutions first', 'Lead avoids direct answers', 'Assign deployment ownership'], achievements: ['Web owner → Web deploy', 'Mobile owner → App release'] },
-        { week: 'Week 3', focus: 'KPI Alignment', status: 'upcoming', leadTasks: ['Align all work to KPI 1, 2, 3', 'Define deployment checklist (health check, env)'], achievements: [] },
-        { week: 'Week 4', focus: 'Independent Delivery Start', status: 'upcoming', leadTasks: ['Devs execute features end-to-end', 'Devs perform QA deployments independently'], achievements: [] },
-        { week: 'Week 5', focus: 'Speed Stabilization', status: 'upcoming', leadTasks: ['Improve task breakdown', 'Standardize deployment commands/scripts'], achievements: [] },
-        { week: 'Week 6', focus: 'Quality Enforcement', status: 'upcoming', leadTasks: ['Strong pre-QA validation by devs', 'Validate health checks (/api/health)'], achievements: [] },
-        { week: 'Week 7', focus: 'Ownership Maturity', status: 'upcoming', leadTasks: ['Web owner handles web decisions', 'Devs handle UAT deployments independently'], achievements: [] },
-        { week: 'Week 8', focus: 'Cross-Domain Contribution', status: 'upcoming', leadTasks: ['Cross-domain contributions', 'Cross-review deployment configs (Web ↔ Mobile)'], achievements: [] },
-        { week: 'Week 9', focus: 'System Efficiency', status: 'upcoming', leadTasks: ['Identify bottlenecks', 'Implement zero-downtime strategy (Rolling, Health-based)'], achievements: [] },
-        { week: 'Week 10', focus: 'Leadership Success State', status: 'upcoming', leadTasks: ['Lead steps back from execution', 'Achieve zero downtime production deployment'], achievements: [] }
+        { week: 'Week 1', focus: 'Ownership Setup', status: 'completed', leadTasks: ['Assign Mobile & Web Owner', 'Define responsibilities clearly', 'Align deployment flow (QA→UAT→PROD)'], achievements: ['Ownership clarity: 100%', 'Deployment flow documented'] },
+        { week: 'Week 2', focus: 'Autonomy Kickoff', status: 'in-progress', leadTasks: ['Devs propose solutions first', 'Lead avoids direct answers', 'Assign deployment ownership'], achievements: ['% tasks with dev-proposed approach ≥ 60%', 'Deployment ownership clarity: 100%'] },
+        { week: 'Week 3', focus: 'KPI Alignment', status: 'upcoming', leadTasks: ['Align all work to KPI 1, 2, 3', 'Define deployment checklist (health check, env)'], achievements: ['100% tasks mapped to KPIs', 'Deployment checklist created'] },
+        { week: 'Week 4', focus: 'Independent Delivery Start', status: 'upcoming', leadTasks: ['Devs execute features end-to-end', 'Devs perform QA deployments independently'], achievements: ['Independent delivery ≥ 50%', 'QA deployments done without lead'] },
+        { week: 'Week 5', focus: 'Speed Stabilization', status: 'upcoming', leadTasks: ['Improve task breakdown', 'Standardize deployment commands/scripts'], achievements: ['2+ features/dev/week', 'Deployment time reduced'] },
+        { week: 'Week 6', focus: 'Quality Enforcement', status: 'upcoming', leadTasks: ['Strong pre-QA validation by devs', 'Validate health checks (/api/health)'], achievements: ['Reopened tickets <15%', 'No failed deployments in QA'] },
+        { week: 'Week 7', focus: 'Ownership Maturity', status: 'upcoming', leadTasks: ['Web owner handles web decisions', 'Devs handle UAT deployments independently'], achievements: ['Lead intervention <30%', 'Successful UAT deployments without issues'] },
+        { week: 'Week 8', focus: 'Cross-Domain Contribution', status: 'upcoming', leadTasks: ['Cross-domain contributions', 'Cross-review deployment configs (Web ↔ Mobile)'], achievements: ['1 cross-domain contribution/dev', 'No deployment inconsistencies'] },
+        { week: 'Week 9', focus: 'System Efficiency', status: 'upcoming', leadTasks: ['Identify bottlenecks', 'Implement zero-downtime strategy (Rolling, Health-based)'], achievements: ['2+ features/dev/week stable', 'Reopened tickets <10%', 'Zero downtime validated in staging/UAT'] },
+        { week: 'Week 10', focus: 'Leadership Success State', status: 'upcoming', leadTasks: ['Lead steps back from execution', 'Achieve zero downtime production deployment'], achievements: ['Lead dependency <10%', 'Reopened tickets <10%', 'Zero downtime achieved in production'] }
       ],
     }
   ],
