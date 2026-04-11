@@ -177,26 +177,22 @@ export const kpiData = {
         ]
       },
       {
-        title: '2. Component Library Creation & Adoption (Web + Mobile)',
+        title: '2. Component Library & Design System (11-Week Plan)',
         outcome: [
           'Unified design system across web and mobile',
-          'Level 1 & Level 2 components fully reusable',
-          'Selected Level 3 components reduce business duplication',
-          'Multi-tenant theming works seamlessly',
-          'All apps consume shared libraries with zero UI duplication',
-          'Significant improvement in development speed & scalability',
+          '100% Level 1 & Level 2 components fully reusable',
+          '5–8 Level 3 business components deployed',
+          '0 duplicate components across apps',
+          '≥80% UI uses shared components',
         ],
         pointers: [
-          'Build all UI as shared packages inside monorepo',
-          'Establish design tokens + theming system as foundation',
-          'Level 1 → stateless reusable primitives',
-          'Level 2 → forms, data, async logic',
-          'Maintain identical APIs across web & mobile components',
-          'Avoid tenant-specific logic in components',
-          'Migrate all apps to shared libraries and remove duplication',
-          'Enforce strict governance (no hardcoding, no app-level UI)',
-          'Use Storybook for testing and documentation',
-          'Frontend Lead to enforce adoption and consistency',
+          'Week 1-2: Foundation & Theme System (Tokens + Tenant injection)',
+          'Week 3-4: Build & Adopt Level 1 Components (Crunch Week)',
+          'Week 5-7: Build & Adopt Level 2 Components (Forms, Navigation, Data)',
+          'Week 8-10: Build & Adopt Level 3 Components (Business Logic)',
+          'Week 11: Adoption Completion & Hardening',
+          'Leadership Control: Ensure build AND use. Track adoption. Identify violations.',
+          'Hard Stop Criteria: Components built but not used, duplicates appearing, theme mismatch.',
         ]
       },
       {
@@ -279,34 +275,35 @@ export const kpiData = {
     },
     {
       id: 'kpi-2-ui-platform',
-      title: 'KPI 2: Component Library & Design System',
-      goal: 'Build a shared, themeable, production-grade component library for both web and mobile.',
-      description: 'Scope: Web (Next.js/shadcn) & Mobile (Expo/Gluestack). Level 1 (Base UI), Level 2 (Functional forms/async), Level 3 (Business logic).',
+      title: 'KPI 2: Component Library & Design System Execution Plan (Revised)',
+      goal: 'Complete end-to-end delivery and adoption of shared, themeable component library for web and mobile.',
+      description: 'Zero duplication goal. Level 1 (Base UI/Crunch week), Level 2 (Forms/Data), Level 3 (Business). Leadership must enforce adoption as strictly as creation.',
       metrics: [
-        { name: 'Level 1 Base', target: '100%', current: 'In Progress' },
-        { name: 'Level 2 Forms/Data', target: '80%', current: 'Pending' },
-        { name: 'Level 3 Auth/Biz', target: '20-30%', current: 'Pending' },
-        { name: 'App Adoption', target: '4 Apps', current: '0' },
-        { name: 'Theme System', target: 'Integrated', current: 'Pending' },
-        { name: 'Storybook/Preview', target: 'Live', current: 'Pending' }
+        { name: 'Foundation / Themes', target: 'Complete', current: 'Pending' },
+        { name: 'L1 Built / Adopted', target: '100% / >50%', current: 'Pending' },
+        { name: 'L2 Built / Adopted', target: '100% / >70%', current: 'Pending' },
+        { name: 'L3 Built / Adopted', target: '5-8 used', current: 'Pending' },
+        { name: 'Overall Adoption', target: '≥80%', current: 'Pending' },
+        { name: 'Duplicates', target: '0', current: 'Pending' }
       ],
       executionPhases: [
-        { phase: 'Weeks 1-2: Foundation & Theme', desc: 'Monorepo packages setup, design tokens defined, and dynamic theming working.', status: 'current' },
-        { phase: 'Weeks 3-5: Level 1 Primitives', desc: 'Forms, Layout, and Feedback components covering web & mobile API consistency.', status: 'upcoming' },
-        { phase: 'Weeks 6-8: Level 2 Abstractions', desc: 'Form fields integration, Async data rendering (DataTables), Structure components.', status: 'upcoming' },
-        { phase: 'Weeks 9-10: Level 3 & Adoption', desc: 'Identify shared business logic, migrate apps, remove duplicates, ensure Storybook parity.', status: 'upcoming' }
+        { phase: 'Weeks 1-2: Foundation & Theme System', desc: 'Design tokens, mono-repo packages, ThemeProvider (web) & theme injection (mobile). 2 tenants working with different themes.', status: 'current' },
+        { phase: 'Weeks 3-4: Level 1 Components', desc: 'Build 100% L1 components (Crunch Week) and achieve ≥50% adoption across at least 5 key screens per platform.', status: 'upcoming' },
+        { phase: 'Weeks 5-7: Level 2 Components', desc: 'Build and adopt Forms, Data, Navigation, & Structure. ≥70% forms use FormField system.', status: 'upcoming' },
+        { phase: 'Weeks 8-11: Level 3 Components & Hardening', desc: 'Build OTPInput, ProfileSection, KYCSection. Achieve ≥80% shared UI adoption. Eliminate 0 duplicates.', status: 'upcoming' }
       ],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Foundation Setup', status: 'completed', leadTasks: ['Setup Web & Mobile UI packages', 'Define design tokens (colors, spacing)'], achievements: ['Tokens usable', 'Base infra ready'] },
-        { week: 'Week 2', focus: 'Theme System', status: 'in-progress', leadTasks: ['Web: ThemeProvider', 'Mobile: NativeWind theme', 'Map tenant config to tokens'], achievements: ['Theme switch works per tenant'] },
-        { week: 'Week 3', focus: 'L1 Forms (Part 1)', status: 'upcoming', leadTasks: ['Button, Input, Label, Textarea', 'Prop alignment web vs mobile'], achievements: [] },
-        { week: 'Week 4', focus: 'L1 Forms (Part 2)', status: 'upcoming', leadTasks: ['Select, Checkbox, Radio, Switch, DatePicker'], achievements: [] },
-        { week: 'Week 5', focus: 'L1 Layout & Feedback', status: 'upcoming', leadTasks: ['Card, Modal, Drawer, Toast, Spinner, Skeleton'], achievements: [] },
-        { week: 'Week 6', focus: 'L2 Forms Integration', status: 'upcoming', leadTasks: ['FormField, ErrorMessage, FieldWrapper (RHF)'], achievements: [] },
-        { week: 'Week 7', focus: 'L2 Data & Async', status: 'upcoming', leadTasks: ['DataTable, ListCard, Pagination, AsyncSelect'], achievements: [] },
-        { week: 'Week 8', focus: 'L2 Navigation & Structure', status: 'upcoming', leadTasks: ['Tabs, Accordion, Breadcrumb, PageHeader'], achievements: [] },
-        { week: 'Week 9', focus: 'L3 Components (Shared Business)', status: 'upcoming', leadTasks: ['ProfileSection, OTPInput, KYCFormSection'], achievements: [] },
-        { week: 'Week 10', focus: 'Adoption + Hardening', status: 'upcoming', leadTasks: ['Migrate apps', 'Remove duplicate parts', 'Storybook completion'], achievements: [] }
+        { week: 'Week 1', focus: 'Foundation Setup', status: 'completed', leadTasks: ['Setup design-tokens, ui-web, ui-mobile', 'Configure shadcn + NativeWind + Gluestack', 'Define design tokens'], achievements: ['Packages created & consumed', 'Tokens available globally'] },
+        { week: 'Week 2', focus: 'Theme System', status: 'in-progress', leadTasks: ['Implement ThemeProvider (web)', 'Implement theme injection (mobile)', 'Connect tenant config → tokens'], achievements: ['2 tenants working with different themes'] },
+        { week: 'Week 3', focus: 'Build ALL Level 1 Components', status: 'upcoming', leadTasks: ['Button, Input, Textarea, Label', 'Select, Checkbox, Radio, Switch, DatePicker', 'Card, Modal, Drawer, Spinner, Toast'], achievements: [] },
+        { week: 'Week 4', focus: 'Adopt Level 1 Components', status: 'upcoming', leadTasks: ['Replace base components in apps', 'Use Level 1 in real screens'], achievements: [] },
+        { week: 'Week 5', focus: 'Build Level 2 (Forms + Data)', status: 'upcoming', leadTasks: ['FormField, FormSection, ErrorMessage', 'AsyncSelect, FieldWrapper', 'DataTable, ListCard'], achievements: [] },
+        { week: 'Week 6', focus: 'Build Level 2 (Nav + Structure)', status: 'upcoming', leadTasks: ['Tabs, Accordion', 'Pagination, EmptyState', 'SectionHeader, PageHeader'], achievements: [] },
+        { week: 'Week 7', focus: 'Adopt Level 2 Components', status: 'upcoming', leadTasks: ['Refactor forms and data screens', 'Replace implementations with shared components'], achievements: [] },
+        { week: 'Week 8', focus: 'Build Level 3 (Batch 1)', status: 'upcoming', leadTasks: ['OTPInput', 'AddressForm', 'ProfileSection'], achievements: [] },
+        { week: 'Week 9', focus: 'Build Level 3 (Batch 2)', status: 'upcoming', leadTasks: ['KYCSection', 'InvestmentCard', 'Identify high-reuse components'], achievements: [] },
+        { week: 'Week 10', focus: 'Adopt Level 3 (Phase 1)', status: 'upcoming', leadTasks: ['Integrate Level 3 in onboarding/profile flows'], achievements: [] },
+        { week: 'Week 11', focus: 'Adoption Completion & Hardening', status: 'upcoming', leadTasks: ['Complete migration across all apps', 'Remove ALL duplicate components', 'Finalize Storybook/Preview'], achievements: [] }
       ],
     },
     {
