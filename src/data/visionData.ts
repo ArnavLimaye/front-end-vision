@@ -235,6 +235,7 @@ export const kpiData = {
     {
       id: 'kpi-1-standardization',
       title: 'KPI 1: Single Monorepo for Multi-Tenant Frontend',
+      chatgptLink: 'https://chatgpt.com/share/69da5ccc-54d8-83e8-ad25-4712f2869b23',
       goal: 'Establish a unified monorepo for web + mobile apps. Web proves structure, Mobile proves system maturity. At every stage: Build → Deploy → Test → Proceed.',
       description: 'Guiding Principles: 1. Same tenant, same behavior. 2. Zero platform-specific bugs. 3. Zero duplication. 4. Shared Config, API, Validate across all apps.',
       metrics: [
@@ -283,6 +284,7 @@ export const kpiData = {
     {
       id: 'kpi-2-ui-platform',
       title: 'KPI 2: Component Library & Design System',
+      chatgptLink: 'https://chatgpt.com/share/69da5d1d-984c-83e8-8fc2-fe4171f451ad',
       goal: 'Complete end-to-end delivery and adoption of shared, themeable component library for web and mobile.',
       description: 'Zero duplication goal. Level 1 (Base UI/Crunch week), Level 2 (Forms/Data), Level 3 (Business). Leadership must enforce adoption as strictly as creation.',
       metrics: [
@@ -327,6 +329,7 @@ export const kpiData = {
     {
       id: 'kpi-3-reliability',
       title: 'KPI 3: Platform Observability, Performance & Release Engineering',
+      chatgptLink: 'https://chatgpt.com/share/69da5ee5-90a4-83e8-830c-0cf592dbf2f5',
       goal: 'Establish a scalable and robust platform enabling full visibility, fast applications, automated pipelines, seamless distribution, and scalable mobile architecture.',
       description: 'Web = Execution Focus. Mobile = Research + Stabilization. Covers ELK Stack for web, Firebase for mobile, CI/CD foundations, and multi-tenant mobile architectural definitions.',
       metrics: [
@@ -373,6 +376,7 @@ export const kpiData = {
     {
       id: 'kpi-4-leadership',
       title: 'KPI 4: Leadership',
+      chatgptLink: 'https://chatgpt.com/share/69da5f0e-6a0c-83e8-8b2d-41c4dae48930',
       goal: 'Build a self-sufficient frontend team with strong ownership (Web & Mobile) that independently delivers KPI 1, 2, 3 with zero downtime standard practice.',
       description: 'Web Owner & Mobile Owner handle deployments. High execution speed, low rework, strong autonomy. Devs execute flawlessly from QA to PROD.',
       metrics: [

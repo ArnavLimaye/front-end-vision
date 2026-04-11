@@ -162,7 +162,20 @@ function KpiDetail({ kpiId }: { kpiId: string }) {
     <div className="space-y-6">
       {/* Header */}
       <div className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card">
-        <h2 className="text-xl font-bold text-text-primary mb-3 leading-snug">{data.title}</h2>
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-3">
+          <h2 className="text-xl font-bold text-text-primary leading-snug">{data.title}</h2>
+          {data.chatgptLink && (
+            <a 
+              href={data.chatgptLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#10a37f]/10 hover:bg-[#10a37f]/20 border border-[#10a37f]/20 text-text-primary text-xs font-bold rounded-lg transition-colors whitespace-nowrap flex-shrink-0"
+              title="View Brainstorming Context"
+            >
+              <span className="text-[#10a37f] text-sm leading-none">🤖</span> ChatGPT Brainstorm
+            </a>
+          )}
+        </div>
         <div className="bg-primary/5 border border-primary/10 rounded-xl p-4 mb-4">
           <p className="text-sm text-primary-dark tracking-wide font-medium">
             <span className="font-bold">🎯 Goal:</span> {data.goal}
