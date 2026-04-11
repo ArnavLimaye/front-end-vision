@@ -184,6 +184,34 @@ function KpiDetail({ kpiId }: { kpiId: string }) {
         ))}
       </div>
 
+      {/* Impact Section */}
+      {data.impact && (
+        <div className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card space-y-3">
+          <div className="flex items-center gap-3 mb-2">
+            <h3 className="text-lg font-bold text-text-primary tracking-tight">🌟 Expected Impact</h3>
+            <span className="bg-primary/10 text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-primary/20">
+              Value Proposition
+            </span>
+          </div>
+          <p className="text-sm font-bold text-gray-header italic border-l-2 border-primary/50 pl-3 py-1 mb-5">{data.impact.oneLine}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            {data.impact.sections.map((section: any, i: number) => (
+              <div key={i} className="bg-bg-secondary/30 border border-border-secondary/50 rounded-xl p-4 hover:shadow-card-sm transition-shadow">
+                <h4 className="text-sm font-bold text-text-primary mb-3 tracking-tight">{section.title}</h4>
+                <ul className="space-y-2">
+                  {section.items.map((item: string, j: number) => (
+                    <li key={j} className="text-xs text-text-secondary flex items-start gap-2 leading-relaxed font-medium">
+                      <span className="text-emerald-500 mt-[1px]">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Execution Phases (If provided) */}
       {data.executionPhases && (
         <div className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card">

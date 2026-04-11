@@ -268,6 +268,17 @@ export const kpiData = {
         { week: 'Week 10', focus: 'Component Integration (Initial)', status: 'upcoming', leadTasks: ['UI regression testing', 'Cross-screen validation'], achievements: ['30–50% UI replaced with shared components', 'No UI regressions'] },
         { week: 'Week 11', focus: 'Final Validation', status: 'upcoming', leadTasks: ['Full end-to-end regression', 'Performance sanity'], achievements: ['0 duplicate components', '0 regressions', 'Stable across all tenants'] }
       ],
+      impact: {
+        sections: [
+          { title: '🚀 Business Impact', items: ['Faster onboarding → <1 day per tenant', 'Lower cost per tenant → near zero marginal cost', 'Enables scaling to 50–100+ tenants'] },
+          { title: '⚙️ Engineering Impact', items: ['No duplication → faster development', 'Fix once, fix everywhere → fewer bugs', 'Higher release confidence'] },
+          { title: '🧪 QA Impact', items: ['Single test covers all tenants → no repetitive testing', 'Fewer regressions due to unified codebase', 'Faster testing cycles → quicker releases', 'Easier cross-platform validation (web + mobile)'] },
+          { title: '📱 Platform Impact', items: ['Consistent behavior across web + mobile', 'Standardized, reliable deployments'] },
+          { title: '🧑‍💼 Team Impact', items: ['Shift to platform thinking', 'Higher productivity with same team', 'Reduced tech debt'] },
+          { title: '🧠 Strategic Impact', items: ['Moves from custom builds → true SaaS', 'Foundation for all future scalability'] }
+        ],
+        oneLine: 'Turns engineering and QA from bottlenecks into scalable growth engines.'
+      },
     },
     {
       id: 'kpi-2-ui-platform',
@@ -301,6 +312,17 @@ export const kpiData = {
         { week: 'Week 10', focus: 'Adopt Level 3 (Phase 1)', status: 'upcoming', leadTasks: ['Integrate Level 3 in onboarding/profile flows'], achievements: ['Used in at least 2 apps', 'Core flows using shared', 'Reduced duplication in UI flows'] },
         { week: 'Week 11', focus: 'Adoption Completion & Hardening', status: 'upcoming', leadTasks: ['Complete migration across all apps', 'Remove ALL duplicate components', 'Finalize Storybook/Preview'], achievements: ['≥80% UI uses shared components', '0 duplicate components', '100% L1 & L2 documented', 'All new development uses shared'] }
       ],
+      impact: {
+        sections: [
+          { title: '🚀 Business Impact', items: ['Faster feature delivery → 2–3x development speed', 'Faster onboarding → near <1 day per tenant', 'Lower cost per tenant → minimal incremental engineering cost', 'Enables scaling to 50–100+ tenants'] },
+          { title: '⚙️ Engineering Impact', items: ['No duplication → faster development cycles', 'Fix once, fix everywhere → fewer bugs', 'Standardized components → higher release confidence'] },
+          { title: '📱 Platform Impact', items: ['Consistent UI/UX across web + mobile', 'Theme-driven multi-tenant system', 'Stable, predictable product behavior'] },
+          { title: '🧪 QA Impact', items: ['Test once, reuse everywhere → reduced testing effort', 'Fewer regressions due to standardized components', 'Faster QA cycles with predictable UI behavior'] },
+          { title: '🧑‍💼 Team Impact', items: ['Shift from feature-building to platform-building', 'Higher productivity with same team size', 'Reduced dependency on senior engineers'] },
+          { title: '🧠 Strategic Impact', items: ['Moves from fragmented UI → unified design system', 'Enables true multi-tenant SaaS scalability', 'Foundation for Tier B & Tier C growth'] }
+        ],
+        oneLine: 'Turns UI development into a reusable platform that scales the business without scaling the team.'
+      },
     },
     {
       id: 'kpi-3-reliability',
@@ -336,6 +358,17 @@ export const kpiData = {
         { week: 'Week 11', focus: 'Observability Expansion', status: 'upcoming', leadTasks: ['Extend ELK dashboards', 'Advanced alert rules', 'Mobile logs in ELK'], achievements: ['New dashboards include deploy visibility', 'At least 2 new alert types active', 'Mobile logs visible in ELK (if tracked)'] },
         { week: 'Week 12', focus: 'Stabilization & Readiness', status: 'upcoming', leadTasks: ['Validate full system flow', 'Finalize SOPs', 'Fix gaps'], achievements: ['End-to-end deploy-monitor flow works', 'Zero downtime deployment consistent', 'Alerts & distribution reliable', 'SOPs documented'] }
       ],
+      impact: {
+        sections: [
+          { title: '🚀 Business Impact', items: ['Faster and safer releases → improved client experience and trust', 'Reduced production issues → lower churn and higher retention', 'Faster onboarding → scalable tenant growth without delays', 'Supports scaling to 50–100+ tenants without increasing support overhead'] },
+          { title: '⚙️ Engineering Impact', items: ['Data-driven debugging → faster root cause resolution', 'Zero-downtime releases → higher deployment confidence', 'Standardized pipelines → predictable and repeatable releases', 'Reduced firefighting → more focus on core product development'] },
+          { title: '📱 Platform Impact', items: ['Fully observable system across web and mobile', 'Zero-downtime deployment capability for all web apps', 'Scalable multi-tenant architecture across platforms', 'Consistent and reliable system behavior across environments'] },
+          { title: '🧪 QA Impact', items: ['Better visibility into failures via logs and alerts → faster issue validation', 'Reduced regression risk due to standardized pipelines and deployments', 'Ability to test in production-like environments with confidence', 'Faster QA cycles with reliable builds and distribution'] },
+          { title: '🧑‍💼 Team Impact', items: ['Reduced stress from production issues and firefighting', 'Clear workflows for deploy, monitor, and rollback', 'Improved developer confidence in releases', 'Less dependency on individual contributors'] },
+          { title: '🧠 Strategic Impact', items: ['Enables enterprise-grade reliability required for Tier B and Tier C clients', 'Builds foundation for multi-tenant scale aligned with platform vision', 'Supports faster iteration without compromising stability', 'Strengthens platform maturity and long-term scalability'] }
+        ],
+        oneLine: 'Transforms the platform into a reliable, observable, and scalable system that supports rapid growth without increasing operational complexity.'
+      },
     },
     {
       id: 'kpi-4-leadership',
@@ -367,6 +400,17 @@ export const kpiData = {
         { week: 'Week 9', focus: 'System Efficiency', status: 'upcoming', leadTasks: ['Identify bottlenecks', 'Implement zero-downtime strategy (Rolling, Health-based)'], achievements: ['2+ features/dev/week stable', 'Reopened tickets <10%', 'Zero downtime validated in staging/UAT'] },
         { week: 'Week 10', focus: 'Leadership Success State', status: 'upcoming', leadTasks: ['Lead steps back from execution', 'Achieve zero downtime production deployment'], achievements: ['Lead dependency <10%', 'Reopened tickets <10%', 'Zero downtime achieved in production'] }
       ],
+      impact: {
+        sections: [
+          { title: '🚀 Business Impact', items: ['Faster feature delivery → 2x development speed', 'Faster onboarding → aligned with <1 day / <1 week tenant onboarding', 'Lower cost per tenant → no additional team scaling required', 'Enables scaling to 40–100+ tenants reliably'] },
+          { title: '⚙️ Engineering Impact', items: ['Strong ownership → faster, parallel execution', 'Low rework (<10%) → higher efficiency', 'Reduced Tech Lead dependency → better scalability', 'Consistent architecture enforcement → no system drift'] },
+          { title: '📱 Platform Impact', items: ['Config-driven multi-tenant system fully realized', 'Zero divergence across tenants (no branch chaos)', 'Zero-downtime deployments → stable releases', 'Consistent behavior across web and mobile'] },
+          { title: '🧪 QA Impact', items: ['<10% reopen rate → higher first-time quality', 'Reduced back-and-forth between QA and dev', 'Focus shifts to edge-case validation', 'Faster and more predictable QA cycles'] },
+          { title: '🧑‍💼 Team Impact', items: ['Developers become owners, not executors', 'Higher autonomy and decision-making ability', 'Reduced dependency on Tech Lead', 'More productive team without increasing size'] },
+          { title: '🧠 Strategic Impact', items: ['Frontend becomes a scalable growth engine', 'Enables smooth expansion to Tier B and Tier C clients', 'Supports long-term platform scalability', 'Foundation for adding teams without chaos'] }
+        ],
+        oneLine: 'Builds an autonomous, ownership-driven team that scales product, platform, and business without scaling leadership dependency.'
+      }
     }
   ],
 }
