@@ -256,17 +256,17 @@ export const kpiData = {
         { phase: 'Phase 4: Integration Buffer (Weeks 10–11)', desc: 'System stable under real usage, component library integrated safely across web + mobile.', status: 'upcoming' }
       ],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Foundation & Monorepo Setup', status: 'completed', leadTasks: ['Monorepo setup (web)', 'Local run stable', 'Web regression testing'], achievements: ['App runs locally without issues', 'No code refactoring done'] },
-        { week: 'Week 2', focus: 'Deployment Pipeline', status: 'in-progress', leadTasks: ['Deployment setup (GitHub Actions)', 'Docker/build from root', 'Deployment validation'], achievements: ['Production parity', 'Stable build pipeline'] },
-        { week: 'Week 3', focus: 'Shared Systems & Mobile Prep', status: 'upcoming', leadTasks: ['Shared systems (Config, API, Validation)', 'Add client web app', 'Audit mobile repo & align env handling', 'Tenant switching validation'], achievements: [] },
-        { week: 'Week 4', focus: 'Mobile Migration', status: 'upcoming', leadTasks: ['Move mobile app to apps/client-mobile', 'Ensure Expo runs in monorepo', 'Mobile app runtime testing'], achievements: [] },
-        { week: 'Week 5', focus: 'Mobile Deployment', status: 'upcoming', leadTasks: ['Android build (GitHub Actions + EC2)', 'iOS build (EAS)', 'Env variable correctness'], achievements: [] },
-        { week: 'Week 6', focus: 'Shared System Adoption (Mobile)', status: 'upcoming', leadTasks: ['Use shared Config', 'Use shared API', 'Use shared Validation', 'API validation'], achievements: [] },
-        { week: 'Week 7', focus: 'Cross-App Integration', status: 'upcoming', leadTasks: ['All apps in monorepo (Advisor, Client, Mobile)', 'Shared systems consistent across all', 'Cross-platform consistency testing'], achievements: [] },
-        { week: 'Week 8', focus: 'Mobile Hardening', status: 'upcoming', leadTasks: ['Fix mobile build issues', 'Standardize config + API usage', 'Clean structure'], achievements: [] },
-        { week: 'Week 9', focus: 'System Confidence', status: 'upcoming', leadTasks: ['Full regression (web + mobile)', 'Tenant-level validation', 'Failure scenario testing'], achievements: [] },
-        { week: 'Week 10', focus: 'Component Library Integration', status: 'upcoming', leadTasks: ['Integrate shared components', 'Validate across web + mobile', 'UI regression testing'], achievements: [] },
-        { week: 'Week 11', focus: 'Final Stabilization', status: 'upcoming', leadTasks: ['Navigation flows validation', 'Performance checks', 'Verify Final Success Criteria'], achievements: [] }
+        { week: 'Week 1', focus: 'Monorepo Setup', status: 'completed', leadTasks: ['Local regression testing', 'Basic flows (login, dashboard)'], achievements: ['App runs via monorepo (pnpm dev)', 'Zero runtime errors introduced', 'No code refactor done'] },
+        { week: 'Week 2', focus: 'Deployment Validation (Hard Gate)', status: 'in-progress', leadTasks: ['Production smoke test (/api/health)', 'Tenant-level validation'], achievements: ['CI pipeline success rate = 100%', 'Deployment works without errors', 'No UI/API behavior change'] },
+        { week: 'Week 3', focus: 'Shared Systems + Multi-App', status: 'upcoming', leadTasks: ['Cross-app regression (advisor + client web)', 'Tenant switching validation'], achievements: ['Single client-configs.ts (no duplicates)', '100% API types from shared package', '0 validation logic inside components', 'Client web app runs from monorepo'] },
+        { week: 'Week 4', focus: 'Mobile Migration', status: 'upcoming', leadTasks: ['App launch success', 'Basic navigation flows'], achievements: ['Mobile app runs via Expo inside monorepo', 'No broken imports or env issues'] },
+        { week: 'Week 5', focus: 'Mobile Deployment', status: 'upcoming', leadTasks: ['Installable builds tested', 'API connectivity verified'], achievements: ['Android build success (100%)', 'iOS build success (EAS)', 'No build-time failures'] },
+        { week: 'Week 6', focus: 'Shared Systems on Mobile', status: 'upcoming', leadTasks: ['Cross-platform behavior parity (web vs mobile)'], achievements: ['100% config from shared package', '100% API calls use shared client', 'No duplicated validation logic'] },
+        { week: 'Week 7', focus: 'Cross-App Integration', status: 'upcoming', leadTasks: ['Cross-platform regression testing', 'Same tenant → same behavior'], achievements: ['3 apps running (Advisor, Client, Mobile)', 'No duplication across apps'] },
+        { week: 'Week 8', focus: 'Consistency Audit', status: 'upcoming', leadTasks: ['Full regression (web + mobile)'], achievements: ['0 duplicate config/API/validation', '100% shared package usage'] },
+        { week: 'Week 9', focus: 'Monorepo Hardening', status: 'upcoming', leadTasks: ['Failure scenario testing', 'Tenant edge-case validation'], achievements: ['Build success rate = 100%', 'Deployment failure rate = 0%', 'No architectural inconsistencies'] },
+        { week: 'Week 10', focus: 'Component Integration (Initial)', status: 'upcoming', leadTasks: ['UI regression testing', 'Cross-screen validation'], achievements: ['30–50% UI replaced with shared components', 'No UI regressions'] },
+        { week: 'Week 11', focus: 'Final Validation', status: 'upcoming', leadTasks: ['Full end-to-end regression', 'Performance sanity'], achievements: ['0 duplicate components', '0 regressions', 'Stable across all tenants'] }
       ],
     },
     {
