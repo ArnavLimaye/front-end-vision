@@ -214,26 +214,19 @@ export const kpiData = {
         ]
       },
       {
-        title: '4. Leadership (Ownership-Driven Execution)',
+        title: '4. Leadership — Updated 10-Week Execution Plan (with Zero Downtime)',
         outcome: [
-          'Clear ownership across Web & Mobile with full accountability',
+          'Web and Mobile operate independently',
+          'Team delivers consistently without lead dependency',
+          'Rework is minimal (<10%)',
+          'Zero downtime deployment is standard practice',
           '2+ features delivered per developer per week',
-          'High autonomy — developers propose and execute solutions',
-          '<10% ticket reopen rate (only edge cases)',
-          'Strong cross-domain collaboration',
-          'Tech Lead dependency reduced to <10%',
-          'KPI 1, KPI 2, KPI 3 achieved through team execution',
         ],
         pointers: [
-          'Assign one owner each for Web and Mobile',
-          'Enforce end-to-end ownership (problem → solution → delivery)',
-          'Developers must propose solutions before escalation',
-          'Map every task to KPI 1, KPI 2, or KPI 3',
-          'Track 2+ feature deliveries per developer weekly',
-          'Enforce strict quality checks',
-          'Ensure cross-domain contribution every sprint',
-          'Limit Tech Lead to review, guidance, unblocking',
-          'Track autonomy, speed, and quality weekly',
+          'Week 1-3: Ownership Setup & Autonomy Kickoff (Deployment checklists)',
+          'Week 4-6: Independent Delivery & Speed (QA deployments, speed, standard scripts)',
+          'Week 7-8: Ownership Maturity & Cross-Domain (UAT deploys, cross-reviews)',
+          'Week 9-10: System Efficiency & Success State (Zero downtime in PROD)',
         ]
       }
     ]
@@ -346,33 +339,33 @@ export const kpiData = {
     },
     {
       id: 'kpi-4-leadership',
-      title: 'KPI 4: Leadership (Ownership-Driven Execution)',
-      goal: 'Build a self-sufficient frontend team with strong ownership (Web & Mobile) that independently delivers KPI 1, 2, 3.',
-      description: '1 Web Owner, 1 Mobile Owner. High execution speed, low rework, strong autonomy. Devs own problem → solution → delivery.',
+      title: 'KPI 4: Leadership — Updated 10-Week Execution Plan (with Zero Downtime)',
+      goal: 'Build a self-sufficient frontend team with strong ownership (Web & Mobile) that independently delivers KPI 1, 2, 3 with zero downtime standard practice.',
+      description: 'Web Owner & Mobile Owner handle deployments. High execution speed, low rework, strong autonomy. Devs execute flawlessly from QA to PROD.',
       metrics: [
         { name: 'Ownership Clarity', target: '100%', current: '100%' },
         { name: 'Dev Autonomy', target: '90%', current: '60%' },
         { name: 'Features/Dev/Week', target: '2+', current: '1' },
         { name: 'Lead Dependency', target: '<10%', current: '80%' },
         { name: 'Reopened Tickets', target: '<10%', current: '15%' },
-        { name: 'Cross-Domain', target: '100%', current: 'Partial' }
+        { name: 'Zero Downtime', target: 'PROD', current: 'Pending' }
       ],
       executionPhases: [
-        { phase: 'Weeks 1-3: Setup & Alignment', desc: 'Detailed ownership boundaries, shift from execution to ownership, map all tasks to KPI 1,2,3.', status: 'current' },
-        { phase: 'Weeks 4-6: Independent Delivery Start', desc: 'Reduce technical leadership dependency to 40%, speed stabilization, quality enforcement.', status: 'upcoming' },
-        { phase: 'Weeks 7-10: Ownership Maturity & Success', desc: 'Cross domain contribution, System Efficiency, and hitting Leadership Success state (<10% Dependency).', status: 'upcoming' }
+        { phase: 'Weeks 1-3: Setup & Alignment', desc: 'Detailed ownership boundaries, shift to ownership mindset, documented deployments.', status: 'current' },
+        { phase: 'Weeks 4-6: Independent Delivery', desc: 'Reduce technical lead dependency, speed stabilization, independent QA deployments.', status: 'upcoming' },
+        { phase: 'Weeks 7-10: Ownership Maturity & Success', desc: 'Cross domain contribution, System Efficiency, Zero Downtime validated in UAT/PROD.', status: 'upcoming' }
       ],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Ownership Setup', status: 'completed', leadTasks: ['Assign Mobile & Web Owner', 'Define responsibilities clearly', 'Define "Definition of Done"'], achievements: ['Ownership clarity: 100%'] },
-        { week: 'Week 2', focus: 'Autonomy Kickoff', status: 'in-progress', leadTasks: ['Shift mindset to ownership', 'Devs propose solutions first', 'Lead avoids direct answers'], achievements: ['Dev-proposed approach ≥ 60%'] },
-        { week: 'Week 3', focus: 'KPI Alignment', status: 'upcoming', leadTasks: ['Align all work to KPI 1, 2, 3', 'Tag all tasks'], achievements: [] },
-        { week: 'Week 4', focus: 'Independent Delivery Start', status: 'upcoming', leadTasks: ['Reduce Tech Lead dependency', 'Lead shifts to review-only mode'], achievements: [] },
-        { week: 'Week 5', focus: 'Speed Stabilization', status: 'upcoming', leadTasks: ['Better task breakdown', 'Remove blockers proactively'], achievements: [] },
-        { week: 'Week 6', focus: 'Quality Enforcement', status: 'upcoming', leadTasks: ['Strong pre-QA validation by devs', 'Edge-case thinking enforced'], achievements: [] },
-        { week: 'Week 7', focus: 'Ownership Maturity', status: 'upcoming', leadTasks: ['Web owner handles web decisions', 'Mobile owner handles mobile decisions'], achievements: [] },
-        { week: 'Week 8', focus: 'Cross-Domain Contribution', status: 'upcoming', leadTasks: ['Web dev contributes to mobile/shared', 'Mobile dev contributes to config/API/shared'], achievements: [] },
-        { week: 'Week 9', focus: 'System Efficiency', status: 'upcoming', leadTasks: ['Identify bottlenecks', 'Improve workflows'], achievements: [] },
-        { week: 'Week 10', focus: 'Leadership Success State', status: 'upcoming', leadTasks: ['Lead steps back from execution', 'Team runs independently'], achievements: [] }
+        { week: 'Week 1', focus: 'Ownership Setup', status: 'completed', leadTasks: ['Assign Mobile & Web Owner', 'Define responsibilities clearly', 'Align deployment flow (QA→UAT→PROD)'], achievements: ['Ownership clarity: 100%'] },
+        { week: 'Week 2', focus: 'Autonomy Kickoff', status: 'in-progress', leadTasks: ['Devs propose solutions first', 'Lead avoids direct answers', 'Assign deployment ownership'], achievements: ['Web owner → Web deploy', 'Mobile owner → App release'] },
+        { week: 'Week 3', focus: 'KPI Alignment', status: 'upcoming', leadTasks: ['Align all work to KPI 1, 2, 3', 'Define deployment checklist (health check, env)'], achievements: [] },
+        { week: 'Week 4', focus: 'Independent Delivery Start', status: 'upcoming', leadTasks: ['Devs execute features end-to-end', 'Devs perform QA deployments independently'], achievements: [] },
+        { week: 'Week 5', focus: 'Speed Stabilization', status: 'upcoming', leadTasks: ['Improve task breakdown', 'Standardize deployment commands/scripts'], achievements: [] },
+        { week: 'Week 6', focus: 'Quality Enforcement', status: 'upcoming', leadTasks: ['Strong pre-QA validation by devs', 'Validate health checks (/api/health)'], achievements: [] },
+        { week: 'Week 7', focus: 'Ownership Maturity', status: 'upcoming', leadTasks: ['Web owner handles web decisions', 'Devs handle UAT deployments independently'], achievements: [] },
+        { week: 'Week 8', focus: 'Cross-Domain Contribution', status: 'upcoming', leadTasks: ['Cross-domain contributions', 'Cross-review deployment configs (Web ↔ Mobile)'], achievements: [] },
+        { week: 'Week 9', focus: 'System Efficiency', status: 'upcoming', leadTasks: ['Identify bottlenecks', 'Implement zero-downtime strategy (Rolling, Health-based)'], achievements: [] },
+        { week: 'Week 10', focus: 'Leadership Success State', status: 'upcoming', leadTasks: ['Lead steps back from execution', 'Achieve zero downtime production deployment'], achievements: [] }
       ],
     }
   ],
