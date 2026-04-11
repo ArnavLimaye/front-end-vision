@@ -196,18 +196,21 @@ export const kpiData = {
         ]
       },
       {
-        title: '3. Platform Observability, Performance & Release Engineering',
+        title: '3. Platform Observability, Performance & Release Engineering (12-Week Plan)',
         outcome: [
           'Full observability across web (ELK) and mobile (Crashlytics)',
           'High-performance apps across API, rendering, and BFF layers',
-          'Stable, automated CI/CD pipelines',
+          'Stable, automated CI/CD pipelines with rollback',
           'Zero downtime deployments for web apps',
           'Seamless tester & store distribution',
           'Scalable multi-tenant mobile architecture',
         ],
         pointers: [
-          'Phase 1 (0–3 Months): Setup ELK logging with tenant-aware monitoring; Integrate Firebase Crashlytics + performance monitoring; Optimize web performance; Standardize CI/CD; Define multi-tenant mobile architecture (EAS); Focus execution on web, stabilize mobile.',
-          'Phase 2 (3–6 Months): Automate mobile builds (Play Store + TestFlight); Expand observability and alerting; Optimize mobile performance; Enable full release pipelines with rollback + playbooks.',
+          'Week 1-3: Deployment & Base Logging (Zero downtime, Traefik, ELK init)',
+          'Week 4-6: Mobile Monitoring & Web Perf (Firebase, Alerts, Speed)',
+          'Week 7-8: Standard CI/CD & Distribution (GitHub Actions, App Distribution)',
+          'Week 9-10: Mobile Architecture & CI/CD (Multi-tenant EAS, iOS TestFlight)',
+          'Week 11-12: Expansion & Readiness (Dashboards, Alerts, Final SOPs)',
         ]
       },
       {
@@ -308,29 +311,37 @@ export const kpiData = {
     },
     {
       id: 'kpi-3-reliability',
-      title: 'KPI 3: Platform Observability & Release Engineering',
+      title: 'KPI 3: Platform Observability, Performance & Release Engineering',
       goal: 'Establish a scalable and robust platform enabling full visibility, fast applications, automated pipelines, seamless distribution, and scalable mobile architecture.',
       description: 'Web = Execution Focus. Mobile = Research + Stabilization. Covers ELK Stack for web, Firebase for mobile, CI/CD foundations, and multi-tenant mobile architectural definitions.',
       metrics: [
-        { name: 'ELK Stack setup', target: 'Operational', current: 'Pending' },
-        { name: 'Web Performance', target: 'Improved', current: 'Pending' },
-        { name: 'Mobile Observability', target: 'Firebase active', current: 'Pending' },
-        { name: 'CI/CD Pipelines', target: 'Stable', current: 'Pending' },
-        { name: 'Zero Downtime Deploys', target: 'Enabled', current: 'Pending' },
-        { name: 'App Distribution', target: 'Functional', current: 'Pending' },
-        { name: 'Mobile Architecture', target: 'Defined', current: 'Pending' }
+        { name: 'Zero Downtime', target: 'Verified', current: 'Pending' },
+        { name: 'ELK Stack / Logging', target: '100% APIs', current: 'Pending' },
+        { name: 'Mobile Crashlytics', target: 'Active', current: 'Pending' },
+        { name: 'Web Performance', target: '>20% Improv.', current: 'Pending' },
+        { name: 'CI/CD Pipelines (Web)', target: 'Stable', current: 'Pending' },
+        { name: 'Mobile Dist / EAS', target: 'Live', current: 'Pending' },
+        { name: 'Alerts & SOPs', target: 'Active', current: 'Pending' }
       ],
       executionPhases: [
-        { phase: 'Phase 1 (Months 0-3)', desc: 'Preparation & Foundation (Web Observability, Mobile Stabilization, CI/CD Foundation).', status: 'current' },
-        { phase: 'Phase 2 (Months 3-6)', desc: 'Full Implementation (Multi-tenant Mobile Architecture, Full automation, Production grade release pipelines).', status: 'upcoming' }
+        { phase: 'Weeks 1-3: Fundamentals', desc: 'Zero downtime deployments, log coverage, ELK setup.', status: 'current' },
+        { phase: 'Weeks 4-6: Monitoring & Perf', desc: 'Firebase setup, Slack alerting, web API/page performance optimization.', status: 'upcoming' },
+        { phase: 'Weeks 7-10: CI/CD & Mobile Scale', desc: 'GitHub Actions, Firebase App Dist, dynamic EAS architecture, TestFlight.', status: 'upcoming' },
+        { phase: 'Weeks 11-12: Readiness', desc: 'Extended observability, cross-platform stabilization, and SOP finalization.', status: 'upcoming' }
       ],
       weeklyProgress: [
-        { week: 'Weeks 1-2', focus: 'Observability Foundation', status: 'in-progress', leadTasks: ['Setup ELK Stack for Web (Elasticsearch, Logstash, Kibana)', 'Integrate Firebase Crashlytics for Mobile'], achievements: [] },
-        { week: 'Weeks 3-4', focus: 'Monitoring & Alerting', status: 'upcoming', leadTasks: ['Kibana dashboards (latency, errors)', 'Slack alerts', 'Firebase Performance Monitoring'], achievements: [] },
-        { week: 'Weeks 5-6', focus: 'Performance Optimization', status: 'upcoming', leadTasks: ['Optimize API latency (Web)', 'Improve rendering (Web)', 'Audit mobile performance'], achievements: [] },
-        { week: 'Weeks 7-8', focus: 'CI/CD & Distribution Foundation', status: 'upcoming', leadTasks: ['Setup Firebase App Distribution', 'Standardize GitHub Actions', 'Setup artifact storage (S3)', 'Enable zero downtime deploys (Web)'], achievements: [] },
-        { week: 'Weeks 9-10', focus: 'Mobile Architecture Research', status: 'upcoming', leadTasks: ['Explore Expo multi-tenant builds', 'EAS profiles per tenant', 'iOS bundle ID strategy'], achievements: [] },
-        { week: 'Weeks 11-12', focus: 'Consolidation & Readiness', status: 'upcoming', leadTasks: ['Finalize documentation', 'Define SOPs (alert/release/rollback)', 'Fix monitoring gaps'], achievements: [] }
+        { week: 'Week 1', focus: 'Zero Downtime Deployment', status: 'completed', leadTasks: ['Rolling deployment (Traefik+Docker)', 'Add /api/health endpoint', 'Enable rollback mechanism'], achievements: [] },
+        { week: 'Week 2', focus: 'Log Coverage & Visibility', status: 'in-progress', leadTasks: ['Structured API logging', 'Tenant-aware logs', 'Initial dashboards'], achievements: [] },
+        { week: 'Week 3', focus: 'ELK Setup', status: 'upcoming', leadTasks: ['Deploy Elasticsearch, Logstash, Kibana', 'Connect log sources', 'Finalize schema'], achievements: [] },
+        { week: 'Week 4', focus: 'Mobile Monitoring Baseline', status: 'upcoming', leadTasks: ['Integrate Firebase Crashlytics', 'Performance Monitoring', 'Tenant+version tagging'], achievements: [] },
+        { week: 'Week 5', focus: 'Alerting Setup', status: 'upcoming', leadTasks: ['Configure ELK alerts', 'Slack integration', 'Define escalation process'], achievements: [] },
+        { week: 'Week 6', focus: 'Web Performance Optimization', status: 'upcoming', leadTasks: ['Optimize top APIs', 'Improve page load times', 'Caching improvements'], achievements: [] },
+        { week: 'Week 7', focus: 'CI/CD Standardization', status: 'upcoming', leadTasks: ['Standardize GitHub Actions', 'S3 artifact storage', 'Slack notifications'], achievements: [] },
+        { week: 'Week 8', focus: 'Distribution Setup', status: 'upcoming', leadTasks: ['Firebase App Distribution', 'Create tester groups', 'Automate builds'], achievements: [] },
+        { week: 'Week 9', focus: 'Mobile Architecture Validation', status: 'upcoming', leadTasks: ['EAS multi-tenant POC', 'Dynamic app settings', 'Document architecture'], achievements: [] },
+        { week: 'Week 10', focus: 'Mobile CI/CD (Phase 2)', status: 'upcoming', leadTasks: ['Automate Android build/dist', 'iOS build via EAS', 'TestFlight integration'], achievements: [] },
+        { week: 'Week 11', focus: 'Observability Expansion', status: 'upcoming', leadTasks: ['Extend ELK dashboards', 'Advanced alert rules', 'Mobile logs in ELK'], achievements: [] },
+        { week: 'Week 12', focus: 'Stabilization & Readiness', status: 'upcoming', leadTasks: ['Validate full system flow', 'Finalize SOPs', 'Fix gaps'], achievements: [] }
       ],
     },
     {
