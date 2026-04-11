@@ -323,18 +323,18 @@ export const kpiData = {
         { phase: 'Weeks 11-12: Readiness', desc: 'Extended observability, cross-platform stabilization, and SOP finalization.', status: 'upcoming' }
       ],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Zero Downtime Deployment', status: 'completed', leadTasks: ['Rolling deployment (Traefik+Docker)', 'Add /api/health endpoint', 'Enable rollback mechanism'], achievements: [] },
-        { week: 'Week 2', focus: 'Log Coverage & Visibility', status: 'in-progress', leadTasks: ['Structured API logging', 'Tenant-aware logs', 'Initial dashboards'], achievements: [] },
-        { week: 'Week 3', focus: 'ELK Setup', status: 'upcoming', leadTasks: ['Deploy Elasticsearch, Logstash, Kibana', 'Connect log sources', 'Finalize schema'], achievements: [] },
-        { week: 'Week 4', focus: 'Mobile Monitoring Baseline', status: 'upcoming', leadTasks: ['Integrate Firebase Crashlytics', 'Performance Monitoring', 'Tenant+version tagging'], achievements: [] },
-        { week: 'Week 5', focus: 'Alerting Setup', status: 'upcoming', leadTasks: ['Configure ELK alerts', 'Slack integration', 'Define escalation process'], achievements: [] },
-        { week: 'Week 6', focus: 'Web Performance Optimization', status: 'upcoming', leadTasks: ['Optimize top APIs', 'Improve page load times', 'Caching improvements'], achievements: [] },
-        { week: 'Week 7', focus: 'CI/CD Standardization', status: 'upcoming', leadTasks: ['Standardize GitHub Actions', 'S3 artifact storage', 'Slack notifications'], achievements: [] },
-        { week: 'Week 8', focus: 'Distribution Setup', status: 'upcoming', leadTasks: ['Firebase App Distribution', 'Create tester groups', 'Automate builds'], achievements: [] },
-        { week: 'Week 9', focus: 'Mobile Architecture Validation', status: 'upcoming', leadTasks: ['EAS multi-tenant POC', 'Dynamic app settings', 'Document architecture'], achievements: [] },
-        { week: 'Week 10', focus: 'Mobile CI/CD (Phase 2)', status: 'upcoming', leadTasks: ['Automate Android build/dist', 'iOS build via EAS', 'TestFlight integration'], achievements: [] },
-        { week: 'Week 11', focus: 'Observability Expansion', status: 'upcoming', leadTasks: ['Extend ELK dashboards', 'Advanced alert rules', 'Mobile logs in ELK'], achievements: [] },
-        { week: 'Week 12', focus: 'Stabilization & Readiness', status: 'upcoming', leadTasks: ['Validate full system flow', 'Finalize SOPs', 'Fix gaps'], achievements: [] }
+        { week: 'Week 1', focus: 'Zero Downtime Deployment', status: 'completed', leadTasks: ['Rolling deployment (Traefik+Docker)', 'Add /api/health endpoint', 'Enable rollback mechanism'], achievements: ['Zero failed requests during rollout', 'New container healthy before old stopped', 'Rollback executed within 10 mins'] },
+        { week: 'Week 2', focus: 'Log Coverage & Visibility', status: 'in-progress', leadTasks: ['Structured API logging', 'Tenant-aware logs', 'Initial dashboards'], achievements: ['100% critical APIs emit structured logs', 'Logs visible for at least 2 tenants', 'Kibana dashboards show API latency/errors'] },
+        { week: 'Week 3', focus: 'ELK Setup', status: 'upcoming', leadTasks: ['Deploy Elasticsearch, Logstash, Kibana', 'Connect log sources', 'Finalize schema'], achievements: ['Logs ingested from at least 3 sources', 'Structured logs visible in Kibana', '≥80% API routes logging correctly'] },
+        { week: 'Week 4', focus: 'Mobile Monitoring Baseline', status: 'upcoming', leadTasks: ['Integrate Firebase Crashlytics', 'Performance Monitoring', 'Tenant+version tagging'], achievements: ['Crash reports visible in Firebase', 'At least 1 test crash recorded', 'Performance metrics visible'] },
+        { week: 'Week 5', focus: 'Alerting Setup', status: 'upcoming', leadTasks: ['Configure ELK alerts', 'Slack integration', 'Define escalation process'], achievements: ['Alerts triggered correctly on test', 'Slack notifications within 1 minute', 'Alert thresholds documented'] },
+        { week: 'Week 6', focus: 'Web Performance Optimization', status: 'upcoming', leadTasks: ['Optimize top APIs', 'Improve page load times', 'Caching improvements'], achievements: ['≥20% reduction in p95 latency', '≥20% improvement in page load', 'At least 2 heavy endpoints optimized'] },
+        { week: 'Week 7', focus: 'CI/CD Standardization', status: 'upcoming', leadTasks: ['Standardize GitHub Actions', 'S3 artifact storage', 'Slack notifications'], achievements: ['Pipeline runs for at least 2 tenants', 'Build → artifact → deploy flow works', 'Slack notifications for all builds'] },
+        { week: 'Week 8', focus: 'Distribution Setup', status: 'upcoming', leadTasks: ['Firebase App Distribution', 'Create tester groups', 'Automate builds'], achievements: ['Builds distributed within 10 minutes', 'At least 2 tester groups active', 'Artifacts stored with versioning'] },
+        { week: 'Week 9', focus: 'Mobile Architecture Validation', status: 'upcoming', leadTasks: ['EAS multi-tenant POC', 'Dynamic app settings', 'Document architecture'], achievements: ['1 tenant app built with dynamic config', 'Bundle ID, app name, API validated', 'Architecture document completed'] },
+        { week: 'Week 10', focus: 'Mobile CI/CD (Phase 2)', status: 'upcoming', leadTasks: ['Automate Android build/dist', 'iOS build via EAS', 'TestFlight integration'], achievements: ['Android build auto-distributed', 'iOS build on TestFlight', 'Build success rate = 100%'] },
+        { week: 'Week 11', focus: 'Observability Expansion', status: 'upcoming', leadTasks: ['Extend ELK dashboards', 'Advanced alert rules', 'Mobile logs in ELK'], achievements: ['New dashboards include deploy visibility', 'At least 2 new alert types active', 'Mobile logs visible in ELK (if tracked)'] },
+        { week: 'Week 12', focus: 'Stabilization & Readiness', status: 'upcoming', leadTasks: ['Validate full system flow', 'Finalize SOPs', 'Fix gaps'], achievements: ['End-to-end deploy-monitor flow works', 'Zero downtime deployment consistent', 'Alerts & distribution reliable', 'SOPs documented'] }
       ],
     },
     {
