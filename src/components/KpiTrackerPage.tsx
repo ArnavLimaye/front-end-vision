@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import type { ActiveSection } from '../App'
 import { kpiData as k, navItems } from '../data/visionData'
 
@@ -9,6 +9,7 @@ interface Props {
 
 export default function KpiTrackerPage({ activeSection, onTabChange }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [viewMode, setViewMode] = useState<'kpi' | 'weekly'>('kpi')
   const currentTabLabel = navItems.find(n => n.id === 'kpi-tracker')?.children.find(c => c.id === activeSection)?.label || 'Overview'
 
   return (
@@ -35,62 +36,84 @@ export default function KpiTrackerPage({ activeSection, onTabChange }: Props) {
         </div>
       </div>
 
-      {/* Mobile Tab menu */}
-      <div className="md:hidden relative mb-6">
-        <button 
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="w-full flex items-center justify-between p-3.5 bg-bg-primary border border-border-secondary rounded-xl shadow-card"
+      {/* View Mode Toggle */}
+      <div className="flex bg-bg-secondary w-fit rounded-lg p-1 mb-6 border border-border-secondary shadow-sm mb-6">
+        <button
+          onClick={() => setViewMode('kpi')}
+          className={`px-4 py-1.5 text-sm font-semibold rounded-md transition-all ${viewMode === 'kpi' ? 'bg-primary text-white shadow' : 'text-gray-text hover:text-text-primary'}`}
         >
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-gray-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            <span className="font-semibold text-text-primary text-sm">{currentTabLabel}</span>
-          </div>
-          <span className="text-gray-header text-xs">{mobileMenuOpen ? '▲' : '▼'}</span>
+          KPI View
         </button>
-        
-        {mobileMenuOpen && (
-          <div className="absolute top-full mt-2 left-0 right-0 bg-bg-primary border border-border-secondary rounded-xl shadow-card p-2 flex flex-col gap-1 z-30">
-            {navItems.find(n => n.id === 'kpi-tracker')?.children.map(tab => (
-              <button
+        <button
+          onClick={() => setViewMode('weekly')}
+          className={`px-4 py-1.5 text-sm font-semibold rounded-md transition-all ${viewMode === 'weekly' ? 'bg-primary text-white shadow' : 'text-gray-text hover:text-text-primary'}`}
+        >
+          Weekly View
+        </button>
+      </div>
+
+      {viewMode === 'weekly' ? (
+        <WeeklyOverview />
+      ) : (
+        <>
+          {/* Mobile Tab menu */}
+          <div className="md:hidden relative mb-6">
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="w-full flex items-center justify-between p-3.5 bg-bg-primary border border-border-secondary rounded-xl shadow-card"
+            >
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-gray-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <span className="font-semibold text-text-primary text-sm">{currentTabLabel}</span>
+              </div>
+              <span className="text-gray-header text-xs">{mobileMenuOpen ? '▲' : '▼'}</span>
+            </button>
+            
+            {mobileMenuOpen && (
+              <div className="absolute top-full mt-2 left-0 right-0 bg-bg-primary border border-border-secondary rounded-xl shadow-card p-2 flex flex-col gap-1 z-30">
+                {navItems.find(n => n.id === 'kpi-tracker')?.children.map(tab => (
+                  <button
+                    key={tab.id}
+                    onClick={() => { onTabChange?.(tab.id as ActiveSection); setMobileMenuOpen(false); }}
+                    className={`flex items-center gap-2 px-3 py-3 rounded-lg text-sm transition-all text-left ${activeSection === tab.id ? 'bg-primary/10 text-primary font-semibold' : 'text-gray-text hover:bg-bg-secondary font-medium'}`}
+                  >
+                    <span>{tab.icon}</span>
+                    <span>{tab.label}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Tab sub-nav (Desktop) */}
+          <div className="hidden md:flex gap-1 bg-bg-primary border border-border-secondary rounded-xl p-1 mb-6 shadow-card overflow-x-auto">
+            {[
+              { id: 'kpi-overview', label: '🎯 Overview' },
+              { id: 'kpi-1-standardization', label: '📦 Monorepo Setup' },
+              { id: 'kpi-2-ui-platform', label: '🎨 Component Library' },
+              { id: 'kpi-3-reliability', label: '🚀 Observability' },
+              { id: 'kpi-4-leadership', label: '👥 Leadership' },
+            ].map(tab => (
+              <div
                 key={tab.id}
-                onClick={() => { onTabChange?.(tab.id as ActiveSection); setMobileMenuOpen(false); }}
-                className={`flex items-center gap-2 px-3 py-3 rounded-lg text-sm transition-all text-left ${activeSection === tab.id ? 'bg-primary/10 text-primary font-semibold' : 'text-gray-text hover:bg-bg-secondary font-medium'}`}
+                onClick={() => onTabChange?.(tab.id as ActiveSection)}
+                className={`whitespace-nowrap flex-1 text-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer ${
+                  activeSection === tab.id
+                    ? 'bg-primary text-white shadow-button'
+                    : 'text-gray-text hover:bg-bg-secondary hover:text-text-primary'
+                }`}
               >
-                <span>{tab.icon}</span>
-                <span>{tab.label}</span>
-              </button>
+                {tab.label}
+              </div>
             ))}
           </div>
-        )}
-      </div>
 
-      {/* Tab sub-nav (Desktop) */}
-      <div className="hidden md:flex gap-1 bg-bg-primary border border-border-secondary rounded-xl p-1 mb-6 shadow-card overflow-x-auto">
-        {[
-          { id: 'kpi-overview', label: '🎯 Overview' },
-          { id: 'kpi-1-standardization', label: '📦 Monorepo Setup' },
-          { id: 'kpi-2-ui-platform', label: '🎨 Component Library' },
-          { id: 'kpi-3-reliability', label: '🚀 Observability' },
-          { id: 'kpi-4-leadership', label: '👥 Leadership' },
-        ].map(tab => (
-          <div
-            key={tab.id}
-            onClick={() => onTabChange?.(tab.id as ActiveSection)}
-            className={`whitespace-nowrap flex-1 text-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer ${
-              activeSection === tab.id
-                ? 'bg-primary text-white shadow-button'
-                : 'text-gray-text hover:bg-bg-secondary hover:text-text-primary'
-            }`}
-          >
-            {tab.label}
+          {/* Content */}
+          <div className="animate-fadeIn">
+            {activeSection === 'kpi-overview' ? <KpiOverview /> : <KpiDetail kpiId={activeSection} />}
           </div>
-        ))}
-      </div>
-
-      {/* Content */}
-      <div className="animate-fadeIn">
-        {activeSection === 'kpi-overview' ? <KpiOverview /> : <KpiDetail kpiId={activeSection} />}
-      </div>
+        </>
+      )}
     </div>
   )
 }
@@ -231,6 +254,84 @@ function KpiDetail({ kpiId }: { kpiId: string }) {
           ))}
         </div>
       </div>
+    </div>
+  )
+}
+
+function WeeklyOverview() {
+  const allWeeks = useMemo(() => {
+    const maxWeeks = Math.max(...k.kpis.map(kpi => kpi.weeklyProgress.length));
+    const weeksMap = [];
+
+    for (let i = 0; i < maxWeeks; i++) {
+        const kpiTasks = k.kpis.map((kpi) => {
+            const wp = kpi.weeklyProgress[i];
+            if (!wp) return null;
+            return {
+                kpiTitle: kpi.title,
+                focus: wp.focus,
+                status: wp.status,
+                leadTasks: wp.leadTasks || [],
+                achievements: wp.achievements || [],
+            };
+        }).filter(Boolean);
+
+        if (kpiTasks.length > 0) {
+          weeksMap.push({
+              weekNumber: i + 1,
+              kpiTasks: kpiTasks as any
+          });
+        }
+    }
+    return weeksMap;
+  }, []);
+
+  return (
+    <div className="space-y-8 animate-fadeIn">
+      {allWeeks.map((week) => (
+         <div key={week.weekNumber} className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card">
+            <h3 className="text-xl font-bold text-text-primary tracking-tight mb-6 mt-2 border-b border-border-secondary/40 pb-4">
+              📅 Week {week.weekNumber} Snapshot
+            </h3>
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+               {week.kpiTasks.map((t: any, i: number) => (
+                  <div key={i} className="bg-bg-secondary/30 border border-border-secondary rounded-xl p-5 shadow-sm hover:shadow-card transition-shadow flex flex-col">
+                     <h4 className="text-sm font-extrabold text-primary line-clamp-2 md:line-clamp-1">{t.kpiTitle}</h4>
+                     <div className="flex items-center gap-2 mb-5 mt-3 flex-wrap">
+                       <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest ${t.status === 'completed' ? 'bg-primary text-white' : t.status === 'in-progress' ? 'bg-amber-100 text-amber-800' : 'bg-bg-secondary border border-border-secondary text-gray-text'}`}>{t.status}</span>
+                       <span className="text-xs font-semibold text-text-primary">{t.focus}</span>
+                     </div>
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
+                        <div>
+                           <h5 className="text-[10px] uppercase font-bold text-gray-header tracking-wider mb-3">Tasks</h5>
+                           <ul className="space-y-2">
+                             {t.leadTasks.map((task: string, idx: number) => (
+                               <li key={idx} className="text-xs text-text-secondary flex items-start gap-2 leading-relaxed font-medium">
+                                 <span className="text-primary/70 mt-0.5">•</span>
+                                 <span>{task}</span>
+                               </li>
+                             ))}
+                           </ul>
+                        </div>
+                        {t.achievements.length > 0 && (
+                          <div className="md:border-l md:border-border-secondary/40 md:pl-6">
+                             <h5 className="text-[10px] uppercase font-bold text-gray-header tracking-wider mb-3">Outcomes</h5>
+                             <ul className="space-y-2">
+                               {t.achievements.map((ach: string, idx: number) => (
+                                 <li key={idx} className="text-xs text-emerald-700/90 flex items-start gap-2 leading-relaxed font-medium">
+                                   <span className="text-emerald-500 mt-[1px]">✓</span>
+                                   <span>{ach}</span>
+                                 </li>
+                               ))}
+                             </ul>
+                          </div>
+                        )}
+                     </div>
+                  </div>
+               ))}
+            </div>
+         </div>
+      ))}
     </div>
   )
 }

@@ -234,7 +234,7 @@ export const kpiData = {
   kpis: [
     {
       id: 'kpi-1-standardization',
-      title: 'KPI 1: 11-Week Execution Plan (Compressed + Test-Driven + Mobile Included)',
+      title: 'KPI 1: MonorepoSingle Monorepo for Multi-Tenant Frontend',
       goal: 'Establish a unified monorepo for web + mobile apps. Web proves structure, Mobile proves system maturity. At every stage: Build → Deploy → Test → Proceed.',
       description: 'Guiding Principles: 1. Same tenant, same behavior. 2. Zero platform-specific bugs. 3. Zero duplication. 4. Shared Config, API, Validate across all apps.',
       metrics: [
@@ -271,7 +271,7 @@ export const kpiData = {
     },
     {
       id: 'kpi-2-ui-platform',
-      title: 'KPI 2: Component Library & Design System Execution Plan (Revised)',
+      title: 'KPI 2: Component Library & Design System',
       goal: 'Complete end-to-end delivery and adoption of shared, themeable component library for web and mobile.',
       description: 'Zero duplication goal. Level 1 (Base UI/Crunch week), Level 2 (Forms/Data), Level 3 (Business). Leadership must enforce adoption as strictly as creation.',
       metrics: [
@@ -339,7 +339,7 @@ export const kpiData = {
     },
     {
       id: 'kpi-4-leadership',
-      title: 'KPI 4: Leadership — Updated 10-Week Execution Plan (with Zero Downtime)',
+      title: 'KPI 4: Leadership',
       goal: 'Build a self-sufficient frontend team with strong ownership (Web & Mobile) that independently delivers KPI 1, 2, 3 with zero downtime standard practice.',
       description: 'Web Owner & Mobile Owner handle deployments. High execution speed, low rework, strong autonomy. Devs execute flawlessly from QA to PROD.',
       metrics: [
