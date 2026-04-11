@@ -234,7 +234,7 @@ export const kpiData = {
   kpis: [
     {
       id: 'kpi-1-standardization',
-      title: 'KPI 1: MonorepoSingle Monorepo for Multi-Tenant Frontend',
+      title: 'KPI 1: Single Monorepo for Multi-Tenant Frontend',
       goal: 'Establish a unified monorepo for web + mobile apps. Web proves structure, Mobile proves system maturity. At every stage: Build → Deploy → Test → Proceed.',
       description: 'Guiding Principles: 1. Same tenant, same behavior. 2. Zero platform-specific bugs. 3. Zero duplication. 4. Shared Config, API, Validate across all apps.',
       metrics: [
