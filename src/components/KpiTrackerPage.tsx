@@ -225,6 +225,21 @@ function KpiDetail({ kpiId }: { kpiId: string }) {
         </div>
       )}
 
+      {/* Top Level Lead Notes / Reflections */}
+      {data.leadNotes && data.leadNotes.length > 0 && (
+        <div className="bg-amber-50/50 border border-amber-200/60 rounded-2xl p-6 shadow-sm">
+          <h3 className="text-lg font-bold text-amber-900 tracking-tight mb-3">📝 Overall Lead Reflections</h3>
+          <ul className="space-y-2">
+            {data.leadNotes.map((note: string, i: number) => (
+              <li key={i} className="text-sm text-amber-800 flex items-start gap-2 leading-relaxed font-medium">
+                <span className="text-amber-500 mt-1 text-xs">◆</span>
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* Execution Phases (If provided) */}
       {data.executionPhases && (
         <div className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card">
@@ -291,6 +306,21 @@ function KpiDetail({ kpiId }: { kpiId: string }) {
                   </div>
                 )}
               </div>
+              
+              {/* Weekly Lead Notes */}
+              {wp.leadNotes && wp.leadNotes.length > 0 && (
+                <div className="bg-amber-50/50 border-t border-amber-100 p-4">
+                  <h4 className="text-[10px] font-extrabold text-amber-700 uppercase tracking-wider mb-2">📝 Lead Reflections</h4>
+                  <ul className="space-y-1.5 focus:outline-none">
+                    {wp.leadNotes.map((note: string, j: number) => (
+                      <li key={j} className="text-xs text-amber-900/80 flex items-start gap-1.5 leading-relaxed font-medium">
+                        <span className="text-amber-500 mt-[3px] text-[8px]">▶</span>
+                        <span>{note}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -314,6 +344,7 @@ function WeeklyOverview() {
                 status: wp.status,
                 leadTasks: wp.leadTasks || [],
                 achievements: wp.achievements || [],
+                leadNotes: wp.leadNotes || [],
             };
         }).filter(Boolean);
 
@@ -368,9 +399,24 @@ function WeeklyOverview() {
                           </div>
                         )}
                      </div>
-                  </div>
-               ))}
-            </div>
+                      
+                      {/* Weekly Lead Notes (Snapshot) */}
+                      {t.leadNotes && t.leadNotes.length > 0 && (
+                        <div className="bg-amber-50/50 border-t border-amber-100/60 mt-5 p-4 -mx-5 -mb-5 rounded-b-xl">
+                          <h5 className="text-[10px] uppercase font-bold text-amber-700 tracking-wider mb-2">📝 Lead Reflections</h5>
+                          <ul className="space-y-1.5">
+                            {t.leadNotes.map((note: string, idx: number) => (
+                              <li key={idx} className="text-xs text-amber-900/80 flex items-start gap-1.5 leading-relaxed font-medium">
+                                <span className="text-amber-500 mt-[3px] text-[8px]">▶</span>
+                                <span>{note}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                   </div>
+                ))}
+             </div>
          </div>
       ))}
     </div>
