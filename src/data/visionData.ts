@@ -353,7 +353,7 @@ export const kpiData = {
         { phase: 'Weeks 9-10: iOS Mobile Builds', desc: 'GitHub Actions for iOS builds and TestFlight/App Store distribution.', status: 'upcoming' },
         { phase: 'Weeks 11-12: Frontend Observability', desc: 'Frontend logging evaluation and slow rendering alerts.', status: 'upcoming' }
       ],
-      leadNotes: ['Add reflections and notes here...'],
+      leadNotes: ['Pre-requisite -> Finalise API response schema for Error as well as success response'],
       weeklyProgress: [
         { week: 'Week 1', focus: 'ZDD & Firebase distribution planning', status: 'in-progress', leadTasks: ['Finalise ZDD process using Github Actions', 'Add /api/health endpoint for all tenants', 'Rollback plan ready', 'Standardize App Distribution using Firebase for any app'], achievements: ['ZDD plan ready and sample deployment done (prudeno-mfd)', '/api/health added for all tenants', 'Rollback plan is ready', 'Firebase distribution plan ready and sample deployment done (humfauji)'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 2', focus: 'Execution: ZDD & Firebase distribution', status: 'upcoming', leadTasks: ['Add ZDD actions for all tenants on Production and deploy', 'Automate firebase distribution for NSW and Prudeno'], achievements: ['Successful deployment on Production; EC2 shows traefik containers', 'Firebase distribution automated for NSW and Prudeno'], leadNotes: ['Add reflections and notes here...'] },
