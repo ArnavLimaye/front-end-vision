@@ -215,19 +215,18 @@ export const kpiData = {
         ]
       },
       {
-        title: '4. Leadership — Updated 10-Week Execution Plan (with Zero Downtime)',
+        title: '4. Leadership — Core Autonomy, Feedback & Velocity (10-Week Plan)',
         outcome: [
           'Web and Mobile operate independently',
           'Team delivers consistently without lead dependency',
           'Rework is minimal (<10%)',
-          'Zero downtime deployment is standard practice',
-          '2+ features delivered per developer per week',
+          'Feedback system institutionalized & driving continuous improvement',
+          'Development velocity increased via story points',
         ],
         pointers: [
-          'Week 1-3: Ownership Setup & Autonomy Kickoff (Deployment checklists)',
-          'Week 4-6: Independent Delivery & Speed (QA deployments, speed, standard scripts)',
-          'Week 7-8: Ownership Maturity & Cross-Domain (UAT deploys, cross-reviews)',
-          'Week 9-10: System Efficiency & Success State (Zero downtime in PROD)',
+          'Weeks 1-4: Foundation, Feedback Loops & KPI Alignment',
+          'Weeks 5-8: Velocity Optimization, Ownership Maturity & Measurement',
+          'Weeks 9-10: Complex Engineering Execution & Success State (<10% Lead Dependency)',
         ]
       }
     ]
@@ -384,44 +383,45 @@ export const kpiData = {
       id: 'kpi-4-leadership',
       title: 'KPI 4: Leadership',
       chatgptLink: 'https://chatgpt.com/share/69da5f0e-6a0c-83e8-8b2d-41c4dae48930',
-      goal: 'Build a self-sufficient frontend team with strong ownership (Web & Mobile) that independently delivers KPI 1, 2, 3 with zero downtime standard practice.',
-      description: 'Web Owner & Mobile Owner handle deployments. High execution speed, low rework, strong autonomy. Devs execute flawlessly from QA to PROD.',
+      goal: 'Build a self-sufficient frontend team with strong ownership that independently delivers and continuously improves through feedback cycles and velocity optimization.',
+      description: 'Web Owner & Mobile Owner handle deployments. High execution speed via story points, structured feedback loops, strong autonomy, and low rework.',
       metrics: [
         { name: 'Ownership Clarity', target: '100%', current: '100%' },
-        { name: 'Dev Autonomy', target: '90%', current: '60%' },
-        { name: 'Features/Dev/Week', target: '2+', current: '1' },
-        { name: 'Lead Dependency', target: '<10%', current: '80%' },
+        { name: 'Feedback System', target: 'Institutionalized', current: 'Pending' },
+        { name: 'Dev-led Solutions', target: '≥60%', current: 'Pending' },
+        { name: 'Independent Delivery', target: '≥50%', current: 'Pending' },
+        { name: 'Story Point Velocity', target: '+20%', current: 'Pending' },
         { name: 'Reopened Tickets', target: '<10%', current: '15%' },
-        { name: 'Zero Downtime', target: 'PROD', current: 'Pending' }
+        { name: 'Lead Dependency', target: '<10%', current: '80%' }
       ],
       executionPhases: [
-        { phase: 'Weeks 1-3: Setup & Alignment', desc: 'Detailed ownership boundaries, shift to ownership mindset, documented deployments.', status: 'current' },
-        { phase: 'Weeks 4-6: Independent Delivery', desc: 'Reduce technical lead dependency, speed stabilization, independent QA deployments.', status: 'upcoming' },
-        { phase: 'Weeks 7-10: Ownership Maturity & Success', desc: 'Cross domain contribution, System Efficiency, Zero Downtime validated in UAT/PROD.', status: 'upcoming' }
+        { phase: 'Weeks 1-4: Foundation & Feedback Loops', desc: 'Define ownership, establish feedback system, map KPIs, adopt story point estimation, and initiate first feedback cycles.', status: 'current' },
+        { phase: 'Weeks 5-8: Velocity & Maturity', desc: 'Track and optimize velocity, establish full ownership domain behavior, encourage cross-domain contributions, and measure feedback impact.', status: 'upcoming' },
+        { phase: 'Weeks 9-10: Advanced Execution & Success', desc: 'Handle complex engineering problems, finalize feedback systems, achieve <10% lead dependency and consistent predictable delivery.', status: 'upcoming' }
       ],
       leadNotes: ['Add reflections and notes here...'],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Ownership Setup', status: 'upcoming', leadTasks: ['Assign Mobile & Web Owner', 'Define responsibilities clearly', 'Align deployment flow (QA→UAT→PROD)'], achievements: ['Ownership clarity: 100%', 'Deployment flow documented'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 2', focus: 'Autonomy Kickoff', status: 'upcoming', leadTasks: ['Devs propose solutions first', 'Lead avoids direct answers', 'Assign deployment ownership'], achievements: ['% tasks with dev-proposed approach ≥ 60%', 'Deployment ownership clarity: 100%'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 3', focus: 'KPI Alignment', status: 'upcoming', leadTasks: ['Align all work to KPI 1, 2, 3', 'Define deployment checklist (health check, env)'], achievements: ['100% tasks mapped to KPIs', 'Deployment checklist created'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 4', focus: 'Independent Delivery Start', status: 'upcoming', leadTasks: ['Devs execute features end-to-end', 'Devs perform QA deployments independently'], achievements: ['Independent delivery ≥ 50%', 'QA deployments done without lead'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 5', focus: 'Speed Stabilization', status: 'upcoming', leadTasks: ['Improve task breakdown', 'Standardize deployment commands/scripts'], achievements: ['2+ features/dev/week', 'Deployment time reduced'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 6', focus: 'Quality Enforcement', status: 'upcoming', leadTasks: ['Strong pre-QA validation by devs', 'Validate health checks (/api/health)'], achievements: ['Reopened tickets <15%', 'No failed deployments in QA'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 7', focus: 'Ownership Maturity', status: 'upcoming', leadTasks: ['Web owner handles web decisions', 'Devs handle UAT deployments independently'], achievements: ['Lead intervention <30%', 'Successful UAT deployments without issues'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 8', focus: 'Cross-Domain Contribution', status: 'upcoming', leadTasks: ['Cross-domain contributions', 'Cross-review deployment configs (Web ↔ Mobile)'], achievements: ['1 cross-domain contribution/dev', 'No deployment inconsistencies'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 9', focus: 'System Efficiency', status: 'upcoming', leadTasks: ['Identify bottlenecks', 'Implement zero-downtime strategy (Rolling, Health-based)'], achievements: ['2+ features/dev/week stable', 'Reopened tickets <10%', 'Zero downtime validated in staging/UAT'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 10', focus: 'Leadership Success State', status: 'upcoming', leadTasks: ['Lead steps back from execution', 'Achieve zero downtime production deployment'], achievements: ['Lead dependency <10%', 'Reopened tickets <10%', 'Zero downtime achieved in production'], leadNotes: ['Add reflections and notes here...'] }
+        { week: 'Week 1', focus: 'Ownership + Feedback Foundation', status: 'in-progress', leadTasks: ['Assign Web & Mobile owners', 'Define responsibilities', 'Design feedback structure (Went well, Improve, Blockers, Suggestions)'], achievements: ['Ownership clarity: 100%', 'Feedback format finalized'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 2', focus: 'Autonomy + First Feedback Cycle', status: 'upcoming', leadTasks: ['Devs propose solutions', 'Conduct 1st feedback session'], achievements: ['≥60% tasks with dev-led approach', 'First feedback cycle completed', 'Improvement areas identified'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 3', focus: 'KPI Alignment + Velocity System + Quality', status: 'upcoming', leadTasks: ['Map all tasks to KPI 1, 2, 3', 'Start estimating in story points (not hours)', 'Improve task breakdown', 'Strong pre-QA validation'], achievements: ['100% KPI mapping', 'Story point estimation adopted', 'Reopened tickets trending <15%'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 4', focus: 'Independent Delivery + Feedback Cycle 2', status: 'upcoming', leadTasks: ['Devs execute features independently', 'Conduct 2nd feedback session', 'Implement improvements from feedback'], achievements: ['≥50% independent delivery', 'Second feedback cycle completed', 'Visible improvement from feedback'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 5', focus: 'Velocity Optimization (Team Level)', status: 'upcoming', leadTasks: ['Track team velocity in story points', 'Identify bottlenecks', 'Improve sprint planning'], achievements: ['Team velocity increases by 20%', 'More predictable sprint delivery'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 6', focus: 'Ownership Maturity', status: 'upcoming', leadTasks: ['Web owner handles all web decisions', 'Mobile owner handles all mobile decisions', 'Devs drive execution independently'], achievements: ['Lead intervention <30%', 'Strong ownership across domains'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 7', focus: 'Cross-Domain Contribution', status: 'upcoming', leadTasks: ['Cross-domain contributions', 'Apply learnings from feedback cycles'], achievements: ['1 cross-domain contribution/dev', 'Improved system understanding across team'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 8', focus: 'Feedback Impact + System Stability', status: 'upcoming', leadTasks: ['Evaluate impact of past feedback', 'Refine workflows'], achievements: ['Measurable improvements from feedback cycles', 'Stable delivery system'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 9', focus: 'Advanced Execution Capability', status: 'upcoming', leadTasks: ['Take up difficult tasks (Performance optimization, Complex flows)', 'Deliver complex tasks end-to-end'], achievements: ['Complex tasks delivered successfully', 'Team demonstrates high engineering maturity'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 10', focus: 'Leadership Maturity + System Completion', status: 'upcoming', leadTasks: ['Conduct final feedback cycle', 'Evaluate overall system maturity'], achievements: ['Lead dependency <10%', 'Reopened tickets <10%', 'Feedback system institutionalized', 'Consistent, predictable delivery achieved'], leadNotes: ['Add reflections and notes here...'] }
       ],
       impact: {
         sections: [
-          { title: '🚀 Business Impact', items: ['Faster feature delivery → 2x development speed', 'Faster onboarding → aligned with <1 day / <1 week tenant onboarding', 'Lower cost per tenant → no additional team scaling required', 'Enables scaling to 40–100+ tenants reliably'] },
-          { title: '⚙️ Engineering Impact', items: ['Strong ownership → faster, parallel execution', 'Low rework (<10%) → higher efficiency', 'Reduced Tech Lead dependency → better scalability', 'Consistent architecture enforcement → no system drift'] },
-          { title: '📱 Platform Impact', items: ['Config-driven multi-tenant system fully realized', 'Zero divergence across tenants (no branch chaos)', 'Zero-downtime deployments → stable releases', 'Consistent behavior across web and mobile'] },
-          { title: '🧪 QA Impact', items: ['<10% reopen rate → higher first-time quality', 'Reduced back-and-forth between QA and dev', 'Focus shifts to edge-case validation', 'Faster and more predictable QA cycles'] },
-          { title: '🧑‍💼 Team Impact', items: ['Developers become owners, not executors', 'Higher autonomy and decision-making ability', 'Reduced dependency on Tech Lead', 'More productive team without increasing size'] },
-          { title: '🧠 Strategic Impact', items: ['Frontend becomes a scalable growth engine', 'Enables smooth expansion to Tier B and Tier C clients', 'Supports long-term platform scalability', 'Foundation for adding teams without chaos'] }
+          { title: '🚀 Business Impact', items: ['Faster feature delivery → optimized development velocity', 'Consistent delivery → accurate sprint planning with story points', 'Lower cost per tenant → no additional team scaling required', 'Enables scaling reliably via independent execution'] },
+          { title: '⚙️ Engineering Impact', items: ['Institutionalized feedback → continuous system improvement', 'Low rework (<10%) → higher efficiency', 'Reduced Tech Lead dependency → better scalability', 'Cross-domain contributions → avoiding silos'] },
+          { title: '📱 Platform Impact', items: ['High engineering maturity handles complex flows and performance optimizations', 'Stable delivery system handles feature throughput predictably', 'Config-driven multi-tenant system fully realized'] },
+          { title: '🧪 QA Impact', items: ['<10% reopen rate → higher first-time quality', 'Strong pre-QA validation ensures cleaner staging transitions', 'Faster and more predictable QA cycles based on measured velocity'] },
+          { title: '🧑‍💼 Team Impact', items: ['Developers operate with high autonomy and execute end-to-end', 'Constructive feedback loop enhances team collaboration', 'Reduced dependency on Tech Lead', 'Silos broken through cross-domain collaboration'] },
+          { title: '🧠 Strategic Impact', items: ['Frontend becomes a scalable, self-improving technical function', 'Supports long-term platform scalability', 'Builds culture of continuous learning and data-driven improvement'] }
         ],
-        oneLine: 'Builds an autonomous, ownership-driven team that scales product, platform, and business without scaling leadership dependency.'
+        oneLine: 'Builds an autonomous, ownership-driven team that scales product, platform, and continuous improvement without scaling leadership dependency.'
       }
     }
   ],
