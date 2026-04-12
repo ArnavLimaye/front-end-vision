@@ -206,11 +206,12 @@ export const kpiData = {
           'Scalable multi-tenant mobile architecture',
         ],
         pointers: [
-          'Week 1-3: Deployment & Base Logging (Zero downtime, Traefik, ELK init)',
-          'Week 4-6: Mobile Monitoring & Web Perf (Firebase, Alerts, Speed)',
-          'Week 7-8: Standard CI/CD & Distribution (GitHub Actions, App Distribution)',
-          'Week 9-10: Mobile Architecture & CI/CD (Multi-tenant EAS, iOS TestFlight)',
-          'Week 11-12: Expansion & Readiness (Dashboards, Alerts, Final SOPs)',
+          'Week 1-2: Zero Downtime Deployment (ZDD) & Firebase App Distribution Execution',
+          'Week 3-4: API Logging, Crashlytics & ELK Stack Setup on Production',
+          'Week 5-7: Alerting Setup & Web Performance Optimization',
+          'Week 8: App Performance Optimization (Tab Loads < 3s)',
+          'Week 9-10: iOS Mobile Builds & TestFlight/App Store Distribution',
+          'Week 11-12: Frontend Logging Exploration & Slow Render Alerting',
         ]
       },
       {
@@ -337,34 +338,35 @@ export const kpiData = {
       goal: 'Establish a scalable and robust platform enabling full visibility, fast applications, automated pipelines, seamless distribution, and scalable mobile architecture.',
       description: 'Web = Execution Focus. Mobile = Research + Stabilization. Covers ELK Stack for web, Firebase for mobile, CI/CD foundations, and multi-tenant mobile architectural definitions.',
       metrics: [
-        { name: 'Zero Downtime', target: 'Verified', current: 'Pending' },
-        { name: 'ELK Stack / Logging', target: '100% APIs', current: 'Pending' },
-        { name: 'Mobile Crashlytics', target: 'Active', current: 'Pending' },
-        { name: 'Web Performance', target: '>20% Improv.', current: 'Pending' },
-        { name: 'CI/CD Pipelines (Web)', target: 'Stable', current: 'Pending' },
-        { name: 'Mobile Dist / EAS', target: 'Live', current: 'Pending' },
-        { name: 'Alerts & SOPs', target: 'Active', current: 'Pending' }
+        { name: 'ZDD & Firebase Dist.', target: 'Automated', current: 'In Progress' },
+        { name: 'API Logging & ELK', target: '100% Core APIs', current: 'Pending' },
+        { name: 'Alerting System', target: 'Active (Slack)', current: 'Pending' },
+        { name: 'Web Performance', target: 'Optimised (TTFB/FCP)', current: 'Pending' },
+        { name: 'App Performance', target: '< 3s load per tab', current: 'Pending' },
+        { name: 'iOS App Store', target: 'All Tenants Live', current: 'Pending' },
+        { name: 'Frontend Logging', target: 'Active & Alerting', current: 'Pending' }
       ],
       executionPhases: [
-        { phase: 'Weeks 1-3: Fundamentals', desc: 'Zero downtime deployments, log coverage, ELK setup.', status: 'current' },
-        { phase: 'Weeks 4-6: Monitoring & Perf', desc: 'Firebase setup, Slack alerting, web API/page performance optimization.', status: 'upcoming' },
-        { phase: 'Weeks 7-10: CI/CD & Mobile Scale', desc: 'GitHub Actions, Firebase App Dist, dynamic EAS architecture, TestFlight.', status: 'upcoming' },
-        { phase: 'Weeks 11-12: Readiness', desc: 'Extended observability, cross-platform stabilization, and SOP finalization.', status: 'upcoming' }
+        { phase: 'Weeks 1-2: ZDD & App Dist', desc: 'Zero downtime deployments and App Distribution via Firebase.', status: 'current' },
+        { phase: 'Weeks 3-5: Logging, ELK & Alerts', desc: 'JSON API logging, Crashlytics, ELK setup, and Slack alerting.', status: 'upcoming' },
+        { phase: 'Weeks 6-8: Performance Optimization', desc: 'Web and App performance optimizations (Tabs load < 3s).', status: 'upcoming' },
+        { phase: 'Weeks 9-10: iOS Mobile Builds', desc: 'GitHub Actions for iOS builds and TestFlight/App Store distribution.', status: 'upcoming' },
+        { phase: 'Weeks 11-12: Frontend Observability', desc: 'Frontend logging evaluation and slow rendering alerts.', status: 'upcoming' }
       ],
       leadNotes: ['Add reflections and notes here...'],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Zero Downtime Deployment', status: 'in-progress', leadTasks: ['Rolling deployment (Traefik+Docker)', 'Add /api/health endpoint', 'Enable rollback mechanism'], achievements: ['Zero failed requests during rollout', 'New container healthy before old stopped', 'Rollback executed within 10 mins'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 2', focus: 'Log Coverage & Visibility', status: 'upcoming', leadTasks: ['Structured API logging', 'Tenant-aware logs', 'Initial dashboards'], achievements: ['100% critical APIs emit structured logs', 'Logs visible for at least 2 tenants', 'Kibana dashboards show API latency/errors'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 3', focus: 'ELK Setup', status: 'upcoming', leadTasks: ['Deploy Elasticsearch, Logstash, Kibana', 'Connect log sources', 'Finalize schema'], achievements: ['Logs ingested from at least 3 sources', 'Structured logs visible in Kibana', '≥80% API routes logging correctly'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 4', focus: 'Mobile Monitoring Baseline', status: 'upcoming', leadTasks: ['Integrate Firebase Crashlytics', 'Performance Monitoring', 'Tenant+version tagging'], achievements: ['Crash reports visible in Firebase', 'At least 1 test crash recorded', 'Performance metrics visible'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 5', focus: 'Alerting Setup', status: 'upcoming', leadTasks: ['Configure ELK alerts', 'Slack integration', 'Define escalation process'], achievements: ['Alerts triggered correctly on test', 'Slack notifications within 1 minute', 'Alert thresholds documented'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 6', focus: 'Web Performance Optimization', status: 'upcoming', leadTasks: ['Optimize top APIs', 'Improve page load times', 'Caching improvements'], achievements: ['≥20% reduction in p95 latency', '≥20% improvement in page load', 'At least 2 heavy endpoints optimized'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 7', focus: 'CI/CD Standardization', status: 'upcoming', leadTasks: ['Standardize GitHub Actions', 'S3 artifact storage', 'Slack notifications'], achievements: ['Pipeline runs for at least 2 tenants', 'Build → artifact → deploy flow works', 'Slack notifications for all builds'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 8', focus: 'Distribution Setup', status: 'upcoming', leadTasks: ['Firebase App Distribution', 'Create tester groups', 'Automate builds'], achievements: ['Builds distributed within 10 minutes', 'At least 2 tester groups active', 'Artifacts stored with versioning'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 9', focus: 'Mobile Architecture Validation', status: 'upcoming', leadTasks: ['EAS multi-tenant POC', 'Dynamic app settings', 'Document architecture'], achievements: ['1 tenant app built with dynamic config', 'Bundle ID, app name, API validated', 'Architecture document completed'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 10', focus: 'Mobile CI/CD (Phase 2)', status: 'upcoming', leadTasks: ['Automate Android build/dist', 'iOS build via EAS', 'TestFlight integration'], achievements: ['Android build auto-distributed', 'iOS build on TestFlight', 'Build success rate = 100%'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 11', focus: 'Observability Expansion', status: 'upcoming', leadTasks: ['Extend ELK dashboards', 'Advanced alert rules', 'Mobile logs in ELK'], achievements: ['New dashboards include deploy visibility', 'At least 2 new alert types active', 'Mobile logs visible in ELK (if tracked)'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 12', focus: 'Stabilization & Readiness', status: 'upcoming', leadTasks: ['Validate full system flow', 'Finalize SOPs', 'Fix gaps'], achievements: ['End-to-end deploy-monitor flow works', 'Zero downtime deployment consistent', 'Alerts & distribution reliable', 'SOPs documented'], leadNotes: ['Add reflections and notes here...'] }
+        { week: 'Week 1', focus: 'ZDD & Firebase distribution planning', status: 'in-progress', leadTasks: ['Finalise ZDD process using Github Actions', 'Add /api/health endpoint for all tenants', 'Rollback plan ready', 'Standardize App Distribution using Firebase for any app'], achievements: ['ZDD plan ready and sample deployment done (prudeno-mfd)', '/api/health added for all tenants', 'Rollback plan is ready', 'Firebase distribution plan ready and sample deployment done (humfauji)'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 2', focus: 'Execution: ZDD & Firebase distribution', status: 'upcoming', leadTasks: ['Add ZDD actions for all tenants on Production and deploy', 'Automate firebase distribution for NSW and Prudeno'], achievements: ['Successful deployment on Production; EC2 shows traefik containers', 'Firebase distribution automated for NSW and Prudeno'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 3', focus: 'Log coverage & Visibility', status: 'upcoming', leadTasks: ['Decide log levels and json log for each level', 'JSON api logging using winston/bunyan on web apps (info, warn, error)', 'Document Crashlytics logging for mobile app API errors', 'App -> tenant + version tagging'], achievements: ['Logs logged for each api route; All tenants start logging properly', 'Crashlytics logging documented', 'Tenant and version tagging active'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 4', focus: 'ELK setup (Prioritize Production)', status: 'upcoming', leadTasks: ['Pull logs from 1 tenant web app and show on Kibana', 'Show other 3 tenants web app logs on Kibana', 'Explore how to monitor Front-end logs for performance monitoring'], achievements: ['Logs pulled and visualized on Kibana for all 4 tenants', 'Front-end log monitoring approach defined'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 5', focus: 'Alerting Setup', status: 'upcoming', leadTasks: ['Configure alerts for anomalies/errors', 'Set up Slack notifications for critical alerts'], achievements: ['Alerting successfully configured', 'Real-time notifications working for critical errors'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 6', focus: 'Web Performance Optimization', status: 'upcoming', leadTasks: ['Analyze slow rendering web pages', 'Optimize web performance bottlenecks'], achievements: ['Visible improvement in load times', 'Performance metrics captured'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 7', focus: 'Web Performance Optimization (continue)', status: 'upcoming', leadTasks: ['Continue optimizing heavy endpoints', 'Reduce page load times and network waterfall'], achievements: ['Sustained performance gains on web apps', 'Target TTFB and FCP metrics met'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 8', focus: 'App performance Optimization', status: 'upcoming', leadTasks: ['Improve loading time for tabs (especially data heavy)'], achievements: ['No tab takes more than 3 seconds to load'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 9', focus: 'Mobile iOS builds', status: 'upcoming', leadTasks: ['Github Action to build iOS app', 'Put 1 tenant on iOS app store', 'Document all the process (including TestFlight)'], achievements: ['iOS build automated via GitHub Actions', '1 tenant successfully submitted to iOS App Store', 'Documentation complete for iOS builds and TestFlight'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 10', focus: 'iOS App Expansion', status: 'upcoming', leadTasks: ['Put 1 more tenant on iOS app store', 'Update Firebase to create iOS apps for all tenants'], achievements: ['2nd tenant on iOS app store', 'Firebase correctly generating iOS apps for all tenants'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 11', focus: 'Frontend logging planning', status: 'upcoming', leadTasks: ['Explore Frontend logging (compare 2 tools, finalise 1)', 'Try frontend logging for 1 tenant\'s 5 slowest screens', 'Document process'], achievements: ['Frontend logging tool finalised', 'Logging successfully implemented for 5 slowest screens on 1 tenant', 'Process fully documented'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 12', focus: 'Execute Frontend logging & Alerts', status: 'upcoming', leadTasks: ['Add full fledged frontend logging for 1 web app', 'Add alerts for slow rendering pages'], achievements: ['Full fledged frontend logging active for 1 web app', 'Alerts successfully added for slow rendering pages'], leadNotes: ['Add reflections and notes here...'] }
       ],
       impact: {
         sections: [
