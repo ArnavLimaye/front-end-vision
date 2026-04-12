@@ -238,6 +238,7 @@ export const kpiData = {
       chatgptLink: 'https://chatgpt.com/share/69da5ccc-54d8-83e8-ad25-4712f2869b23',
       goal: 'Establish a unified monorepo for web + mobile apps. Web proves structure, Mobile proves system maturity. At every stage: Build → Deploy → Test → Proceed.',
       description: 'Guiding Principles: 1. Same tenant, same behavior. 2. Zero platform-specific bugs. 3. Zero duplication. 4. Shared Config, API, Validate across all apps.',
+      reviewCadence: 'Weekly with Leadership',
       metrics: [
         { name: 'Monorepo Setup (Web)', target: 'Completed', current: 'Pending' },
         { name: 'Deployment Pipeline', target: 'Stable', current: 'Pending' },
@@ -290,6 +291,7 @@ export const kpiData = {
       chatgptLink: 'https://chatgpt.com/share/69da5d1d-984c-83e8-8fc2-fe4171f451ad',
       goal: 'Complete end-to-end delivery and adoption of shared, themeable component library for web and mobile.',
       description: 'Zero duplication goal. Level 1 (Base UI/Crunch week), Level 2 (Forms/Data), Level 3 (Business). Leadership must enforce adoption as strictly as creation.',
+      reviewCadence: 'Weekly with Leadership',
       metrics: [
         { name: 'Foundation / Themes', target: 'Complete', current: 'Pending' },
         { name: 'L1 Built / Adopted', target: '100% / >50%', current: 'Pending' },
@@ -336,6 +338,7 @@ export const kpiData = {
       chatgptLink: 'https://chatgpt.com/share/69da5ee5-90a4-83e8-830c-0cf592dbf2f5',
       goal: 'Establish a scalable and robust platform enabling full visibility, fast applications, automated pipelines, seamless distribution, and scalable mobile architecture.',
       description: 'Web = Execution Focus. Mobile = Research + Stabilization. Covers ELK Stack for web, Firebase for mobile, CI/CD foundations, and multi-tenant mobile architectural definitions.',
+      reviewCadence: 'Weekly with Leadership',
       metrics: [
         { name: 'ZDD & Firebase Dist.', target: 'Automated', current: 'In Progress' },
         { name: 'API Logging & ELK', target: '100% Core APIs', current: 'Pending' },
@@ -385,6 +388,7 @@ export const kpiData = {
       chatgptLink: 'https://chatgpt.com/share/69da5f0e-6a0c-83e8-8b2d-41c4dae48930',
       goal: 'Build a self-sufficient frontend team with strong ownership that independently delivers and continuously improves through feedback cycles and velocity optimization.',
       description: 'Web Owner & Mobile Owner handle deployments. High execution speed via story points, structured feedback loops, strong autonomy, and low rework.',
+      reviewCadence: 'Weekly with Leadership',
       metrics: [
         { name: 'Ownership Clarity', target: '100%', current: '100%' },
         { name: 'Feedback System', target: 'Institutionalized', current: 'Pending' },

@@ -184,6 +184,13 @@ function KpiDetail({ kpiId }: { kpiId: string }) {
         <p className="text-sm text-gray-text leading-relaxed">
           <span className="font-semibold text-gray-header">📌 Description:</span> {data.description}
         </p>
+        {data.reviewCadence && (
+          <div className="mt-4 flex items-center">
+            <p className="text-sm text-primary-dark leading-relaxed bg-primary/10 inline-block px-3 py-1.5 rounded-lg border border-primary/20 font-medium tracking-wide">
+              <span className="font-bold text-primary mr-1">🔄 Review Cadence:</span> {data.reviewCadence}
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Metrics Row */}
