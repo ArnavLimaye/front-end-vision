@@ -6,6 +6,7 @@ import KpiTrackerPage from './components/KpiTrackerPage.tsx'
 export type ActiveSection =
   | 'overview' | 'environments' | 'multi-tenant' | 'app-architecture'
   | 'deployment' | 'security' | 'infrastructure' | 'monorepo'
+  | 'design-system' | 'observability'
   | 'kpi-overview' | 'kpi-1-standardization' | 'kpi-2-ui-platform' | 'kpi-3-reliability' | 'kpi-4-leadership'
 
 export default function App() {

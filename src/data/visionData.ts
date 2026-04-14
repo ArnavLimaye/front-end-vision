@@ -12,6 +12,8 @@ export const frontendVisionData = {
     { id: 'security', label: 'Security', icon: '🔒' },
     { id: 'infrastructure', label: 'Infrastructure', icon: '🖥️' },
     { id: 'monorepo', label: 'Monorepo', icon: '📦' },
+    { id: 'design-system', label: 'Design System', icon: '🎨' },
+    { id: 'observability', label: 'Observability', icon: '📡' },
   ],
   objectives: [
     { title: 'Scalability', desc: 'Support 40–100+ advisor firms without forking code' },
@@ -143,6 +145,173 @@ export const frontendVisionData = {
     { pkg: '@spring/design-tokens', desc: 'Color palette, spacing scale, typography — platform-agnostic', usedBy: 'ui-web + ui-mobile' },
     { pkg: '@spring/ui-web', desc: 'React components (TextInput, DataTable, SidePanel, etc.)', usedBy: 'advisor-web + client-web' },
     { pkg: '@spring/ui-mobile', desc: 'React Native components (Input, Card, Modal, etc.)', usedBy: 'advisor-mobile + client-mobile' },
+  ],
+  monorepoGuidingPrinciples: [
+    { title: 'Same tenant, same behavior', desc: 'A tenant configured on web must produce identical experience on mobile — same feature flags, same data, same layout logic.' },
+    { title: 'Zero platform-specific bugs', desc: 'Bugs that only appear on one platform are architectural failures. Shared Config and API packages eliminate the divergence.' },
+    { title: 'Zero duplication', desc: 'Every piece of config, type, or validation logic must live in exactly one package. Copy-paste is a red flag.' },
+    { title: 'Shared Config, API, Validate across all apps', desc: '@spring/config, @spring/api-client, and @spring/validation are consumed by all 4 apps — web and mobile alike.' },
+  ],
+  monorepoExecutionPhases: [
+    { phase: 'Phase 1: Foundation Build', weeks: 'Weeks 1–3', desc: 'Monorepo scaffolded with Turborepo. Advisor Web running from monorepo. Web CI/CD pipeline stable. Shared systems (Config, API, Validation) integrated.', status: 'current' },
+    { phase: 'Phase 2: Mobile Integration + Stabilization', weeks: 'Weeks 4–7', desc: 'Mobile apps migrated into monorepo. Android (EC2) and iOS (EAS) builds stable. Shared packages consumed across web + mobile. Same tenant → same behavior.', status: 'upcoming' },
+    { phase: 'Phase 3: Hardening & Confidence', weeks: 'Weeks 8–9', desc: 'Full regression across web + mobile. Build success rate 100%. Deployment failure rate 0%. Zero architectural inconsistencies.', status: 'upcoming' },
+    { phase: 'Phase 4: Integration Buffer', weeks: 'Weeks 10–11', desc: 'System stable under real tenant load. Component library integration begins. Final validation across all tenants.', status: 'upcoming' },
+  ],
+}
+
+// ============================================================
+// DESIGN SYSTEM DATA — mirrors KPI 2 (Component Library)
+// ============================================================
+
+export const designSystemData = {
+  adoptionGoals: [
+    { metric: 'Shared UI Coverage', target: '≥80%', desc: 'Of all rendered UI elements across all 4 apps' },
+    { metric: 'Duplicate Components', target: '0', desc: 'Zero components with identical logic in more than one place' },
+    { metric: 'L1 Coverage', target: '100% built, ≥50% adopted', desc: 'All base components built in crunch week (Wks 3–4)' },
+    { metric: 'L2 Coverage', target: '100% built, ≥70% forms', desc: 'All form/data/nav components replacing raw implementations' },
+    { metric: 'L3 Coverage', target: '5–8 components', desc: 'Business components deployed and used in ≥2 apps each' },
+  ],
+  componentLevels: [
+    {
+      level: 'L1',
+      title: 'Base UI Components',
+      color: 'blue',
+      buildWeeks: 'Weeks 3–4',
+      adoptionTarget: '≥50% screens',
+      desc: 'Primitive, theme-compliant components with zero business logic. Same API surface across web (React) and mobile (React Native).',
+      components: ['Button', 'Input', 'Textarea', 'Label', 'Select', 'Checkbox', 'Radio', 'Switch', 'DatePicker', 'Card', 'Modal', 'Drawer', 'Spinner', 'Toast'],
+    },
+    {
+      level: 'L2',
+      title: 'Forms, Data & Navigation',
+      color: 'amber',
+      buildWeeks: 'Weeks 5–7',
+      adoptionTarget: '≥70% forms, ≥60% data views',
+      desc: 'Composed from L1. Handle layout, data display, navigation structure, and form orchestration. Feature-flag aware.',
+      components: ['FormField', 'FormSection', 'ErrorMessage', 'AsyncSelect', 'FieldWrapper', 'DataTable', 'ListCard', 'Tabs', 'Accordion', 'Pagination', 'EmptyState', 'SectionHeader', 'PageHeader'],
+    },
+    {
+      level: 'L3',
+      title: 'Business Components',
+      color: 'emerald',
+      buildWeeks: 'Weeks 8–11',
+      adoptionTarget: '5–8 components, used in ≥2 apps',
+      desc: 'Domain-aware, cross-app reusable. No tenant-specific logic — tenant behavior flows in via config and feature flags only.',
+      components: ['OTPInput', 'AddressForm', 'ProfileSection', 'KYCSection', 'InvestmentCard'],
+    },
+  ],
+  themeArchitecture: {
+    flow: [
+      { step: 'Tenant Config', desc: 'client-configs.ts provides primaryColor, firmName, logoPath per tenant — the single source of truth.' },
+      { step: 'ThemeProvider (Web)', desc: 'Injects CSS custom properties onto document.documentElement at runtime, scoped per tenant.' },
+      { step: 'Design Tokens', desc: '@spring/design-tokens — color palette, spacing scale, typography. Platform-agnostic; consumed by both web and mobile packages.' },
+      { step: 'CSS Custom Props (Web)', desc: '--color-primary, --color-accent etc. consumed by Tailwind config and all shared web components.' },
+      { step: 'NativeWind / Gluestack (Mobile)', desc: 'Theme injected via React context; design tokens map to NativeWind classes and Gluestack theme config.' },
+    ],
+  },
+  timeline: [
+    { label: 'Wks 1–2', title: 'Foundation & Theme System', detail: 'Design tokens setup, ThemeProvider (web), theme injection (mobile). 2 tenants running with different themes, 0 hardcoded colors.' },
+    { label: 'Wks 3–4', title: 'L1 Build & Adoption (Crunch)', detail: '100% L1 components built in a focused sprint. ≥50% screen adoption across ≥5 key screens per platform.' },
+    { label: 'Wks 5–7', title: 'L2 Build & Adoption', detail: 'Forms, Data, Navigation, Structure components. ≥70% of forms use FormField system. ≥60% data views use shared components.' },
+    { label: 'Wks 8–11', title: 'L3 Build + Hardening', detail: 'OTPInput → ProfileSection → KYCSection → InvestmentCard. ≥80% shared UI. 0 duplicates. 100% L1 & L2 documented.' },
+  ],
+}
+
+// ============================================================
+// OBSERVABILITY DATA — mirrors KPI 3 (Platform Observability)
+// ============================================================
+
+export const observabilityData = {
+  zddPipeline: [
+    { icon: '👨‍💻', step: 'Developer Pushes', desc: 'Push to main or manual tag triggers the GitHub Actions workflow for the target tenant.' },
+    { icon: '🔄', step: 'Build & Test', desc: 'Lint → Tests → Docker image build → Push to GHCR/ECR. All must pass before deploy step begins.' },
+    { icon: '🏥', step: 'Traefik Health Gate', desc: 'New container must return HTTP 200 on GET /api/health before Traefik shifts any traffic to it.' },
+    { icon: '🔀', step: 'Rolling Swap', desc: 'Traefik atomically shifts traffic to the new container. Old container stops only after health gate passes.' },
+    { icon: '🔙', step: 'Automatic Rollback', desc: 'If /api/health fails within 60s → Traefik keeps old container live, new container is stopped, Slack alert fires immediately.' },
+  ],
+  healthCheckSpec: `# /api/health endpoint contract
+GET /api/health → 200 OK
+{ "status": "ok", "tenant": "<NEXT_PUBLIC_CLIENT_ID>", "version": "<APP_VERSION>" }
+
+# Traefik docker-compose labels for health gate:
+traefik.http.services.advisor.loadbalancer.healthcheck.path=/api/health
+traefik.http.services.advisor.loadbalancer.healthcheck.interval=10s
+traefik.http.services.advisor.loadbalancer.healthcheck.timeout=5s`,
+  loggingArchitecture: [
+    {
+      platform: 'Web (Next.js BFF)',
+      icon: '🌐',
+      tool: 'Winston / Bunyan',
+      format: 'Structured JSON',
+      levels: ['info', 'warn', 'error'],
+      detail: 'All API routes emit JSON logs with tenant, version, route, duration, and HTTP status code. Each entry tagged with tenant + app version for Kibana filtering.',
+    },
+    {
+      platform: 'Mobile (React Native)',
+      icon: '📱',
+      tool: 'Firebase Crashlytics',
+      format: 'Crash reports + custom logs',
+      levels: ['crash', 'non-fatal', 'custom'],
+      detail: 'Crashlytics captures crashes and non-fatal errors. Custom log calls tag tenant + app version for dashboard filtering. Process fully documented for team.',
+    },
+    {
+      platform: 'ELK Stack (Web)',
+      icon: '📊',
+      tool: 'Elasticsearch + Logstash + Kibana',
+      format: 'Kibana dashboards per tenant',
+      levels: ['aggregated'],
+      detail: 'Logs pulled from all web app containers. Kibana dashboards show per-tenant error rates, API latency, and anomaly spikes. Priority: Production first.',
+    },
+  ],
+  alertingRules: [
+    { trigger: 'Error rate spike', threshold: '>5 errors/min for any tenant', channel: 'Slack #engineering', severity: 'critical' },
+    { trigger: 'API route failure', threshold: 'HTTP 5xx on /api/* for any tenant', channel: 'Slack #engineering', severity: 'critical' },
+    { trigger: 'Slow rendering page', threshold: 'FCP > 3s for 3 consecutive requests', channel: 'Slack #frontend-perf', severity: 'warning' },
+    { trigger: 'Mobile crash surge', threshold: '>2 distinct crash signatures in 30 min', channel: 'Slack #mobile-alerts', severity: 'critical' },
+  ],
+  performanceTargets: [
+    { platform: 'Web', metric: 'TTFB', target: '< 200ms', detail: 'Time to First Byte from Next.js BFF — measured via Kibana API latency dashboard.' },
+    { platform: 'Web', metric: 'FCP', target: '< 1.8s', detail: 'First Contentful Paint — tracked via Lighthouse CI in GitHub Actions.' },
+    { platform: 'Web', metric: 'API Response (p95)', target: '< 500ms', detail: 'BFF-to-Frappe round-trip for core endpoints measured at p95 percentile.' },
+    { platform: 'Mobile', metric: 'Tab Load', target: '< 3s', detail: 'Any tab with data fetching — measured from tap to visible data render.' },
+    { platform: 'Mobile', metric: 'App Cold Start', target: '< 4s', detail: 'From launch icon tap to interactive home screen — benchmarked per tenant.' },
+  ],
+  appDistribution: [
+    {
+      platform: 'Android',
+      icon: '🤖',
+      tool: 'Firebase App Distribution',
+      trigger: 'GitHub Actions (self-hosted EC2)',
+      detail: 'Per-tenant AAB built on EC2 runner. Firebase distributes to QA/UAT testers. Slack notification sent on success with download link.',
+    },
+    {
+      platform: 'iOS (Testers)',
+      icon: '🍎',
+      tool: 'TestFlight',
+      trigger: 'GitHub Actions + EAS (macos-latest)',
+      detail: 'EAS builds IPA per tenant. Uploaded to TestFlight for UAT sign-off. Per-tenant Apple Connect account used for distribution.',
+    },
+    {
+      platform: 'iOS (Production)',
+      icon: '🏪',
+      tool: 'App Store',
+      trigger: 'Manual submit after TestFlight sign-off',
+      detail: 'TestFlight UAT sign-off gates the App Store submission. Target: 1 tenant per week rollout cadence across all active iOS tenants.',
+    },
+  ],
+  frontendObservability: {
+    status: 'Planned — Weeks 11–12',
+    approach: 'Evaluate 2 frontend logging tools and finalize 1. Pilot on the 5 slowest screens of 1 tenant web app. Add alerts for slow rendering pages. Full instrumentation follows in Week 12.',
+    candidates: ['Sentry (Frontend SDK)', 'Datadog RUM'],
+    criteria: ['React / Next.js native support', 'Custom performance mark API', 'Per-tenant tagging', 'Slack alerting integration'],
+  },
+  executionTimeline: [
+    { label: 'Wks 1–2', title: 'ZDD & Firebase Distribution', detail: '/api/health endpoint on all tenants, rolling swap via Traefik, Firebase app distribution automated for Android.' },
+    { label: 'Wks 3–5', title: 'Logging, ELK & Alerting', detail: 'JSON Winston logs on all web API routes. Crashlytics logging documented for mobile. ELK stack set up with Kibana dashboards. Slack alerting live.' },
+    { label: 'Wks 6–8', title: 'Performance Optimization', detail: 'Web: TTFB and FCP targets met. Mobile: no tab exceeds 3s load time. Bottlenecks identified via Kibana and Lighthouse CI.' },
+    { label: 'Wks 9–10', title: 'iOS Builds & App Store', detail: 'GitHub Actions automates iOS builds via EAS. First tenant on App Store. Second tenant follows. Full process documented.' },
+    { label: 'Wks 11–12', title: 'Frontend Observability', detail: 'Tool evaluated and selected. Slow render alerts configured. Full frontend logging active for 1 web app.' },
   ],
 }
 
@@ -444,6 +613,8 @@ export const navItems = [
       { id: 'security', icon: '🔒', label: 'Security' },
       { id: 'infrastructure', icon: '🖥️', label: 'Infrastructure' },
       { id: 'monorepo', icon: '📦', label: 'Monorepo' },
+      { id: 'design-system', icon: '🎨', label: 'Design System' },
+      { id: 'observability', icon: '📡', label: 'Observability' },
     ],
   },
   {

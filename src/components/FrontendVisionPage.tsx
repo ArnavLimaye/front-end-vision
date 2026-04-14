@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import type { ReactNode } from 'react'
 import type { ActiveSection } from '../App'
-import { frontendVisionData, navItems } from '../data/visionData'
+import { frontendVisionData, navItems, designSystemData, observabilityData } from '../data/visionData'
 
 const d = frontendVisionData
+const ds = designSystemData
+const ob = observabilityData
 
 interface Props { activeSection: ActiveSection; onTabChange: (s: ActiveSection) => void }
 
@@ -82,6 +84,8 @@ export default function FrontendVisionPage({ activeSection, onTabChange }: Props
         {activeSection === 'security' && <SecurityTab />}
         {activeSection === 'infrastructure' && <InfraTab />}
         {activeSection === 'monorepo' && <MonorepoTab />}
+        {activeSection === 'design-system' && <DesignSystemTab />}
+        {activeSection === 'observability' && <ObservabilityTab />}
       </div>
     </div>
   )
@@ -574,6 +578,45 @@ function MonorepoTab() {
       </Card>
 
       <Card>
+        <CardTitle>4 Guiding Principles</CardTitle>
+        <CardSubtitle>Review Cadence: Weekly with Leadership</CardSubtitle>
+        <div className="mt-4 space-y-3">
+          {d.monorepoGuidingPrinciples.map((p, i) => (
+            <div key={i} className="flex gap-3 items-start px-4 py-3.5 border border-border-secondary rounded-xl bg-bg-primary hover:border-primary hover:bg-primary/5 transition-all duration-200">
+              <span className="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
+              <div>
+                <p className="text-sm font-semibold text-text-primary">{p.title}</p>
+                <p className="text-sm text-gray-text mt-0.5 leading-relaxed">{p.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card>
+        <CardTitle>4 Execution Phases</CardTitle>
+        <div className="flex flex-col gap-3 mt-4">
+          {d.monorepoExecutionPhases.map((phase, i) => (
+            <div key={i} className={`flex items-start gap-4 p-4 rounded-xl border ${
+              phase.status === 'current' ? 'bg-primary/5 border-primary/30 shadow-sm' : 'bg-bg-secondary border-border-secondary/50'
+            }`}>
+              <div className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold ${
+                phase.status === 'current' ? 'bg-primary text-white' : 'bg-gray-300 text-gray-500'
+              }`}>
+                {i + 1}
+              </div>
+              <div>
+                <p className={`text-sm font-bold ${phase.status === 'current' ? 'text-primary-dark' : 'text-text-primary'}`}>
+                  {phase.phase} <span className="font-normal text-gray-header ml-1">({phase.weeks})</span>
+                </p>
+                <p className="text-xs text-gray-text mt-1 leading-relaxed">{phase.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card>
         <CardTitle>Shared Packages</CardTitle>
         <table className="w-full text-sm mt-4">
           <thead>
@@ -595,6 +638,9 @@ function MonorepoTab() {
 
       <Card>
         <CardTitle>Migration Path</CardTitle>
+        <Callout type="info" className="mt-3">
+          <strong>Non-Negotiable Rule:</strong> Build → Deploy → Test → Then Proceed. No phase begins until the previous phase's gate criteria are met.
+        </Callout>
         <ol className="mt-3 space-y-2.5">
           {[
             'Create new monorepo with Turborepo scaffold',
@@ -609,6 +655,267 @@ function MonorepoTab() {
             </li>
           ))}
         </ol>
+      </Card>
+    </>
+  )
+}
+
+/* ─────────────────── DESIGN SYSTEM ─────────────────── */
+function DesignSystemTab() {
+  return (
+    <>
+      <Callout type="info">
+        <strong>KPI 2 Alignment:</strong> This tab formalizes the Component Library &amp; Design System vision. Goal: ≥80% shared UI coverage, 0 duplicates, unified theme across web + mobile.
+      </Callout>
+
+      <Card>
+        <CardTitle>Adoption Goals</CardTitle>
+        <CardSubtitle>Review Cadence: Weekly with Leadership</CardSubtitle>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4">
+          {ds.adoptionGoals.map((g, i) => (
+            <div key={i} className="border border-border-secondary rounded-xl p-4 bg-bg-primary hover:border-primary hover:bg-primary/5 transition-all duration-200">
+              <p className="text-lg font-extrabold text-primary tracking-tight">{g.target}</p>
+              <p className="text-sm font-semibold text-text-primary mt-0.5">{g.metric}</p>
+              <p className="text-xs text-gray-text mt-1 leading-relaxed">{g.desc}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card>
+        <CardTitle>Three-Level Component Hierarchy</CardTitle>
+        <CardSubtitle>Same component API across React (web) and React Native (mobile)</CardSubtitle>
+        <div className="mt-4 space-y-4">
+          {ds.componentLevels.map((level, i) => {
+            const headerColorMap: Record<string, string> = {
+              blue: 'bg-blue-50 border-blue-200 text-blue-700',
+              amber: 'bg-amber-50 border-amber-200 text-amber-700',
+              emerald: 'bg-emerald-50 border-emerald-200 text-emerald-700',
+            }
+            const headerColor = headerColorMap[level.color] || ''
+            return (
+              <div key={i} className="border border-border-secondary rounded-xl overflow-hidden">
+                <div className={`flex items-center justify-between px-5 py-3 border-b border-border-secondary ${headerColor}`}>
+                  <div className="flex items-center gap-3">
+                    <span className="font-bold text-sm">{level.level}:</span>
+                    <span className="font-semibold text-sm">{level.title}</span>
+                  </div>
+                  <div className="text-right text-xs opacity-80">
+                    <span className="font-mono">{level.buildWeeks}</span>
+                    <span className="ml-2">· Target: {level.adoptionTarget}</span>
+                  </div>
+                </div>
+                <div className="px-5 py-4 bg-bg-primary">
+                  <p className="text-sm text-gray-text leading-relaxed mb-3">{level.desc}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {level.components.map(c => (
+                      <span key={c} className="text-xs px-2.5 py-1 rounded bg-primary/5 text-primary font-mono border border-primary/20">{c}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </Card>
+
+      <Card>
+        <CardTitle>Theme System Architecture</CardTitle>
+        <CardSubtitle>ThemeProvider → Design Tokens → CSS Custom Properties → NativeWind</CardSubtitle>
+        <div className="relative mt-4">
+          <div className="absolute left-[22px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-primary to-primary/20" />
+          <div className="space-y-1">
+            {ds.themeArchitecture.flow.map((item, i) => (
+              <div key={i} className="flex gap-4 items-start py-2.5 group">
+                <div className="w-11 h-11 rounded-full bg-bg-primary border-2 border-border-secondary group-hover:border-primary group-hover:bg-primary/5 flex items-center justify-center text-sm font-bold text-primary flex-shrink-0 relative z-10 transition-all duration-200">
+                  {i + 1}
+                </div>
+                <div className="pt-2">
+                  <p className="text-sm font-semibold text-text-primary">{item.step}</p>
+                  <p className="text-sm text-gray-text mt-0.5 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Card>
+
+      <Card>
+        <CardTitle>11-Week Build Timeline</CardTitle>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+          {ds.timeline.map((t, i) => (
+            <div key={i} className="border border-border-secondary rounded-xl p-4 bg-bg-secondary hover:border-primary hover:bg-primary/5 transition-all duration-200">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs font-bold bg-primary text-white px-2 py-0.5 rounded font-mono">{t.label}</span>
+                <p className="text-sm font-semibold text-text-primary">{t.title}</p>
+              </div>
+              <p className="text-xs text-gray-text leading-relaxed">{t.detail}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+    </>
+  )
+}
+
+/* ─────────────────── OBSERVABILITY ─────────────────── */
+function ObservabilityTab() {
+  return (
+    <>
+      <Callout type="info">
+        <strong>KPI 3 Alignment:</strong> Zero Downtime Deployment, full observability (ELK + Crashlytics), performance targets, and automated mobile distribution across iOS and Android.
+      </Callout>
+
+      <Card>
+        <CardTitle>Zero Downtime Deployment (ZDD)</CardTitle>
+        <CardSubtitle>Traefik health-check → rolling swap → automatic rollback</CardSubtitle>
+        <div className="relative mt-4">
+          <div className="absolute left-[22px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-primary to-primary/20" />
+          <div className="space-y-1">
+            {ob.zddPipeline.map((item, i) => (
+              <div key={i} className="flex gap-4 items-start py-2.5 group">
+                <div className="w-11 h-11 rounded-full bg-bg-primary border-2 border-border-secondary group-hover:border-primary group-hover:bg-primary/5 flex items-center justify-center text-lg flex-shrink-0 relative z-10 transition-all duration-200">
+                  {item.icon}
+                </div>
+                <div className="pt-2">
+                  <p className="text-sm font-semibold text-text-primary">{item.step}</p>
+                  <p className="text-sm text-gray-text mt-0.5 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="code-block mt-4">{ob.healthCheckSpec}</div>
+      </Card>
+
+      <Card>
+        <CardTitle>Logging Architecture</CardTitle>
+        <CardSubtitle>Web: JSON structured logs via Winston/Bunyan → ELK · Mobile: Crashlytics</CardSubtitle>
+        <div className="mt-4 space-y-3">
+          {ob.loggingArchitecture.map((log, i) => (
+            <div key={i} className="border border-border-secondary rounded-xl overflow-hidden">
+              <div className="flex items-center gap-3 px-5 py-3 bg-bg-secondary border-b border-border-secondary">
+                <span className="text-xl">{log.icon}</span>
+                <div className="flex-1">
+                  <p className="text-sm font-semibold text-text-primary">{log.platform}</p>
+                  <p className="text-xs text-gray-header font-mono">{log.tool} · {log.format}</p>
+                </div>
+                <div className="flex gap-1">
+                  {log.levels.map(l => (
+                    <span key={l} className="text-xs px-2 py-0.5 rounded bg-primary/5 text-primary border border-primary/20 font-mono">{l}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="px-5 py-3 bg-bg-primary">
+                <p className="text-sm text-gray-text leading-relaxed">{log.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card>
+        <CardTitle>Alerting Rules</CardTitle>
+        <CardSubtitle>Slack integration — real-time critical error and anomaly notifications</CardSubtitle>
+        <table className="w-full text-sm mt-4">
+          <thead>
+            <tr className="bg-bg-secondary border-b border-border-secondary text-gray-header text-xs uppercase tracking-wide">
+              <Th>Trigger</Th><Th>Threshold</Th><Th>Channel</Th><Th>Severity</Th>
+            </tr>
+          </thead>
+          <tbody>
+            {ob.alertingRules.map((rule, i) => (
+              <tr key={i} className="border-b border-border-secondary/50 hover:bg-bg-secondary transition-colors">
+                <Td bold>{rule.trigger}</Td>
+                <Td mono>{rule.threshold}</Td>
+                <Td mono>{rule.channel}</Td>
+                <Td>
+                  <span className={`text-xs px-2 py-0.5 rounded font-bold ${rule.severity === 'critical' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-700'}`}>
+                    {rule.severity}
+                  </span>
+                </Td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Card>
+
+      <Card>
+        <CardTitle>Performance Targets</CardTitle>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+          {ob.performanceTargets.map((t, i) => (
+            <div key={i} className="border border-border-secondary rounded-xl p-4 bg-bg-primary hover:border-primary hover:bg-primary/5 transition-all duration-200">
+              <div className="flex items-center justify-between mb-1">
+                <span className={`text-xs font-bold px-2 py-0.5 rounded ${t.platform === 'Web' ? 'bg-blue-100 text-blue-700' : 'bg-purple-100 text-purple-700'}`}>{t.platform}</span>
+                <span className="text-xs font-mono text-gray-header">{t.metric}</span>
+              </div>
+              <p className="text-lg font-extrabold text-primary tracking-tight">{t.target}</p>
+              <p className="text-xs text-gray-text mt-1 leading-relaxed">{t.detail}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card>
+        <CardTitle>App Distribution Pipeline</CardTitle>
+        <CardSubtitle>Android via Firebase · iOS via TestFlight + App Store</CardSubtitle>
+        <div className="mt-4 space-y-3">
+          {ob.appDistribution.map((dist, i) => (
+            <div key={i} className="flex gap-4 items-start px-4 py-3.5 border border-border-secondary rounded-xl bg-bg-primary hover:border-primary hover:bg-primary/5 transition-all duration-200">
+              <span className="text-2xl flex-shrink-0">{dist.icon}</span>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <p className="text-sm font-semibold text-text-primary">{dist.platform}</p>
+                  <span className="text-xs px-2 py-0.5 rounded bg-primary/5 text-primary border border-primary/20 font-mono">{dist.tool}</span>
+                </div>
+                <p className="text-xs text-gray-header mb-1">Trigger: {dist.trigger}</p>
+                <p className="text-sm text-gray-text leading-relaxed">{dist.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card>
+        <CardTitle>Frontend Observability</CardTitle>
+        <CardSubtitle>{ob.frontendObservability.status}</CardSubtitle>
+        <p className="text-sm text-gray-text leading-relaxed mt-3 mb-4">{ob.frontendObservability.approach}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p className="text-xs font-semibold text-gray-header uppercase tracking-wide mb-2">Tool Candidates</p>
+            <div className="flex flex-col gap-2">
+              {ob.frontendObservability.candidates.map(c => (
+                <span key={c} className="text-xs px-3 py-1.5 rounded-lg bg-primary/5 text-primary border border-primary/20 font-mono">{c}</span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-gray-header uppercase tracking-wide mb-2">Evaluation Criteria</p>
+            <ul className="space-y-1.5">
+              {ob.frontendObservability.criteria.map(c => (
+                <li key={c} className="flex items-center gap-2 text-xs text-gray-text">
+                  <span className="text-primary flex-shrink-0">✓</span>
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Card>
+
+      <Card>
+        <CardTitle>12-Week Execution Timeline</CardTitle>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+          {ob.executionTimeline.map((t, i) => (
+            <div key={i} className="border border-border-secondary rounded-xl p-4 bg-bg-secondary hover:border-primary hover:bg-primary/5 transition-all duration-200">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs font-bold bg-primary text-white px-2 py-0.5 rounded font-mono">{t.label}</span>
+                <p className="text-sm font-semibold text-text-primary">{t.title}</p>
+              </div>
+              <p className="text-xs text-gray-text leading-relaxed">{t.detail}</p>
+            </div>
+          ))}
+        </div>
       </Card>
     </>
   )
