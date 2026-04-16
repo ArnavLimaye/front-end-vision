@@ -153,10 +153,10 @@ export const frontendVisionData = {
     { title: 'Shared Config, API, Validate across all apps', desc: '@spring/config, @spring/api-client, and @spring/validation are consumed by all 4 apps — web and mobile alike.' },
   ],
   monorepoExecutionPhases: [
-    { phase: 'Phase 1: Foundation Build', weeks: 'Weeks 1–3', desc: 'Monorepo scaffolded with Turborepo. Advisor Web running from monorepo. Web CI/CD pipeline stable. Shared systems (Config, API, Validation) integrated.', status: 'current' },
-    { phase: 'Phase 2: Mobile Integration + Stabilization', weeks: 'Weeks 4–7', desc: 'Mobile apps migrated into monorepo. Android (EC2) and iOS (EAS) builds stable. Shared packages consumed across web + mobile. Same tenant → same behavior.', status: 'upcoming' },
-    { phase: 'Phase 3: Hardening & Confidence', weeks: 'Weeks 8–9', desc: 'Full regression across web + mobile. Build success rate 100%. Deployment failure rate 0%. Zero architectural inconsistencies.', status: 'upcoming' },
-    { phase: 'Phase 4: Integration Buffer', weeks: 'Weeks 10–11', desc: 'System stable under real tenant load. Component library integration begins. Final validation across all tenants.', status: 'upcoming' },
+    { phase: 'Phase 1: Monorepo Adoption', weeks: 'Weeks 1–2', desc: 'Adopt monorepo immediately while supporting existing backend constraints via tenant branches.', status: 'current' },
+    { phase: 'Phase 2: Shared System Extraction', weeks: 'Weeks 3–6', desc: 'Reduce tenant differences by introducing shared frontend systems (API layer, feature flags, config-driven UI).', status: 'upcoming' },
+    { phase: 'Phase 3: Advisor Mobile App Build', weeks: 'Weeks 7–8', desc: 'Build and integrate advisor mobile app using stabilized shared systems.', status: 'upcoming' },
+    { phase: 'Phase 4: Unified Multi-Tenant Architecture', weeks: 'Weeks 9–11', desc: 'Move from branch-based tenants to single branch, config-driven multi-tenancy.', status: 'upcoming' },
   ],
 }
 
@@ -331,18 +331,18 @@ export const kpiData = {
       {
         title: '1. Single Monorepo for Multi-Tenant Frontend (11-Week Plan)',
         outcome: [
-          'All frontend apps (Web + Mobile) in a single monorepo',
-          'Shared core systems (Config, API, Validation)',
-          'Web CI/CD stable, Android builds stable, iOS builds stable',
-          'Zero platform-specific bugs and zero duplication',
+          'Monorepo is single source of development (tenant branches initially)',
+          'Shared systems (API, flags, config) drastically reduce divergence',
+          'Advisor mobile app functional and sharing core systems',
+          'Single branch serves all tenants via config-driven architecture',
         ],
         pointers: [
-          'Phase 1: Foundation Build (Weeks 1–3, Compressed)',
-          'Phase 2: Mobile Integration + Stabilization (Weeks 4–7)',
-          'Phase 3: Hardening & Confidence (Weeks 8–9)',
-          'Phase 4: Integration Buffer (Weeks 10–11)',
-          'Non-Negotiable Rule: Build → Deploy → Test → Then Proceed',
-          'Key Insight: Web proves structure, Mobile proves system maturity',
+          'Phase 1: Monorepo Adoption with Tenant Branches (Weeks 1–2)',
+          'Phase 2: Shared System Extraction (Weeks 3–6)',
+          'Phase 3: Advisor Mobile App Build (Weeks 7–8)',
+          'Phase 4: Unified Multi-Tenant Architecture (Weeks 9–11)',
+          'Key Insight: Immediate value by W2, System maturity by W6, True SaaS state by W11.',
+          'One-Line Summary: Adopt fast with branches, stabilize with systems, expand with mobile, and unify into a single config-driven platform.',
         ]
       },
       {
@@ -405,53 +405,49 @@ export const kpiData = {
       id: 'kpi-1-standardization',
       title: 'KPI 1: Single Monorepo for Multi-Tenant Frontend',
       chatgptLink: 'https://chatgpt.com/share/69da5ccc-54d8-83e8-ad25-4712f2869b23',
-      goal: 'Establish a unified monorepo for web + mobile apps. Web proves structure, Mobile proves system maturity. At every stage: Build → Deploy → Test → Proceed.',
-      description: 'Guiding Principles: 1. Same tenant, same behavior. 2. Zero platform-specific bugs. 3. Zero duplication. 4. Shared Config, API, Validate across all apps.',
+      goal: 'Adopt fast with branches, stabilize with systems, expand with mobile, and unify into a single config-driven platform.',
+      description: 'Phased evolution to a unified multi-tenant architecture: start with tenant branches to adopt monorepo quickly, build shared systems, expand to mobile, and finally unify all tenants into a single config-driven branch.',
       reviewCadence: 'Weekly with Leadership',
       metrics: [
-        { name: 'Monorepo Setup (Web)', target: 'Completed', current: 'Pending' },
-        { name: 'Deployment Pipeline', target: 'Stable', current: 'Pending' },
-        { name: 'Shared Systems (Web)', target: 'Integrated', current: 'Pending' },
-        { name: 'Mobile in Monorepo', target: 'Working', current: 'Pending' },
-        { name: 'Android Build (EC2)', target: 'Stable', current: 'Pending' },
-        { name: 'iOS Build (EAS)', target: 'Stable', current: 'Pending' },
-        { name: 'Shared Systems (Mobile)', target: 'Integrated', current: 'Pending' },
-        { name: 'Zero Platform Bugs', target: 'Achieved', current: 'Pending' },
-        { name: 'Zero Tenant Bugs', target: 'Achieved', current: 'Pending' },
-        { name: 'Zero Duplication', target: 'Achieved', current: 'Pending' }
+        { name: 'Monorepo Setup', target: 'Completed', current: 'Pending' },
+        { name: 'Tenant Branches', target: 'Live', current: 'Pending' },
+        { name: 'Shared API/Config', target: 'Extracted', current: 'Pending' },
+        { name: 'Advisor Mobile App', target: 'Functional', current: 'Pending' },
+        { name: 'Single Branch Achieved', target: 'Yes', current: 'Pending' },
+        { name: 'Zero Tenant-specific Code', target: 'Achieved', current: 'Pending' }
       ],
       executionPhases: [
-        { phase: 'Phase 1: Foundation Build (Weeks 1–3, Compressed)', desc: 'Monorepo supports Advisor Web App, Deployment Pipeline, Shared Systems (Config, API, Validation), and Initial Mobile Readiness.', status: 'current' },
-        { phase: 'Phase 2: Mobile Integration + Stabilization (Weeks 4–7)', desc: 'Mobile apps inside monorepo, builds working (Android + iOS), shared systems used across web + mobile.', status: 'upcoming' },
-        { phase: 'Phase 3: Hardening & Confidence (Weeks 8–9)', desc: 'Fix mobile build issues, standardize config + API usage, full regression testing (web + mobile).', status: 'upcoming' },
-        { phase: 'Phase 4: Integration Buffer (Weeks 10–11)', desc: 'System stable under real usage, component library integrated safely across web + mobile.', status: 'upcoming' }
+        { phase: 'Phase 1: Monorepo Adoption with Tenant Branches (Weeks 1–2)', desc: 'Adopt monorepo immediately while supporting existing backend constraints via tenant branches.', status: 'current' },
+        { phase: 'Phase 2: Shared System Extraction (Weeks 3–6)', desc: 'Reduce tenant differences by introducing shared frontend systems: API layer, feature flags, conditional visibility, and config-driven UI.', status: 'upcoming' },
+        { phase: 'Phase 3: Advisor Mobile App Build (Weeks 7–8)', desc: 'Build and integrate advisor mobile app using stabilized shared systems (config, API, validation).', status: 'upcoming' },
+        { phase: 'Phase 4: Unified Multi-Tenant Architecture (Weeks 9–11)', desc: 'Move from branch-based tenants to a single branch, config-driven multi-tenancy. Eliminate all tenant branches.', status: 'upcoming' }
       ],
       leadNotes: [
-        'how to handle updated changes at least for first 2 weeks which will be done on separate repos (because currently we do not have a monorepo)'
+        'No new tenant-specific code in Phase 2. Convert all differences into config or shared systems.'
       ],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Monorepo Setup', status: 'in-progress', leadTasks: ['Local regression testing', 'Basic flows (login, dashboard)'], achievements: ['App runs via monorepo (pnpm dev)', 'Zero runtime errors introduced', 'No code refactor done'], leadNotes: ['Focus on web portal and get everything related to different tenants into 1 branch - use variants for wherever tenant specific changes are present -> Create plan for different changes every day and implement it and then whatever issues come, talk to Nikhil or AI to find solution', 'Do not move anything to the specific packages.', 'Pick onboarding from ria-advent, data-collection from Prudeno, financial plan from NSW, asset-internals from prudeno'] },
-        { week: 'Week 2', focus: 'Deployment Validation (Hard Gate)', status: 'upcoming', leadTasks: ['Production smoke test (/api/health)', 'Tenant-level validation'], achievements: ['CI pipeline success rate = 100%', 'Deployment works without errors', 'No UI/API behavior change'], leadNotes: ['Stabilise monorepo for advisor portals', 'Move brand config and feature flags to separate config', 'Deploy to NSW and Prudeno using monorepo', 'Check how we can inject env variables at the build time'] },
-        { week: 'Week 3', focus: 'Shared Systems + Multi-App', status: 'upcoming', leadTasks: ['Cross-app regression (advisor + client web)', 'Tenant switching validation'], achievements: ['Single client-configs.ts (no duplicates)', '100% API types from shared package', '0 validation logic inside components', 'Client web app runs from monorepo'], leadNotes: ['Separate out reusable packages (APIs, Client configs, conditional validations etc.)', 'Check build', 'Check how can we inject package name etc required for playstore on build time so that we can have same repo for different clients', 'If week 2 work is done and successfully deployed in previous week, then deploy to advent as well.'] },
-        { week: 'Week 4', focus: 'Mobile Migration', status: 'upcoming', leadTasks: ['App launch success', 'Basic navigation flows'], achievements: ['Mobile app runs via Expo inside monorepo', 'No broken imports or env issues'], leadNotes: ['Get mobile apps copied to monorepo', 'Again get everything related to different tenants into 1 branch - use variants for wherever tenant specific changes are present -> Create plan for different changes every day and implement it and then whatever issues come, talk to Nikhil or AI to find solution', 'Get AA from NSW', 'Check how can we inject package name etc required for playstore on build time so that we can have'] },
-        { week: 'Week 5', focus: 'Mobile Deployment', status: 'upcoming', leadTasks: ['Installable builds tested', 'API connectivity verified'], achievements: ['Android build success (100%)', 'iOS build success (EAS)', 'No build-time failures'], leadNotes: ['Stabilise monorepo for client apps', 'Deploy to NSW and Prudeno using monorepo', 'Check how we can inject env variables at the build time alongwith feature-flag config and other configs'] },
-        { week: 'Week 6', focus: 'Shared Systems on Mobile', status: 'upcoming', leadTasks: ['Cross-platform behavior parity (web vs mobile)'], achievements: ['100% config from shared package', '100% API calls use shared client', 'No duplicated validation logic'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 7', focus: 'Cross-App Integration', status: 'upcoming', leadTasks: ['Cross-platform regression testing', 'Same tenant → same behavior'], achievements: ['3 apps running (Advisor, Client, Mobile)', 'No duplication across apps'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 8', focus: 'Consistency Audit', status: 'upcoming', leadTasks: ['Full regression (web + mobile)'], achievements: ['0 duplicate config/API/validation', '100% shared package usage'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 9', focus: 'Monorepo Hardening', status: 'upcoming', leadTasks: ['Failure scenario testing', 'Tenant edge-case validation'], achievements: ['Build success rate = 100%', 'Deployment failure rate = 0%', 'No architectural inconsistencies'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 10', focus: 'Component Integration (Initial)', status: 'upcoming', leadTasks: ['UI regression testing', 'Cross-screen validation'], achievements: ['30–50% UI replaced with shared components', 'No UI regressions'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 11', focus: 'Final Validation', status: 'upcoming', leadTasks: ['Full end-to-end regression', 'Performance sanity'], achievements: ['0 duplicate components', '0 regressions', 'Stable across all tenants'], leadNotes: ['Add reflections and notes here...'] }
+        { week: 'Week 1', focus: 'Setup monorepo & Tenant Branches', status: 'in-progress', leadTasks: ['Setup monorepo', 'Move advisor web app', 'Create tenant branches'], achievements: ['Monorepo initialized', 'Tenant branches ready'], leadNotes: ['Focus on moving code without breaking existing functionality'] },
+        { week: 'Week 2', focus: 'CI/CD & Deployment', status: 'upcoming', leadTasks: ['Shift daily development to monorepo', 'Setup CI/CD per tenant branch', 'Deploy all tenants via new repo', 'Phase out old repo'], achievements: ['Monorepo is single source of development', 'All tenants deployed via monorepo branches', 'Old repo fully deprecated'], leadNotes: ['Ensure zero downtime in shift'] },
+        { week: 'Week 3', focus: 'API Abstraction Layer', status: 'upcoming', leadTasks: ['Design common API layer', 'Extract API differences into shared module'], achievements: ['API differences abstracted'], leadNotes: ['Reduce divergence in data fetching logic'] },
+        { week: 'Week 4', focus: 'Feature Flag System', status: 'upcoming', leadTasks: ['Create Feature flag system', 'Implement gates for tenant specific features'], achievements: ['Feature flags replace hardcoded conditions'], leadNotes: ['No hardcoded tenant checks in UI'] },
+        { week: 'Week 5', focus: 'Conditional Visibility & Config', status: 'upcoming', leadTasks: ['Abstract conditional visibility', 'Start config-driven UI behavior logic'], achievements: ['UI differences managed externally'], leadNotes: ['All new differences must go through config'] },
+        { week: 'Week 6', focus: 'Shared Systems Stabilization', status: 'upcoming', leadTasks: ['Cross-tenant regression testing', 'Validate feature flags & config correctness'], achievements: ['Significant reduction in branch divergence', 'Config correctness tested'], leadNotes: ['Leadership Focus: No new tenant-specific code'] },
+        { week: 'Week 7', focus: 'Advisor Mobile App Init', status: 'upcoming', leadTasks: ['Develop advisor mobile app inside monorepo', 'Hook up shared config and API layer'], achievements: ['Mobile app builds in monorepo'], leadNotes: ['Reuse web foundation'] },
+        { week: 'Week 8', focus: 'Mobile Core Systems & Flows', status: 'upcoming', leadTasks: ['Integrate validation system', 'Build mobile app flows (login, client view, tasks)', 'Cross-platform consistency tests'], achievements: ['Advisor mobile app functional', 'Consistent behavior web vs mobile'], leadNotes: ['Ensure parity between web and mobile experiences'] },
+        { week: 'Week 9', focus: 'Single Branch Transition', status: 'upcoming', leadTasks: ['Eliminate tenant branches', 'Introduce client-configs.ts'], achievements: ['Single branch serves multiple tenants'], leadNotes: ['Huge milestone: branch elimination'] },
+        { week: 'Week 10', focus: 'Fully Config-Driven Architecture', status: 'upcoming', leadTasks: ['Introduce feature flags & section/field configs globally', 'Ensure zero tenant-specific code in UI chunks'], achievements: ['Zero tenant-specific code remaining'], leadNotes: ['Rigorous review to ensure no `if (tenant === X)`'] },
+        { week: 'Week 11', focus: 'Unified Architecture Validation', status: 'upcoming', leadTasks: ['Full regression across all tenants', 'Config-driven behavior validation', 'Ensure no tenant bugs'], achievements: ['Single branch serves all tenants', 'Fully config-driven architecture confirmed'], leadNotes: ['Deployment and true SaaS state achieved'] }
       ],
       impact: {
         sections: [
-          { title: '🚀 Business Impact', items: ['Faster onboarding → <1 day per tenant', 'Lower cost per tenant → near zero marginal cost', 'Enables scaling to 50–100+ tenants'] },
-          { title: '⚙️ Engineering Impact', items: ['No duplication → faster development', 'Fix once, fix everywhere → fewer bugs', 'Higher release confidence'] },
-          { title: '🧪 QA Impact', items: ['Single test covers all tenants → no repetitive testing', 'Fewer regressions due to unified codebase', 'Faster testing cycles → quicker releases', 'Easier cross-platform validation (web + mobile)'] },
+          { title: '🚀 Business Impact', items: ['Immediate value delivered via branches (Week 2)', 'Platform expansion to mobile built on solid base (Week 8)', 'True SaaS state achieved (Week 11) for infinite scalability'] },
+          { title: '⚙️ Engineering Impact', items: ['Zero tenant divergence via config', 'Single codebase for all firms', 'System maturity eliminates duplication (Week 6)'] },
+          { title: '🧪 QA Impact', items: ['Cross-tenant testing simplified', 'Unified regression suits', 'Fully config-driven behavior validation'] },
           { title: '📱 Platform Impact', items: ['Consistent behavior across web + mobile', 'Standardized, reliable deployments'] },
           { title: '🧑‍💼 Team Impact', items: ['Shift to platform thinking', 'Higher productivity with same team', 'Reduced tech debt'] },
           { title: '🧠 Strategic Impact', items: ['Moves from custom builds → true SaaS', 'Foundation for all future scalability'] }
         ],
-        oneLine: 'Turns engineering and QA from bottlenecks into scalable growth engines.'
+        oneLine: 'Adopt fast with branches, stabilize with systems, expand with mobile, and unify into a single config-driven platform.'
       },
     },
     {
