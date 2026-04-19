@@ -426,7 +426,23 @@ export const kpiData = {
         'No new tenant-specific code in Phase 2. Convert all differences into config or shared systems.'
       ],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Setup monorepo & Tenant Branches', status: 'in-progress', leadTasks: ['Setup monorepo', 'Move advisor web app', 'Create tenant branches'], achievements: ['Monorepo initialized', 'Tenant branches ready'], leadNotes: ['Focus on moving code without breaking existing functionality'] },
+        { 
+          week: 'Week 1', 
+          focus: 'Setup monorepo & Tenant Branches', 
+          status: 'completed', 
+          targetOutcomes: [
+            { title: 'Monorepo initialized', status: 'completed', link: 'https://github.com/Spring-money/manthan-os-monorepo' },
+            { title: 'Tenant branches ready', status: 'completed', notes: 'Done on local. Dev tested. (Commits till Friday 17 April are present in the respective branches)' }
+          ],
+          leadNotes: ['Minor branding changes are remaining.'], 
+          additionalOutcomes: [
+            'Dev tested App as well as Client Portals for respected tenants. App for prudeno and nswealth and Client portal for advent',
+            'Started creating tenant-manthan -> which is a super set of the all the features that we have across tenants'
+          ],
+          actionItems: [
+            'In some tenants, borders are not shown as existing borders. Will be picked up in April week 4 sprint.'
+          ]
+        },
         { week: 'Week 2', focus: 'CI/CD & Deployment', status: 'upcoming', leadTasks: ['Shift daily development to monorepo', 'Setup CI/CD per tenant branch', 'Deploy all tenants via new repo', 'Phase out old repo'], achievements: ['Monorepo is single source of development', 'All tenants deployed via monorepo branches', 'Old repo fully deprecated'], leadNotes: ['Ensure zero downtime in shift'] },
         { week: 'Week 3', focus: 'API Abstraction Layer', status: 'upcoming', leadTasks: ['Design common API layer', 'Extract API differences into shared module'], achievements: ['API differences abstracted'], leadNotes: ['Reduce divergence in data fetching logic'] },
         { week: 'Week 4', focus: 'Feature Flag System', status: 'upcoming', leadTasks: ['Create Feature flag system', 'Implement gates for tenant specific features'], achievements: ['Feature flags replace hardcoded conditions'], leadNotes: ['No hardcoded tenant checks in UI'] },
@@ -473,7 +489,20 @@ export const kpiData = {
       ],
       leadNotes: ['Add reflections and notes here...'],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Foundation Setup', status: 'upcoming', leadTasks: ['Setup design-tokens, ui-web, ui-mobile', 'Configure shadcn + NativeWind + Gluestack', 'Define design tokens'], achievements: ['Packages created & consumed', 'Tokens available in both', 'No UI outside shared'], leadNotes: ['Add reflections and notes here...'] },
+        { 
+          week: 'Week 1', 
+          focus: 'Foundation Setup', 
+          status: 'completed', 
+          targetOutcomes: [
+            { title: 'Separate shared packages created and consumed in apps', status: 'completed' },
+            { title: 'Configure shadcn (web) + NativeWind + Gluestack (mobile)', status: 'completed' },
+            { title: 'Tokens available in both platforms', status: 'completed' }
+          ],
+          additionalOutcomes: [
+            'Use getTheme in apps to swith theme per tenant -> Done',
+            'All tenants working with their own themes based on the environment variable -> Done'
+          ]
+        },
         { week: 'Week 2', focus: 'Theme System', status: 'upcoming', leadTasks: ['Implement ThemeProvider (web)', 'Implement theme injection (mobile)', 'Connect tenant config → tokens'], achievements: ['2 tenants working with different themes', 'Theme changes reflect instantly', '0 hardcoded colors'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 3', focus: 'Build ALL Level 1 Components', status: 'upcoming', leadTasks: ['Button, Input, Textarea, Label', 'Select, Checkbox, Radio, Switch, DatePicker', 'Card, Modal, Drawer, Spinner, Toast'], achievements: ['100% Level 1 components built', 'Same API across platforms', 'All states supported', 'Theme-compliant'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 4', focus: 'Adopt Level 1 Components', status: 'upcoming', leadTasks: ['Replace base components in apps', 'Use Level 1 in real screens'], achievements: ['≥50% screens using L1', '5 key screens migrated/platform', 'No new base components created', 'Duplicate components removed'], leadNotes: ['Add reflections and notes here...'] },
@@ -522,7 +551,23 @@ export const kpiData = {
       ],
       leadNotes: ['Pre-requisite -> Finalise API response schema for Error as well as success response'],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'ZDD & Firebase distribution planning', status: 'in-progress', leadTasks: ['Finalise ZDD process using Github Actions', 'Add /api/health endpoint for all tenants', 'Rollback plan ready', 'Standardize App Distribution using Firebase for any app'], achievements: ['ZDD plan ready and sample deployment done (prudeno-mfd)', '/api/health added for all tenants', 'Rollback plan is ready', 'Firebase distribution plan ready and sample deployment done (humfauji)'], leadNotes: ['Add reflections and notes here...'] },
+        { 
+          week: 'Week 1', 
+          focus: 'ZDD & Firebase distribution planning', 
+          status: 'completed', 
+          targetOutcomes: [
+            { title: 'ZDD plan ready and sample deployment done (prudeno-mfd)', status: 'completed' },
+            { title: '/api/health added for all tenants', status: 'completed' },
+            { title: 'Rollback plan is ready', status: 'completed' },
+            { title: 'Firebase distribution plan ready and sample deployment done (humfauji)', status: 'completed' }
+          ],
+          leadNotes: [
+            'Decided to wait on this in second week as we will shift existing repos to use monorepo and use above ZDD strategy in monorepo directly instead of doing it on existing deployments'
+          ],
+          additionalOutcomes: [
+            'Firebase distriubtion setup for all Humfauji, NSW and Prudeno'
+          ]
+        },
         { week: 'Week 2', focus: 'Execution: ZDD & Firebase distribution', status: 'upcoming', leadTasks: ['Add ZDD actions for all tenants on Production and deploy', 'Automate firebase distribution for NSW and Prudeno'], achievements: ['Successful deployment on Production; EC2 shows traefik containers', 'Firebase distribution automated for NSW and Prudeno'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 3', focus: 'Log coverage & Visibility', status: 'upcoming', leadTasks: ['Decide log levels and json log for each level', 'JSON api logging using winston/bunyan on web apps (info, warn, error)', 'Document Crashlytics logging for mobile app API errors', 'App -> tenant + version tagging'], achievements: ['Logs logged for each api route; All tenants start logging properly', 'Crashlytics logging documented', 'Tenant and version tagging active'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 4', focus: 'ELK setup (Prioritize Production)', status: 'upcoming', leadTasks: ['Pull logs from 1 tenant web app and show on Kibana', 'Show other 3 tenants web app logs on Kibana', 'Explore how to monitor Front-end logs for performance monitoring'], achievements: ['Logs pulled and visualized on Kibana for all 4 tenants', 'Front-end log monitoring approach defined'], leadNotes: ['Add reflections and notes here...'] },
@@ -570,7 +615,17 @@ export const kpiData = {
       ],
       leadNotes: ['Add reflections and notes here...'],
       weeklyProgress: [
-        { week: 'Week 1', focus: 'Ownership + Feedback Foundation', status: 'in-progress', leadTasks: ['Assign Web & Mobile owners', 'Define responsibilities', 'Design feedback structure (Went well, Improve, Blockers, Suggestions)'], achievements: ['Ownership clarity: 100%', 'Feedback format finalized'], leadNotes: ['Add reflections and notes here...'] },
+        { 
+          week: 'Week 1', 
+          focus: 'Ownership + Feedback Foundation', 
+          status: 'in-progress', 
+          targetOutcomes: [
+            { title: 'Ownership Clarity', status: 'completed', link: 'https://docs.google.com/document/d/1mNB-02vPLXp7cM-DkBx2fKOkofXATn9E2dORvgxbQM0/edit?usp=sharing', notes: 'Doc created and shared with front-end team.' },
+            { title: 'Feedback format finalized', status: 'in-progress', link: 'https://docs.google.com/document/d/1AGrH4RDcGZcPpucCFP_bPZGH6cAJ29-DEYIwVFHbg2U/edit?usp=sharing', reason: 'Need help from Nikhil to not make format generic but to have a specific format so that feedback sessions become much more useful.' }
+          ],
+          leadNotes: ['Need help from Nikhil in finalising Feedback format'], 
+          actionItems: ['Schedule feedback sessions with the whole team.']
+        },
         { week: 'Week 2', focus: 'Autonomy + First Feedback Cycle', status: 'upcoming', leadTasks: ['Devs propose solutions', 'Conduct 1st feedback session'], achievements: ['≥60% tasks with dev-led approach', 'First feedback cycle completed', 'Improvement areas identified'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 3', focus: 'KPI Alignment + Velocity System + Quality', status: 'upcoming', leadTasks: ['Map all tasks to KPI 1, 2, 3', 'Start estimating in story points (not hours)', 'Improve task breakdown', 'Strong pre-QA validation'], achievements: ['100% KPI mapping', 'Story point estimation adopted', 'Reopened tickets trending <15%'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 4', focus: 'Independent Delivery + Feedback Cycle 2', status: 'upcoming', leadTasks: ['Devs execute features independently', 'Conduct 2nd feedback session', 'Implement improvements from feedback'], achievements: ['≥50% independent delivery', 'Second feedback cycle completed', 'Visible improvement from feedback'], leadNotes: ['Add reflections and notes here...'] },

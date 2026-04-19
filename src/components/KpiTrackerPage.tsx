@@ -9,7 +9,7 @@ interface Props {
 
 export default function KpiTrackerPage({ activeSection, onTabChange }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [viewMode, setViewMode] = useState<'kpi' | 'weekly'>('kpi')
+  const [viewMode, setViewMode] = useState<'kpi' | 'weekly-plan' | 'weekly-progress'>('kpi')
   const currentTabLabel = navItems.find(n => n.id === 'kpi-tracker')?.children.find(c => c.id === activeSection)?.label || 'Overview'
 
   return (
@@ -37,7 +37,7 @@ export default function KpiTrackerPage({ activeSection, onTabChange }: Props) {
       </div>
 
       {/* View Mode Toggle */}
-      <div className="flex bg-bg-secondary w-fit rounded-lg p-1 mb-6 border border-border-secondary shadow-sm mb-6">
+      <div className="flex bg-bg-secondary w-fit rounded-lg p-1.5 mb-6 border border-border-secondary shadow-sm">
         <button
           onClick={() => setViewMode('kpi')}
           className={`px-4 py-1.5 text-sm font-semibold rounded-md transition-all ${viewMode === 'kpi' ? 'bg-primary text-white shadow' : 'text-gray-text hover:text-text-primary'}`}
@@ -45,15 +45,23 @@ export default function KpiTrackerPage({ activeSection, onTabChange }: Props) {
           KPI View
         </button>
         <button
-          onClick={() => setViewMode('weekly')}
-          className={`px-4 py-1.5 text-sm font-semibold rounded-md transition-all ${viewMode === 'weekly' ? 'bg-primary text-white shadow' : 'text-gray-text hover:text-text-primary'}`}
+          onClick={() => setViewMode('weekly-plan')}
+          className={`px-4 py-1.5 text-sm font-semibold rounded-md transition-all ${viewMode === 'weekly-plan' ? 'bg-primary text-white shadow' : 'text-gray-text hover:text-text-primary'}`}
         >
-          Weekly View
+          Weekly Planning
+        </button>
+        <button
+          onClick={() => setViewMode('weekly-progress')}
+          className={`px-4 py-1.5 text-sm font-semibold rounded-md transition-all ${viewMode === 'weekly-progress' ? 'bg-primary text-white shadow' : 'text-gray-text hover:text-text-primary'}`}
+        >
+          Weekly Progress
         </button>
       </div>
 
-      {viewMode === 'weekly' ? (
-        <WeeklyOverview />
+      {viewMode === 'weekly-plan' ? (
+        <WeeklyOverview mode="plan" />
+      ) : viewMode === 'weekly-progress' ? (
+        <WeeklyOverview mode="progress" />
       ) : (
         <>
           {/* Mobile Tab menu */}
@@ -287,47 +295,7 @@ function KpiDetail({ kpiId }: { kpiId: string }) {
                 </div>
                 <span className={`text-[10px] font-bold uppercase tracking-widest ${wp.status === 'completed' ? 'text-primary-dark' : wp.status === 'in-progress' ? 'text-amber-600' : 'text-gray-header'}`}>{wp.status}</span>
               </div>
-              <div className="p-5 grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">👨‍💻 Lead Responsibilities</h4>
-                  <ul className="space-y-2">
-                    {wp.leadTasks?.map((t: string, j: number) => (
-                      <li key={j} className="text-sm text-text-secondary flex items-start gap-2 leading-relaxed font-medium">
-                        <span className="text-primary mt-0.5">•</span>
-                        <span>{t}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                {wp.achievements && wp.achievements.length > 0 && (
-                  <div className="md:border-l md:border-border-secondary/40 md:pl-6">
-                    <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">✅ Key Outcomes</h4>
-                    <ul className="space-y-2">
-                      {wp.achievements.map((a: string, j: number) => (
-                        <li key={j} className="text-sm text-emerald-700/90 flex items-start gap-2 leading-relaxed font-medium">
-                          <span className="text-emerald-500 mt-0.5">✓</span>
-                          <span>{a}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-              
-              {/* Weekly Lead Notes */}
-              {wp.leadNotes && wp.leadNotes.length > 0 && (
-                <div className="bg-amber-50/50 border-t border-amber-100 p-4">
-                  <h4 className="text-[10px] font-extrabold text-amber-700 uppercase tracking-wider mb-2">📝 Lead Reflections</h4>
-                  <ul className="space-y-1.5 focus:outline-none">
-                    {wp.leadNotes.map((note: string, j: number) => (
-                      <li key={j} className="text-xs text-amber-900/80 flex items-start gap-1.5 leading-relaxed font-medium">
-                        <span className="text-amber-500 mt-[3px] text-[8px]">▶</span>
-                        <span>{note}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              <WeeklyProgressContent wp={wp} />
             </div>
           ))}
         </div>
@@ -336,7 +304,7 @@ function KpiDetail({ kpiId }: { kpiId: string }) {
   )
 }
 
-function WeeklyOverview() {
+function WeeklyOverview({ mode }: { mode: 'plan' | 'progress' }) {
   const allWeeks = useMemo(() => {
     const maxWeeks = Math.max(...k.kpis.map(kpi => kpi.weeklyProgress.length));
     const weeksMap = [];
@@ -352,6 +320,9 @@ function WeeklyOverview() {
                 leadTasks: wp.leadTasks || [],
                 achievements: wp.achievements || [],
                 leadNotes: wp.leadNotes || [],
+                targetOutcomes: (wp as any).targetOutcomes || null,
+                additionalOutcomes: (wp as any).additionalOutcomes || [],
+                actionItems: (wp as any).actionItems || [],
             };
         }).filter(Boolean);
 
@@ -370,62 +341,185 @@ function WeeklyOverview() {
       {allWeeks.map((week) => (
          <div key={week.weekNumber} className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card">
             <h3 className="text-xl font-bold text-text-primary tracking-tight mb-6 mt-2 border-b border-border-secondary/40 pb-4">
-              📅 Week {week.weekNumber} Snapshot
+              📅 Week {week.weekNumber} Snapshot ({mode === 'plan' ? 'Planning' : 'Progress'})
             </h3>
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                {week.kpiTasks.map((t: any, i: number) => (
-                  <div key={i} className="bg-bg-secondary/30 border border-border-secondary rounded-xl p-5 shadow-sm hover:shadow-card transition-shadow flex flex-col">
-                     <h4 className="text-sm font-extrabold text-primary line-clamp-2 md:line-clamp-1">{t.kpiTitle}</h4>
-                     <div className="flex items-center gap-2 mb-5 mt-3 flex-wrap">
-                       <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest ${t.status === 'completed' ? 'bg-primary text-white' : t.status === 'in-progress' ? 'bg-amber-100 text-amber-800' : 'bg-bg-secondary border border-border-secondary text-gray-text'}`}>{t.status}</span>
-                       <span className="text-xs font-semibold text-text-primary">{t.focus}</span>
+                  <div key={i} className="bg-bg-secondary/30 border border-border-secondary rounded-xl shadow-sm hover:shadow-card transition-shadow flex flex-col overflow-hidden">
+                     <div className="p-5 pb-0">
+                       <h4 className="text-sm font-extrabold text-primary line-clamp-2 md:line-clamp-1">{t.kpiTitle}</h4>
+                       <div className="flex items-center gap-2 mt-3 flex-wrap">
+                         {mode === 'progress' && <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest ${t.status === 'completed' ? 'bg-primary text-white' : t.status === 'in-progress' ? 'bg-amber-100 text-amber-800' : 'bg-bg-secondary border border-border-secondary text-gray-text'}`}>{t.status}</span>}
+                         <span className="text-xs font-semibold text-text-primary">{t.focus}</span>
+                       </div>
                      </div>
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
-                        <div>
-                           <h5 className="text-[10px] uppercase font-bold text-gray-header tracking-wider mb-3">Tasks</h5>
-                           <ul className="space-y-2">
-                             {t.leadTasks.map((task: string, idx: number) => (
-                               <li key={idx} className="text-xs text-text-secondary flex items-start gap-2 leading-relaxed font-medium">
-                                 <span className="text-primary/70 mt-0.5">•</span>
-                                 <span>{task}</span>
-                               </li>
-                             ))}
-                           </ul>
-                        </div>
-                        {t.achievements.length > 0 && (
-                          <div className="md:border-l md:border-border-secondary/40 md:pl-6">
-                             <h5 className="text-[10px] uppercase font-bold text-gray-header tracking-wider mb-3">Outcomes</h5>
-                             <ul className="space-y-2">
-                               {t.achievements.map((ach: string, idx: number) => (
-                                 <li key={idx} className="text-xs text-emerald-700/90 flex items-start gap-2 leading-relaxed font-medium">
-                                   <span className="text-emerald-500 mt-[1px]">✓</span>
-                                   <span>{ach}</span>
-                                 </li>
-                               ))}
-                             </ul>
-                          </div>
-                        )}
-                     </div>
-                      
-                      {/* Weekly Lead Notes (Snapshot) */}
-                      {t.leadNotes && t.leadNotes.length > 0 && (
-                        <div className="bg-amber-50/50 border-t border-amber-100/60 mt-5 p-4 -mx-5 -mb-5 rounded-b-xl">
-                          <h5 className="text-[10px] uppercase font-bold text-amber-700 tracking-wider mb-2">📝 Lead Reflections</h5>
-                          <ul className="space-y-1.5">
-                            {t.leadNotes.map((note: string, idx: number) => (
-                              <li key={idx} className="text-xs text-amber-900/80 flex items-start gap-1.5 leading-relaxed font-medium">
-                                <span className="text-amber-500 mt-[3px] text-[8px]">▶</span>
-                                <span>{note}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
+                     <WeeklyProgressContent wp={t} mode={mode} />
                    </div>
                 ))}
              </div>
          </div>
       ))}
+    </div>
+  )
+}
+
+function TargetOutcomeItem({ item, displayMode = 'both' }: { item: any; displayMode?: 'plan' | 'progress' | 'both' }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const hasContent = item.notes || item.reason || item.link;
+
+  const isPlanOnly = displayMode === 'plan';
+
+  const statusConfig = {
+    'completed': { icon: '✅', color: 'text-emerald-600', bg: 'bg-emerald-50', border: 'border-emerald-200' },
+    'incomplete': { icon: '⚠️', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' },
+    'blocked': { icon: '🚫', color: 'text-red-500', bg: 'bg-red-50', border: 'border-red-200' },
+    'in-progress': { icon: '⏳', color: 'text-blue-500', bg: 'bg-blue-50', border: 'border-blue-200' },
+  } as any;
+
+  const conf = isPlanOnly 
+    ? { icon: '🎯', color: 'text-primary-dark', bg: 'bg-primary/5', border: 'border-primary/20' }
+    : (statusConfig[item.status] || { icon: '○', color: 'text-gray-500', bg: 'bg-gray-50', border: 'border-gray-200' });
+
+
+  return (
+    <div className={`border ${conf.border} rounded-xl overflow-hidden transition-all duration-200 ${hasContent && isOpen ? 'shadow-sm' : ''}`}>
+      <div 
+        className={`p-3 ${conf.bg} flex items-center justify-between ${hasContent ? 'cursor-pointer hover:opacity-90' : ''}`}
+        onClick={() => hasContent && setIsOpen(!isOpen)}
+        title={item.status !== 'completed' ? item.reason : ''}
+      >
+        <div className="flex items-center gap-3">
+          <span className={`text-sm ${conf.color}`}>{conf.icon}</span>
+          <span className="text-sm font-semibold text-text-primary">{item.title}</span>
+        </div>
+        {hasContent && (
+          <span className={`text-xs font-bold transition-transform duration-200 ${isOpen ? 'rotate-180' : ''} ${conf.color}`}>
+            ▼
+          </span>
+        )}
+      </div>
+      
+      {hasContent && isOpen && (
+        <div className="p-4 bg-bg-primary border-t border-border-secondary/40 text-sm text-text-secondary space-y-3">
+           {item.reason && (
+             <div><span className="font-bold text-gray-header uppercase tracking-wider text-[10px] block mb-1">Reason</span> {item.reason}</div>
+           )}
+           {item.notes && (
+             <div><span className="font-bold text-gray-header uppercase tracking-wider text-[10px] block mb-1">Notes</span> {item.notes}</div>
+           )}
+           {item.link && (
+             <div>
+               <a href={item.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-bg-secondary hover:bg-border-secondary border border-border-secondary text-text-primary text-xs font-bold rounded-lg transition-colors">
+                 🔗 View External Resource
+               </a>
+             </div>
+           )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function WeeklyProgressContent({ wp, mode = 'both' }: { wp: any; mode?: 'plan' | 'progress' | 'both' }) {
+  const isNewFormat = !!wp.targetOutcomes;
+  const showPlan = mode === 'plan' || mode === 'both';
+  const showProgress = mode === 'progress' || mode === 'both';
+
+  return (
+    <div className="flex flex-col h-full bg-bg-primary border-t border-border-secondary/40">
+      <div className={`p-5 flex-1 ${isNewFormat ? 'flex flex-col gap-6' : 'grid md:grid-cols-2 gap-6'} ${(!showPlan || !showProgress) ? '!grid-cols-1' : ''}`}>
+        {isNewFormat ? (
+          <>
+            {(showPlan || showProgress) && (
+              <div>
+                <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">
+                  {mode === 'plan' ? '🎯 Target Outcomes (Planned)' : '🎯 Target Outcomes (Progress)'}
+                </h4>
+                <div className="flex flex-col gap-2">
+                  {wp.targetOutcomes.map((outcome: any, idx: number) => (
+                    <TargetOutcomeItem key={idx} item={outcome} displayMode={mode} />
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            {showProgress && (wp.additionalOutcomes?.length > 0 || wp.actionItems?.length > 0) && (
+              <div className="grid md:grid-cols-2 gap-6 border-t border-border-secondary/40 pt-5">
+                {wp.additionalOutcomes?.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">✨ Additional Outcomes Achieved</h4>
+                    <ul className="space-y-2">
+                      {wp.additionalOutcomes.map((ach: string, j: number) => (
+                        <li key={j} className="text-sm text-emerald-700/90 flex items-start gap-2 leading-relaxed font-medium">
+                          <span className="text-emerald-500 mt-0.5">✓</span>
+                          <span>{ach}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {wp.actionItems?.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">⏭️ Further Action Items</h4>
+                    <ul className="space-y-2">
+                      {wp.actionItems.map((act: string, j: number) => (
+                        <li key={j} className="text-sm text-blue-700/90 flex items-start gap-2 leading-relaxed font-medium">
+                          <span className="text-blue-500 mt-0.5">→</span>
+                          <span>{act}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+          </>
+        ) : (
+          <>
+            {showPlan && (
+              <div>
+                <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">👨‍💻 Lead Responsibilities (Planned)</h4>
+                <ul className="space-y-2">
+                  {wp.leadTasks?.map((t: string, j: number) => (
+                    <li key={j} className="text-sm text-text-secondary flex items-start gap-2 leading-relaxed font-medium">
+                      <span className="text-primary mt-0.5">•</span>
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {showProgress && wp.achievements && wp.achievements.length > 0 && (
+              <div className={showPlan ? "md:border-l md:border-border-secondary/40 md:pl-6" : ""}>
+                <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">✅ Key Outcomes Progress</h4>
+                <ul className="space-y-2">
+                  {wp.achievements.map((a: string, j: number) => (
+                    <li key={j} className="text-sm text-emerald-700/90 flex items-start gap-2 leading-relaxed font-medium">
+                      <span className="text-emerald-500 mt-[1px]">✓</span>
+                      <span>{a}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+      
+      {/* Lead Notes */}
+      {showProgress && wp.leadNotes && wp.leadNotes.length > 0 && (
+        <div className="bg-amber-50/50 border-t border-amber-100/60 p-4 mt-auto">
+          <h4 className="text-[10px] font-extrabold text-amber-700 uppercase tracking-wider mb-2">📝 Lead Reflections</h4>
+          <ul className="space-y-1.5 focus:outline-none">
+            {wp.leadNotes.map((note: string, j: number) => (
+              <li key={j} className="text-xs text-amber-900/80 flex items-start gap-1.5 leading-relaxed font-medium">
+                <span className="text-amber-500 mt-[3px] text-[8px]">▶</span>
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   )
 }
