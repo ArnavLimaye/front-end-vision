@@ -426,21 +426,21 @@ export const kpiData = {
         'No new tenant-specific code in Phase 2. Convert all differences into config or shared systems.'
       ],
       weeklyProgress: [
-        { 
-          week: 'Week 1', 
-          focus: 'Setup monorepo & Tenant Branches', 
-          status: 'completed', 
+        {
+          week: 'Week 1',
+          focus: 'Setup monorepo & Tenant Branches',
+          status: 'completed',
           targetOutcomes: [
             { title: 'Monorepo initialized', status: 'completed', link: 'https://github.com/Spring-money/manthan-os-monorepo' },
             { title: 'Tenant branches ready', status: 'completed', notes: 'Done on local. Dev tested. (Commits till Friday 17 April are present in the respective branches)' }
           ],
-          leadNotes: ['Minor branding changes are remaining.'], 
+          leadNotes: ['Minor branding changes are remaining.'],
           additionalOutcomes: [
             'Dev tested App as well as Client Portals for respected tenants. App for prudeno and nswealth and Client portal for advent',
             'Started creating tenant-manthan -> which is a super set of the all the features that we have across tenants'
           ],
           actionItems: [
-            'In some tenants, borders are not shown as existing borders. Will be picked up in April week 4 sprint.'
+            { title: 'In some tenants, borders are not shown as existing borders. Will be picked up in April week 4 sprint.', owner: 'Frontend Team', dueDate: '24 Apr 2026' }
           ]
         },
         { week: 'Week 2', focus: 'CI/CD & Deployment', status: 'upcoming', leadTasks: ['Shift daily development to monorepo', 'Setup CI/CD per tenant branch', 'Deploy all tenants via new repo', 'Phase out old repo'], achievements: ['Monorepo is single source of development', 'All tenants deployed via monorepo branches', 'Old repo fully deprecated'], leadNotes: ['Ensure zero downtime in shift'] },
@@ -489,10 +489,10 @@ export const kpiData = {
       ],
       leadNotes: ['Add reflections and notes here...'],
       weeklyProgress: [
-        { 
-          week: 'Week 1', 
-          focus: 'Foundation Setup', 
-          status: 'completed', 
+        {
+          week: 'Week 1',
+          focus: 'Foundation Setup',
+          status: 'completed',
           targetOutcomes: [
             { title: 'Separate shared packages created and consumed in apps', status: 'completed' },
             { title: 'Configure shadcn (web) + NativeWind + Gluestack (mobile)', status: 'completed' },
@@ -551,10 +551,10 @@ export const kpiData = {
       ],
       leadNotes: ['Pre-requisite -> Finalise API response schema for Error as well as success response'],
       weeklyProgress: [
-        { 
-          week: 'Week 1', 
-          focus: 'ZDD & Firebase distribution planning', 
-          status: 'completed', 
+        {
+          week: 'Week 1',
+          focus: 'ZDD & Firebase distribution planning',
+          status: 'completed',
           targetOutcomes: [
             { title: 'ZDD plan ready and sample deployment done (prudeno-mfd)', status: 'completed' },
             { title: '/api/health added for all tenants', status: 'completed' },
@@ -566,6 +566,10 @@ export const kpiData = {
           ],
           additionalOutcomes: [
             'Firebase distriubtion setup for all Humfauji, NSW and Prudeno'
+          ],
+          actionItems: [
+            { title: 'Identify safe tenant to test UAT monorepo deployment', owner: 'Omkar', dueDate: '21 Apr 2026' },
+            { title: 'Finalize monorepo migration plan', owner: 'Nikhil & Arnav', dueDate: '22 Apr 2026' }
           ]
         },
         { week: 'Week 2', focus: 'Execution: ZDD & Firebase distribution', status: 'upcoming', leadTasks: ['Add ZDD actions for all tenants on Production and deploy', 'Automate firebase distribution for NSW and Prudeno'], achievements: ['Successful deployment on Production; EC2 shows traefik containers', 'Firebase distribution automated for NSW and Prudeno'], leadNotes: ['Add reflections and notes here...'] },
@@ -615,16 +619,18 @@ export const kpiData = {
       ],
       leadNotes: ['Add reflections and notes here...'],
       weeklyProgress: [
-        { 
-          week: 'Week 1', 
-          focus: 'Ownership + Feedback Foundation', 
-          status: 'in-progress', 
+        {
+          week: 'Week 1',
+          focus: 'Ownership + Feedback Foundation',
+          status: 'in-progress',
           targetOutcomes: [
             { title: 'Ownership Clarity', status: 'completed', link: 'https://docs.google.com/document/d/1mNB-02vPLXp7cM-DkBx2fKOkofXATn9E2dORvgxbQM0/edit?usp=sharing', notes: 'Doc created and shared with front-end team.' },
             { title: 'Feedback format finalized', status: 'in-progress', link: 'https://docs.google.com/document/d/1AGrH4RDcGZcPpucCFP_bPZGH6cAJ29-DEYIwVFHbg2U/edit?usp=sharing', reason: 'Need help from Nikhil to not make format generic but to have a specific format so that feedback sessions become much more useful.' }
           ],
-          leadNotes: ['Need help from Nikhil in finalising Feedback format'], 
-          actionItems: ['Schedule feedback sessions with the whole team.']
+          leadNotes: ['Need help from Nikhil in finalising Feedback format'],
+          actionItems: [
+            { title: 'Schedule feedback sessions with the whole team.', owner: 'Arnav', dueDate: '22 Apr 2026' }
+          ]
         },
         { week: 'Week 2', focus: 'Autonomy + First Feedback Cycle', status: 'upcoming', leadTasks: ['Devs propose solutions', 'Conduct 1st feedback session'], achievements: ['≥60% tasks with dev-led approach', 'First feedback cycle completed', 'Improvement areas identified'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 3', focus: 'KPI Alignment + Velocity System + Quality', status: 'upcoming', leadTasks: ['Map all tasks to KPI 1, 2, 3', 'Start estimating in story points (not hours)', 'Improve task breakdown', 'Strong pre-QA validation'], achievements: ['100% KPI mapping', 'Story point estimation adopted', 'Reopened tickets trending <15%'], leadNotes: ['Add reflections and notes here...'] },

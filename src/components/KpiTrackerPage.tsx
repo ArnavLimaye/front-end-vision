@@ -460,14 +460,35 @@ function WeeklyProgressContent({ wp, mode = 'both' }: { wp: any; mode?: 'plan' |
                 )}
                 {wp.actionItems?.length > 0 && (
                   <div>
-                    <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">⏭️ Further Action Items</h4>
-                    <ul className="space-y-2">
-                      {wp.actionItems.map((act: string, j: number) => (
-                        <li key={j} className="text-sm text-blue-700/90 flex items-start gap-2 leading-relaxed font-medium">
-                          <span className="text-blue-500 mt-0.5">→</span>
-                          <span>{act}</span>
-                        </li>
-                      ))}
+                    <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">⏭️ Next Week Actionables</h4>
+                    <ul className="space-y-2.5">
+                      {wp.actionItems.map((act: any, j: number) => {
+                        const title = typeof act === 'string' ? act : act.title;
+                        const owner = typeof act === 'string' ? null : act.owner;
+                        const dueDate = typeof act === 'string' ? null : act.dueDate;
+                        return (
+                          <li key={j} className="text-sm text-blue-700/90 flex items-start gap-2 leading-relaxed font-medium bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <span className="text-blue-500 mt-0.5">→</span>
+                            <div className="flex-1">
+                              <span>{title}</span>
+                              {(owner || dueDate) && (
+                                <div className="mt-2 flex flex-col gap-1.5">
+                                  {owner && (
+                                    <span className="w-fit bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded-md border border-blue-200">
+                                      👤 {owner}
+                                    </span>
+                                  )}
+                                  {dueDate && (
+                                    <span className="w-fit bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-md border border-amber-200">
+                                      📅 Due: {dueDate}
+                                    </span>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          </li>
+                        )
+                      })}
                     </ul>
                   </div>
                 )}
