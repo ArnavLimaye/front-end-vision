@@ -625,7 +625,7 @@ export const kpiData = {
           status: 'in-progress',
           targetOutcomes: [
             { title: 'Ownership Clarity', status: 'completed', link: 'https://docs.google.com/document/d/1mNB-02vPLXp7cM-DkBx2fKOkofXATn9E2dORvgxbQM0/edit?usp=sharing', notes: 'Doc created and shared with front-end team.' },
-            { title: 'Feedback format finalized', status: 'in-progress', link: 'https://docs.google.com/document/d/1AGrH4RDcGZcPpucCFP_bPZGH6cAJ29-DEYIwVFHbg2U/edit?usp=sharing', reason: 'Need help from Nikhil to not make format generic but to have a specific format so that feedback sessions become much more useful.' }
+            { title: 'Feedback format finalized', status: 'in-progress', links: ['https://docs.google.com/document/d/1AGrH4RDcGZcPpucCFP_bPZGH6cAJ29-DEYIwVFHbg2U/edit?usp=sharing', 'https://docs.google.com/document/d/1MavMfg9XbhvUQwslzbUQll6Ve4XMaGX58E_xgm_1ZD0/edit?tab=t.0#heading=h.gngzcqqm05cd'], reason: 'Need help from Nikhil to not make format generic but to have a specific format so that feedback sessions become much more useful.' }
           ],
           leadNotes: ['Need help from Nikhil in finalising Feedback format'],
           actionItems: [

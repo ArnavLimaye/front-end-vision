@@ -407,7 +407,15 @@ function TargetOutcomeItem({ item, displayMode = 'both' }: { item: any; displayM
            {item.notes && (
              <div><span className="font-bold text-gray-header uppercase tracking-wider text-[10px] block mb-1">Notes</span> {item.notes}</div>
            )}
-           {item.link && (
+           {item.links && item.links.length > 0 ? (
+             <div className="flex flex-wrap gap-2">
+               {item.links.map((lnk: string, idx: number) => (
+                 <a key={idx} href={lnk} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-bg-secondary hover:bg-border-secondary border border-border-secondary text-text-primary text-xs font-bold rounded-lg transition-colors">
+                   🔗 View External Resource {item.links.length > 1 ? idx + 1 : ''}
+                 </a>
+               ))}
+             </div>
+           ) : item.link && (
              <div>
                <a href={item.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-bg-secondary hover:bg-border-secondary border border-border-secondary text-text-primary text-xs font-bold rounded-lg transition-colors">
                  🔗 View External Resource
