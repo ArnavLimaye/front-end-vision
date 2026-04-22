@@ -441,6 +441,13 @@ export const kpiData = {
           ],
           actionItems: [
             { title: 'In some tenants, borders are not shown as existing borders. Will be picked up in April week 4 sprint.', owner: 'Frontend Team', dueDate: '24 Apr 2026' }
+          ],
+          founderMom: [
+            {
+              title: 'Branching strategy on monorepo',
+              description: 'Define and finalize the branching strategy on the monorepo to support multi-tenant development without conflicts.',
+              owner: 'Frontend Team'
+            }
           ]
         },
         { week: 'Week 2', focus: 'CI/CD & Deployment', status: 'upcoming', leadTasks: ['Shift daily development to monorepo', 'Setup CI/CD per tenant branch', 'Deploy all tenants via new repo', 'Phase out old repo'], achievements: ['Monorepo is single source of development', 'All tenants deployed via monorepo branches', 'Old repo fully deprecated'], leadNotes: ['Ensure zero downtime in shift'] },
@@ -501,6 +508,18 @@ export const kpiData = {
           additionalOutcomes: [
             'Use getTheme in apps to swith theme per tenant -> Done',
             'All tenants working with their own themes based on the environment variable -> Done'
+          ],
+          founderMom: [
+            {
+              title: 'Use ChatGPT to get random theme for different tenant',
+              description: 'Generate a random but cohesive UI theme via ChatGPT for testing a different tenant in the system.',
+              owner: 'Frontend Team'
+            },
+            {
+              title: 'Write a story for branding to get it from back-end',
+              description: 'Write a Jira story to fetch all tenant branding assets and theme configurations dynamically from the back-end instead of hardcoding them.',
+              owner: 'Arnav'
+            }
           ]
         },
         { week: 'Week 2', focus: 'Theme System', status: 'upcoming', leadTasks: ['Implement ThemeProvider (web)', 'Implement theme injection (mobile)', 'Connect tenant config → tokens'], achievements: ['2 tenants working with different themes', 'Theme changes reflect instantly', '0 hardcoded colors'], leadNotes: ['Add reflections and notes here...'] },
@@ -570,6 +589,13 @@ export const kpiData = {
           actionItems: [
             { title: 'Identify safe tenant to test UAT monorepo deployment', owner: 'Omkar', dueDate: '21 Apr 2026' },
             { title: 'Finalize monorepo migration plan', owner: 'Nikhil & Arnav', dueDate: '22 Apr 2026' }
+          ],
+          founderMom: [
+            {
+              title: 'Front-end deployment platform evaluation',
+              description: 'Make a comparative study of platforms and zero down on 1 platform -> Observability, Logging, Monitoring -> check Frappe Cloud.',
+              owner: 'Omkar'
+            }
           ]
         },
         { week: 'Week 2', focus: 'Execution: ZDD & Firebase distribution', status: 'upcoming', leadTasks: ['Add ZDD actions for all tenants on Production and deploy', 'Automate firebase distribution for NSW and Prudeno'], achievements: ['Successful deployment on Production; EC2 shows traefik containers', 'Firebase distribution automated for NSW and Prudeno'], leadNotes: ['Add reflections and notes here...'] },
@@ -630,6 +656,13 @@ export const kpiData = {
           leadNotes: ['Need help from Nikhil in finalising Feedback format'],
           actionItems: [
             { title: 'Schedule feedback sessions with the whole team.', owner: 'Arnav', dueDate: '22 Apr 2026' }
+          ],
+          founderMom: [
+            {
+              title: 'Nikhil to provide inputs on feedback format',
+              description: 'Review the current feedback document and provide specific inputs to evolve it from a generic layout to a highly specific, actionable format for the frontend team.',
+              owner: 'Nikhil'
+            }
           ]
         },
         { week: 'Week 2', focus: 'Autonomy + First Feedback Cycle', status: 'upcoming', leadTasks: ['Devs propose solutions', 'Conduct 1st feedback session'], achievements: ['≥60% tasks with dev-led approach', 'First feedback cycle completed', 'Improvement areas identified'], leadNotes: ['Add reflections and notes here...'] },

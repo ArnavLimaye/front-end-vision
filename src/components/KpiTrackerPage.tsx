@@ -323,6 +323,7 @@ function WeeklyOverview({ mode }: { mode: 'plan' | 'progress' }) {
                 targetOutcomes: (wp as any).targetOutcomes || null,
                 additionalOutcomes: (wp as any).additionalOutcomes || [],
                 actionItems: (wp as any).actionItems || [],
+                founderMom: (wp as any).founderMom || [],
             };
         }).filter(Boolean);
 
@@ -451,53 +452,85 @@ function WeeklyProgressContent({ wp, mode = 'both' }: { wp: any; mode?: 'plan' |
               </div>
             )}
             
-            {showProgress && (wp.additionalOutcomes?.length > 0 || wp.actionItems?.length > 0) && (
-              <div className="grid md:grid-cols-2 gap-6 border-t border-border-secondary/40 pt-5">
-                {wp.additionalOutcomes?.length > 0 && (
-                  <div>
-                    <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">✨ Additional Outcomes Achieved</h4>
-                    <ul className="space-y-2">
-                      {wp.additionalOutcomes.map((ach: string, j: number) => (
-                        <li key={j} className="text-sm text-emerald-700/90 flex items-start gap-2 leading-relaxed font-medium">
-                          <span className="text-emerald-500 mt-0.5">✓</span>
-                          <span>{ach}</span>
-                        </li>
-                      ))}
+            {showProgress && (wp.additionalOutcomes?.length > 0 || wp.actionItems?.length > 0 || wp.founderMom?.length > 0) && (
+              <div className="flex flex-col gap-6 border-t border-border-secondary/40 pt-5">
+                {wp.founderMom?.length > 0 && (
+                  <div className="bg-purple-50/50 p-4 rounded-xl border border-purple-100 shadow-sm">
+                    <h4 className="text-xs font-extrabold text-purple-800 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                      👔 Founders / Leadership MoM
+                    </h4>
+                    <ul className="space-y-3">
+                       {wp.founderMom.map((mom: any, j: number) => {
+                         const title = typeof mom === 'string' ? mom : mom.title;
+                         const desc = typeof mom === 'string' ? null : mom.description;
+                         const owner = typeof mom === 'string' ? null : mom.owner;
+                         return (
+                           <li key={j} className="text-sm flex items-start gap-2.5 leading-relaxed bg-purple-50 p-3 rounded-lg border border-purple-100/80">
+                             <span className="text-purple-500 mt-[3px] text-[10px]">♦</span>
+                             <div className="flex-1">
+                                <span className="font-bold text-purple-900">{title}</span>
+                                {desc && <div className="text-purple-800/80 text-xs mt-1 leading-relaxed">{desc}</div>}
+                                {owner && (
+                                  <div className="mt-2 text-left">
+                                     <span className="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-0.5 rounded-md border border-purple-200">👤 {owner}</span>
+                                  </div>
+                                )}
+                             </div>
+                           </li>
+                         );
+                       })}
                     </ul>
                   </div>
                 )}
-                {wp.actionItems?.length > 0 && (
-                  <div>
-                    <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">⏭️ Next Week Actionables</h4>
-                    <ul className="space-y-2.5">
-                      {wp.actionItems.map((act: any, j: number) => {
-                        const title = typeof act === 'string' ? act : act.title;
-                        const owner = typeof act === 'string' ? null : act.owner;
-                        const dueDate = typeof act === 'string' ? null : act.dueDate;
-                        return (
-                          <li key={j} className="text-sm text-blue-700/90 flex items-start gap-2 leading-relaxed font-medium bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
-                            <span className="text-blue-500 mt-0.5">→</span>
-                            <div className="flex-1">
-                              <span>{title}</span>
-                              {(owner || dueDate) && (
-                                <div className="mt-2 flex flex-col gap-1.5">
-                                  {owner && (
-                                    <span className="w-fit bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded-md border border-blue-200">
-                                      👤 {owner}
-                                    </span>
-                                  )}
-                                  {dueDate && (
-                                    <span className="w-fit bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-md border border-amber-200">
-                                      📅 Due: {dueDate}
-                                    </span>
+                {(wp.additionalOutcomes?.length > 0 || wp.actionItems?.length > 0) && (
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {wp.additionalOutcomes?.length > 0 && (
+                      <div>
+                        <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">✨ Additional Outcomes Achieved</h4>
+                        <ul className="space-y-2">
+                          {wp.additionalOutcomes.map((ach: string, j: number) => (
+                            <li key={j} className="text-sm text-emerald-700/90 flex items-start gap-2 leading-relaxed font-medium">
+                              <span className="text-emerald-500 mt-0.5">✓</span>
+                              <span>{ach}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {wp.actionItems?.length > 0 && (
+                      <div>
+                        <h4 className="text-xs font-extrabold text-gray-header uppercase tracking-wider mb-3">⏭️ Next Week Actionables</h4>
+                        <ul className="space-y-2.5">
+                          {wp.actionItems.map((act: any, j: number) => {
+                            const title = typeof act === 'string' ? act : act.title;
+                            const owner = typeof act === 'string' ? null : act.owner;
+                            const dueDate = typeof act === 'string' ? null : act.dueDate;
+                            return (
+                              <li key={j} className="text-sm text-blue-700/90 flex items-start gap-2 leading-relaxed font-medium bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                                <span className="text-blue-500 mt-0.5">→</span>
+                                <div className="flex-1">
+                                  <span>{title}</span>
+                                  {(owner || dueDate) && (
+                                    <div className="mt-2 flex flex-col gap-1.5">
+                                      {owner && (
+                                        <span className="w-fit bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded-md border border-blue-200">
+                                          👤 {owner}
+                                        </span>
+                                      )}
+                                      {dueDate && (
+                                        <span className="w-fit bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-md border border-amber-200">
+                                          📅 Due: {dueDate}
+                                        </span>
+                                      )}
+                                    </div>
                                   )}
                                 </div>
-                              )}
-                            </div>
-                          </li>
-                        )
-                      })}
-                    </ul>
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
