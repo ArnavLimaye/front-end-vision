@@ -525,7 +525,8 @@ export const kpiData = {
             {
               title: 'Use ChatGPT to get random theme for different tenant',
               description: 'Generate a random but cohesive UI theme via ChatGPT for testing a different tenant in the system.',
-              owner: 'Frontend Team'
+              owner: 'Frontend Team',
+              status: 'completed'
             },
             {
               title: 'Write a story for branding to get it from back-end',
