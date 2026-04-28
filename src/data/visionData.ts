@@ -446,7 +446,8 @@ export const kpiData = {
             {
               title: 'Branching strategy on monorepo',
               description: 'Define and finalize the branching strategy on the monorepo to support multi-tenant development without conflicts.',
-              owner: 'Frontend Team'
+              owner: 'Arnav',
+              link: 'https://github.com/Spring-money/manthan-os-monorepo/blob/master/docs/BRANCHING_STRATEGY.md'
             }
           ]
         },
