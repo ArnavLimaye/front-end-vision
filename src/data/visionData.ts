@@ -450,7 +450,18 @@ export const kpiData = {
             }
           ]
         },
-        { week: 'Week 2', focus: 'CI/CD & Deployment', status: 'upcoming', leadTasks: ['Shift daily development to monorepo', 'Setup CI/CD per tenant branch', 'Deploy all tenants via new repo', 'Phase out old repo'], achievements: ['Monorepo is single source of development', 'All tenants deployed via monorepo branches', 'Old repo fully deprecated'], leadNotes: ['Ensure zero downtime in shift'] },
+        {
+          week: 'Week 2',
+          focus: 'CI/CD & Deployment',
+          status: 'completed',
+          leadTasks: ['Shift daily development to monorepo', 'Setup CI/CD per tenant branch', 'Deploy all tenants via new repo', 'Phase out old repo'],
+          targetOutcomes: [
+            { title: 'Monorepo is single source of development', status: 'completed' },
+            { title: 'All tenants deployed via monorepo branches', status: 'completed' },
+            { title: 'Old repo fully deprecated', status: 'completed' }
+          ],
+          leadNotes: ['Ensure zero downtime in shift']
+        },
         { week: 'Week 3', focus: 'API Abstraction Layer', status: 'upcoming', leadTasks: ['Design common API layer', 'Extract API differences into shared module'], achievements: ['API differences abstracted'], leadNotes: ['Reduce divergence in data fetching logic'] },
         { week: 'Week 4', focus: 'Feature Flag System', status: 'upcoming', leadTasks: ['Create Feature flag system', 'Implement gates for tenant specific features'], achievements: ['Feature flags replace hardcoded conditions'], leadNotes: ['No hardcoded tenant checks in UI'] },
         { week: 'Week 5', focus: 'Conditional Visibility & Config', status: 'upcoming', leadTasks: ['Abstract conditional visibility', 'Start config-driven UI behavior logic'], achievements: ['UI differences managed externally'], leadNotes: ['All new differences must go through config'] },
@@ -522,7 +533,18 @@ export const kpiData = {
             }
           ]
         },
-        { week: 'Week 2', focus: 'Theme System', status: 'upcoming', leadTasks: ['Implement ThemeProvider (web)', 'Implement theme injection (mobile)', 'Connect tenant config → tokens'], achievements: ['2 tenants working with different themes', 'Theme changes reflect instantly', '0 hardcoded colors'], leadNotes: ['Add reflections and notes here...'] },
+        {
+          week: 'Week 2',
+          focus: 'Theme System',
+          status: 'completed',
+          leadTasks: ['Implement ThemeProvider (web)', 'Implement theme injection (mobile)', 'Connect tenant config → tokens'],
+          targetOutcomes: [
+            { title: 'All tenants working with different themes', status: 'completed' },
+            { title: 'Theme changes reflect instantly', status: 'completed' },
+            { title: '0 hardcoded colors', status: 'completed' }
+          ],
+          leadNotes: ['Add reflections and notes here...']
+        },
         { week: 'Week 3', focus: 'Build ALL Level 1 Components', status: 'upcoming', leadTasks: ['Button, Input, Textarea, Label', 'Select, Checkbox, Radio, Switch, DatePicker', 'Card, Modal, Drawer, Spinner, Toast'], achievements: ['100% Level 1 components built', 'Same API across platforms', 'All states supported', 'Theme-compliant'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 4', focus: 'Adopt Level 1 Components', status: 'upcoming', leadTasks: ['Replace base components in apps', 'Use Level 1 in real screens'], achievements: ['≥50% screens using L1', '5 key screens migrated/platform', 'No new base components created', 'Duplicate components removed'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 5', focus: 'Build Level 2 (Forms + Data)', status: 'upcoming', leadTasks: ['FormField, FormSection, ErrorMessage', 'AsyncSelect, FieldWrapper', 'DataTable, ListCard'], achievements: ['Core form abstraction ready', 'Data components support states', 'APIs consistent across platforms'], leadNotes: ['Add reflections and notes here...'] },
@@ -594,11 +616,21 @@ export const kpiData = {
             {
               title: 'Front-end deployment platform evaluation',
               description: 'Make a comparative study of platforms and zero down on 1 platform -> Observability, Logging, Monitoring -> check Frappe Cloud.',
-              owner: 'Omkar'
+              owner: 'Arnav'
             }
           ]
         },
-        { week: 'Week 2', focus: 'Execution: ZDD & Firebase distribution', status: 'upcoming', leadTasks: ['Add ZDD actions for all tenants on Production and deploy', 'Automate firebase distribution for NSW and Prudeno'], achievements: ['Successful deployment on Production; EC2 shows traefik containers', 'Firebase distribution automated for NSW and Prudeno'], leadNotes: ['Add reflections and notes here...'] },
+        {
+          week: 'Week 2',
+          focus: 'Execution: ZDD & Firebase distribution',
+          status: 'in-progress',
+          leadTasks: ['Add ZDD actions for all tenants on Production and deploy', 'Automate firebase distribution for NSW and Prudeno'],
+          targetOutcomes: [
+            { title: 'Successful deployment on Production; EC2 shows traefik containers', status: 'in-progress', link: 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I7992', notes: 'Did not do production. Wanted to see if UAT is working properly. Now that it is working properly, This is a zoho ticket created for Production as well as Humfauji and Moneylancer' },
+            { title: 'Firebase distribution automated for NSW and Prudeno', status: 'completed' }
+          ],
+          leadNotes: ['Add reflections and notes here...']
+        },
         { week: 'Week 3', focus: 'Log coverage & Visibility', status: 'upcoming', leadTasks: ['Decide log levels and json log for each level', 'JSON api logging using winston/bunyan on web apps (info, warn, error)', 'Document Crashlytics logging for mobile app API errors', 'App -> tenant + version tagging'], achievements: ['Logs logged for each api route; All tenants start logging properly', 'Crashlytics logging documented', 'Tenant and version tagging active'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 4', focus: 'ELK setup (Prioritize Production)', status: 'upcoming', leadTasks: ['Pull logs from 1 tenant web app and show on Kibana', 'Show other 3 tenants web app logs on Kibana', 'Explore how to monitor Front-end logs for performance monitoring'], achievements: ['Logs pulled and visualized on Kibana for all 4 tenants', 'Front-end log monitoring approach defined'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 5', focus: 'Alerting Setup', status: 'upcoming', leadTasks: ['Configure alerts for anomalies/errors', 'Set up Slack notifications for critical alerts'], achievements: ['Alerting successfully configured', 'Real-time notifications working for critical errors'], leadNotes: ['Add reflections and notes here...'] },
@@ -665,7 +697,18 @@ export const kpiData = {
             }
           ]
         },
-        { week: 'Week 2', focus: 'Autonomy + First Feedback Cycle', status: 'upcoming', leadTasks: ['Devs propose solutions', 'Conduct 1st feedback session'], achievements: ['≥60% tasks with dev-led approach', 'First feedback cycle completed', 'Improvement areas identified'], leadNotes: ['Add reflections and notes here...'] },
+        {
+          week: 'Week 2',
+          focus: 'Autonomy + First Feedback Cycle',
+          status: 'in-progress',
+          leadTasks: ['Devs propose solutions', 'Conduct 1st feedback session'],
+          targetOutcomes: [
+            { title: '≥60% tasks with dev-led approach', status: 'completed', notes: 'Started assigning stories to devs and discuss it with them after they create subtasks/plan' },
+            { title: 'First feedback cycle completed', status: 'in-progress', link: 'https://docs.google.com/document/d/1MavMfg9XbhvUQwslzbUQll6Ve4XMaGX58E_xgm_1ZD0/edit?tab=t.0', notes: 'Was waiting for Nikhil\'s feedback on the feedback format, but started with this format' },
+            { title: 'Improvement areas identified', status: 'pending', notes: 'Not yet as feedback cycle is not completed' }
+          ],
+          leadNotes: ['Need dashboards requested in previous discussion with Nikhil to track developer progress']
+        },
         { week: 'Week 3', focus: 'KPI Alignment + Velocity System + Quality', status: 'upcoming', leadTasks: ['Map all tasks to KPI 1, 2, 3', 'Start estimating in story points (not hours)', 'Improve task breakdown', 'Strong pre-QA validation'], achievements: ['100% KPI mapping', 'Story point estimation adopted', 'Reopened tickets trending <15%'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 4', focus: 'Independent Delivery + Feedback Cycle 2', status: 'upcoming', leadTasks: ['Devs execute features independently', 'Conduct 2nd feedback session', 'Implement improvements from feedback'], achievements: ['≥50% independent delivery', 'Second feedback cycle completed', 'Visible improvement from feedback'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 5', focus: 'Velocity Optimization (Team Level)', status: 'upcoming', leadTasks: ['Track team velocity in story points', 'Identify bottlenecks', 'Improve sprint planning'], achievements: ['Team velocity increases by 20%', 'More predictable sprint delivery'], leadNotes: ['Add reflections and notes here...'] },
