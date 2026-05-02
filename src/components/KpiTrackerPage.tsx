@@ -315,6 +315,7 @@ function WeeklyOverview({ mode }: { mode: 'plan' | 'progress' }) {
             if (!wp) return null;
             return {
                 kpiTitle: kpi.title,
+                weekString: wp.week,
                 focus: wp.focus,
                 status: wp.status,
                 leadTasks: wp.leadTasks || [],
@@ -330,6 +331,7 @@ function WeeklyOverview({ mode }: { mode: 'plan' | 'progress' }) {
         if (kpiTasks.length > 0) {
           weeksMap.push({
               weekNumber: i + 1,
+              weekString: kpiTasks[0]?.weekString || `Week ${i + 1}`,
               kpiTasks: kpiTasks as any
           });
         }
@@ -340,9 +342,9 @@ function WeeklyOverview({ mode }: { mode: 'plan' | 'progress' }) {
   return (
     <div className="space-y-8 animate-fadeIn">
       {allWeeks.map((week) => (
-         <div key={week.weekNumber} className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card">
+          <div key={week.weekNumber} className="bg-bg-primary border border-border-secondary rounded-2xl p-6 shadow-card">
             <h3 className="text-xl font-bold text-text-primary tracking-tight mb-6 mt-2 border-b border-border-secondary/40 pb-4">
-              📅 Week {week.weekNumber} Snapshot ({mode === 'plan' ? 'Planning' : 'Progress'})
+              📅 {week.weekString} Snapshot ({mode === 'plan' ? 'Planning' : 'Progress'})
             </h3>
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                {week.kpiTasks.map((t: any, i: number) => (

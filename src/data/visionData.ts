@@ -427,7 +427,7 @@ export const kpiData = {
       ],
       weeklyProgress: [
         {
-          week: 'Week 1',
+          week: 'Week 1 (14 Apr - 20 Apr)',
           focus: 'Setup monorepo & Tenant Branches',
           status: 'completed',
           targetOutcomes: [
@@ -452,7 +452,7 @@ export const kpiData = {
           ]
         },
         {
-          week: 'Week 2',
+          week: 'Week 2 (21 Apr - 27 Apr)',
           focus: 'CI/CD & Deployment',
           status: 'completed',
           leadTasks: ['Shift daily development to monorepo', 'Setup CI/CD per tenant branch', 'Deploy all tenants via new repo', 'Phase out old repo'],
@@ -463,15 +463,15 @@ export const kpiData = {
           ],
           leadNotes: ['Ensure zero downtime in shift']
         },
-        { week: 'Week 3', focus: 'API Abstraction Layer', status: 'upcoming', leadTasks: ['Design common API layer', 'Extract API differences into shared module'], achievements: ['API differences abstracted'], leadNotes: ['Reduce divergence in data fetching logic'] },
-        { week: 'Week 4', focus: 'Feature Flag System', status: 'upcoming', leadTasks: ['Create Feature flag system', 'Implement gates for tenant specific features'], achievements: ['Feature flags replace hardcoded conditions'], leadNotes: ['No hardcoded tenant checks in UI'] },
-        { week: 'Week 5', focus: 'Conditional Visibility & Config', status: 'upcoming', leadTasks: ['Abstract conditional visibility', 'Start config-driven UI behavior logic'], achievements: ['UI differences managed externally'], leadNotes: ['All new differences must go through config'] },
-        { week: 'Week 6', focus: 'Shared Systems Stabilization', status: 'upcoming', leadTasks: ['Cross-tenant regression testing', 'Validate feature flags & config correctness'], achievements: ['Significant reduction in branch divergence', 'Config correctness tested'], leadNotes: ['Leadership Focus: No new tenant-specific code'] },
-        { week: 'Week 7', focus: 'Advisor Mobile App Init', status: 'upcoming', leadTasks: ['Develop advisor mobile app inside monorepo', 'Hook up shared config and API layer'], achievements: ['Mobile app builds in monorepo'], leadNotes: ['Reuse web foundation'] },
-        { week: 'Week 8', focus: 'Mobile Core Systems & Flows', status: 'upcoming', leadTasks: ['Integrate validation system', 'Build mobile app flows (login, client view, tasks)', 'Cross-platform consistency tests'], achievements: ['Advisor mobile app functional', 'Consistent behavior web vs mobile'], leadNotes: ['Ensure parity between web and mobile experiences'] },
-        { week: 'Week 9', focus: 'Single Branch Transition', status: 'upcoming', leadTasks: ['Eliminate tenant branches', 'Introduce client-configs.ts'], achievements: ['Single branch serves multiple tenants'], leadNotes: ['Huge milestone: branch elimination'] },
-        { week: 'Week 10', focus: 'Fully Config-Driven Architecture', status: 'upcoming', leadTasks: ['Introduce feature flags & section/field configs globally', 'Ensure zero tenant-specific code in UI chunks'], achievements: ['Zero tenant-specific code remaining'], leadNotes: ['Rigorous review to ensure no `if (tenant === X)`'] },
-        { week: 'Week 11', focus: 'Unified Architecture Validation', status: 'upcoming', leadTasks: ['Full regression across all tenants', 'Config-driven behavior validation', 'Ensure no tenant bugs'], achievements: ['Single branch serves all tenants', 'Fully config-driven architecture confirmed'], leadNotes: ['Deployment and true SaaS state achieved'] }
+        { week: 'Week 3 (28 Apr - 4 May)', focus: 'API Abstraction Layer', status: 'upcoming', leadTasks: ['Design common API layer', 'Extract API differences into shared module'], achievements: ['API differences abstracted'], leadNotes: ['Reduce divergence in data fetching logic'] },
+        { week: 'Week 4 (5 May - 11 May)', focus: 'Feature Flag System', status: 'upcoming', leadTasks: ['Create Feature flag system', 'Implement gates for tenant specific features'], achievements: ['Feature flags replace hardcoded conditions'], leadNotes: ['No hardcoded tenant checks in UI'] },
+        { week: 'Week 5 (12 May - 18 May)', focus: 'Conditional Visibility & Config', status: 'upcoming', leadTasks: ['Abstract conditional visibility', 'Start config-driven UI behavior logic'], achievements: ['UI differences managed externally'], leadNotes: ['All new differences must go through config'] },
+        { week: 'Week 6 (19 May - 25 May)', focus: 'Shared Systems Stabilization', status: 'upcoming', leadTasks: ['Cross-tenant regression testing', 'Validate feature flags & config correctness'], achievements: ['Significant reduction in branch divergence', 'Config correctness tested'], leadNotes: ['Leadership Focus: No new tenant-specific code'] },
+        { week: 'Week 7 (26 May - 1 Jun)', focus: 'Advisor Mobile App Init', status: 'upcoming', leadTasks: ['Develop advisor mobile app inside monorepo', 'Hook up shared config and API layer'], achievements: ['Mobile app builds in monorepo'], leadNotes: ['Reuse web foundation'] },
+        { week: 'Week 8 (2 Jun - 8 Jun)', focus: 'Mobile Core Systems & Flows', status: 'upcoming', leadTasks: ['Integrate validation system', 'Build mobile app flows (login, client view, tasks)', 'Cross-platform consistency tests'], achievements: ['Advisor mobile app functional', 'Consistent behavior web vs mobile'], leadNotes: ['Ensure parity between web and mobile experiences'] },
+        { week: 'Week 9 (9 Jun - 15 Jun)', focus: 'Single Branch Transition', status: 'upcoming', leadTasks: ['Eliminate tenant branches', 'Introduce client-configs.ts'], achievements: ['Single branch serves multiple tenants'], leadNotes: ['Huge milestone: branch elimination'] },
+        { week: 'Week 10 (16 Jun - 22 Jun)', focus: 'Fully Config-Driven Architecture', status: 'upcoming', leadTasks: ['Introduce feature flags & section/field configs globally', 'Ensure zero tenant-specific code in UI chunks'], achievements: ['Zero tenant-specific code remaining'], leadNotes: ['Rigorous review to ensure no `if (tenant === X)`'] },
+        { week: 'Week 11 (23 Jun - 29 Jun)', focus: 'Unified Architecture Validation', status: 'upcoming', leadTasks: ['Full regression across all tenants', 'Config-driven behavior validation', 'Ensure no tenant bugs'], achievements: ['Single branch serves all tenants', 'Fully config-driven architecture confirmed'], leadNotes: ['Deployment and true SaaS state achieved'] }
       ],
       impact: {
         sections: [
@@ -509,7 +509,7 @@ export const kpiData = {
       leadNotes: ['Add reflections and notes here...'],
       weeklyProgress: [
         {
-          week: 'Week 1',
+          week: 'Week 1 (14 Apr - 20 Apr)',
           focus: 'Foundation Setup',
           status: 'completed',
           targetOutcomes: [
@@ -536,7 +536,7 @@ export const kpiData = {
           ]
         },
         {
-          week: 'Week 2',
+          week: 'Week 2 (21 Apr - 27 Apr)',
           focus: 'Theme System',
           status: 'completed',
           leadTasks: ['Implement ThemeProvider (web)', 'Implement theme injection (mobile)', 'Connect tenant config → tokens'],
@@ -547,15 +547,15 @@ export const kpiData = {
           ],
           leadNotes: ['Add reflections and notes here...']
         },
-        { week: 'Week 3', focus: 'Build ALL Level 1 Components', status: 'upcoming', leadTasks: ['Button, Input, Textarea, Label', 'Select, Checkbox, Radio, Switch, DatePicker', 'Card, Modal, Drawer, Spinner, Toast'], achievements: ['100% Level 1 components built', 'Same API across platforms', 'All states supported', 'Theme-compliant'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 4', focus: 'Adopt Level 1 Components', status: 'upcoming', leadTasks: ['Replace base components in apps', 'Use Level 1 in real screens'], achievements: ['≥50% screens using L1', '5 key screens migrated/platform', 'No new base components created', 'Duplicate components removed'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 5', focus: 'Build Level 2 (Forms + Data)', status: 'upcoming', leadTasks: ['FormField, FormSection, ErrorMessage', 'AsyncSelect, FieldWrapper', 'DataTable, ListCard'], achievements: ['Core form abstraction ready', 'Data components support states', 'APIs consistent across platforms'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 6', focus: 'Build Level 2 (Nav + Structure)', status: 'upcoming', leadTasks: ['Tabs, Accordion', 'Pagination, EmptyState', 'SectionHeader, PageHeader'], achievements: ['Full L2 library complete', 'Works with feature flags', 'Components tested in isolation'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 7', focus: 'Adopt Level 2 Components', status: 'upcoming', leadTasks: ['Refactor forms and data screens', 'Replace implementations with shared components'], achievements: ['≥70% forms use FormField', '≥60% data views use shared', '5 screens migrated per app', 'Reduction in duplicate logic'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 8', focus: 'Build Level 3 (Batch 1)', status: 'upcoming', leadTasks: ['OTPInput', 'AddressForm', 'ProfileSection'], achievements: ['3–4 reusable business components', 'No tenant-specific logic', 'Used in at least 1 app'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 9', focus: 'Build Level 3 (Batch 2)', status: 'upcoming', leadTasks: ['KYCSection', 'InvestmentCard', 'Identify high-reuse components'], achievements: ['5–8 Level 3 components built', 'Standardized APIs', 'Ready for cross-app reuse'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 10', focus: 'Adopt Level 3 (Phase 1)', status: 'upcoming', leadTasks: ['Integrate Level 3 in onboarding/profile flows'], achievements: ['Used in at least 2 apps', 'Core flows using shared', 'Reduced duplication in UI flows'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 11', focus: 'Adoption Completion & Hardening', status: 'upcoming', leadTasks: ['Complete migration across all apps', 'Remove ALL duplicate components', 'Finalize Storybook/Preview'], achievements: ['≥80% UI uses shared components', '0 duplicate components', '100% L1 & L2 documented', 'All new development uses shared'], leadNotes: ['Add reflections and notes here...'] }
+        { week: 'Week 3 (28 Apr - 4 May)', focus: 'Build ALL Level 1 Components', status: 'upcoming', leadTasks: ['Button, Input, Textarea, Label', 'Select, Checkbox, Radio, Switch, DatePicker', 'Card, Modal, Drawer, Spinner, Toast'], achievements: ['100% Level 1 components built', 'Same API across platforms', 'All states supported', 'Theme-compliant'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 4 (5 May - 11 May)', focus: 'Adopt Level 1 Components', status: 'upcoming', leadTasks: ['Replace base components in apps', 'Use Level 1 in real screens'], achievements: ['≥50% screens using L1', '5 key screens migrated/platform', 'No new base components created', 'Duplicate components removed'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 5 (12 May - 18 May)', focus: 'Build Level 2 (Forms + Data)', status: 'upcoming', leadTasks: ['FormField, FormSection, ErrorMessage', 'AsyncSelect, FieldWrapper', 'DataTable, ListCard'], achievements: ['Core form abstraction ready', 'Data components support states', 'APIs consistent across platforms'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 6 (19 May - 25 May)', focus: 'Build Level 2 (Nav + Structure)', status: 'upcoming', leadTasks: ['Tabs, Accordion', 'Pagination, EmptyState', 'SectionHeader, PageHeader'], achievements: ['Full L2 library complete', 'Works with feature flags', 'Components tested in isolation'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 7 (26 May - 1 Jun)', focus: 'Adopt Level 2 Components', status: 'upcoming', leadTasks: ['Refactor forms and data screens', 'Replace implementations with shared components'], achievements: ['≥70% forms use FormField', '≥60% data views use shared', '5 screens migrated per app', 'Reduction in duplicate logic'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 8 (2 Jun - 8 Jun)', focus: 'Build Level 3 (Batch 1)', status: 'upcoming', leadTasks: ['OTPInput', 'AddressForm', 'ProfileSection'], achievements: ['3–4 reusable business components', 'No tenant-specific logic', 'Used in at least 1 app'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 9 (9 Jun - 15 Jun)', focus: 'Build Level 3 (Batch 2)', status: 'upcoming', leadTasks: ['KYCSection', 'InvestmentCard', 'Identify high-reuse components'], achievements: ['5–8 Level 3 components built', 'Standardized APIs', 'Ready for cross-app reuse'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 10 (16 Jun - 22 Jun)', focus: 'Adopt Level 3 (Phase 1)', status: 'upcoming', leadTasks: ['Integrate Level 3 in onboarding/profile flows'], achievements: ['Used in at least 2 apps', 'Core flows using shared', 'Reduced duplication in UI flows'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 11 (23 Jun - 29 Jun)', focus: 'Adoption Completion & Hardening', status: 'upcoming', leadTasks: ['Complete migration across all apps', 'Remove ALL duplicate components', 'Finalize Storybook/Preview'], achievements: ['≥80% UI uses shared components', '0 duplicate components', '100% L1 & L2 documented', 'All new development uses shared'], leadNotes: ['Add reflections and notes here...'] }
       ],
       impact: {
         sections: [
@@ -595,7 +595,7 @@ export const kpiData = {
       leadNotes: ['Pre-requisite -> Finalise API response schema for Error as well as success response'],
       weeklyProgress: [
         {
-          week: 'Week 1',
+          week: 'Week 1 (14 Apr - 20 Apr)',
           focus: 'ZDD & Firebase distribution planning',
           status: 'completed',
           targetOutcomes: [
@@ -623,7 +623,7 @@ export const kpiData = {
           ]
         },
         {
-          week: 'Week 2',
+          week: 'Week 2 (21 Apr - 27 Apr)',
           focus: 'Execution: ZDD & Firebase distribution',
           status: 'in-progress',
           leadTasks: ['Add ZDD actions for all tenants on Production and deploy', 'Automate firebase distribution for NSW and Prudeno'],
@@ -633,16 +633,16 @@ export const kpiData = {
           ],
           leadNotes: ['Add reflections and notes here...']
         },
-        { week: 'Week 3', focus: 'Log coverage & Visibility', status: 'upcoming', leadTasks: ['Decide log levels and json log for each level', 'JSON api logging using winston/bunyan on web apps (info, warn, error)', 'Document Crashlytics logging for mobile app API errors', 'App -> tenant + version tagging'], achievements: ['Logs logged for each api route; All tenants start logging properly', 'Crashlytics logging documented', 'Tenant and version tagging active'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 4', focus: 'ELK setup (Prioritize Production)', status: 'upcoming', leadTasks: ['Pull logs from 1 tenant web app and show on Kibana', 'Show other 3 tenants web app logs on Kibana', 'Explore how to monitor Front-end logs for performance monitoring'], achievements: ['Logs pulled and visualized on Kibana for all 4 tenants', 'Front-end log monitoring approach defined'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 5', focus: 'Alerting Setup', status: 'upcoming', leadTasks: ['Configure alerts for anomalies/errors', 'Set up Slack notifications for critical alerts'], achievements: ['Alerting successfully configured', 'Real-time notifications working for critical errors'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 6', focus: 'Web Performance Optimization', status: 'upcoming', leadTasks: ['Analyze slow rendering web pages', 'Optimize web performance bottlenecks'], achievements: ['Visible improvement in load times', 'Performance metrics captured'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 7', focus: 'Web Performance Optimization (continue)', status: 'upcoming', leadTasks: ['Continue optimizing heavy endpoints', 'Reduce page load times and network waterfall'], achievements: ['Sustained performance gains on web apps', 'Target TTFB and FCP metrics met'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 8', focus: 'App performance Optimization', status: 'upcoming', leadTasks: ['Improve loading time for tabs (especially data heavy)'], achievements: ['No tab takes more than 3 seconds to load'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 9', focus: 'Mobile iOS builds', status: 'upcoming', leadTasks: ['Github Action to build iOS app', 'Put 1 tenant on iOS app store', 'Document all the process (including TestFlight)'], achievements: ['iOS build automated via GitHub Actions', '1 tenant successfully submitted to iOS App Store', 'Documentation complete for iOS builds and TestFlight'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 10', focus: 'iOS App Expansion', status: 'upcoming', leadTasks: ['Put 1 more tenant on iOS app store', 'Update Firebase to create iOS apps for all tenants'], achievements: ['2nd tenant on iOS app store', 'Firebase correctly generating iOS apps for all tenants'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 11', focus: 'Frontend logging planning', status: 'upcoming', leadTasks: ['Explore Frontend logging (compare 2 tools, finalise 1)', 'Try frontend logging for 1 tenant\'s 5 slowest screens', 'Document process'], achievements: ['Frontend logging tool finalised', 'Logging successfully implemented for 5 slowest screens on 1 tenant', 'Process fully documented'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 12', focus: 'Execute Frontend logging & Alerts', status: 'upcoming', leadTasks: ['Add full fledged frontend logging for 1 web app', 'Add alerts for slow rendering pages'], achievements: ['Full fledged frontend logging active for 1 web app', 'Alerts successfully added for slow rendering pages'], leadNotes: ['Add reflections and notes here...'] }
+        { week: 'Week 3 (28 Apr - 4 May)', focus: 'Log coverage & Visibility', status: 'upcoming', leadTasks: ['Decide log levels and json log for each level', 'JSON api logging using winston/bunyan on web apps (info, warn, error)', 'Document Crashlytics logging for mobile app API errors', 'App -> tenant + version tagging'], achievements: ['Logs logged for each api route; All tenants start logging properly', 'Crashlytics logging documented', 'Tenant and version tagging active'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 4 (5 May - 11 May)', focus: 'ELK setup (Prioritize Production)', status: 'upcoming', leadTasks: ['Pull logs from 1 tenant web app and show on Kibana', 'Show other 3 tenants web app logs on Kibana', 'Explore how to monitor Front-end logs for performance monitoring'], achievements: ['Logs pulled and visualized on Kibana for all 4 tenants', 'Front-end log monitoring approach defined'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 5 (12 May - 18 May)', focus: 'Alerting Setup', status: 'upcoming', leadTasks: ['Configure alerts for anomalies/errors', 'Set up Slack notifications for critical alerts'], achievements: ['Alerting successfully configured', 'Real-time notifications working for critical errors'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 6 (19 May - 25 May)', focus: 'Web Performance Optimization', status: 'upcoming', leadTasks: ['Analyze slow rendering web pages', 'Optimize web performance bottlenecks'], achievements: ['Visible improvement in load times', 'Performance metrics captured'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 7 (26 May - 1 Jun)', focus: 'Web Performance Optimization (continue)', status: 'upcoming', leadTasks: ['Continue optimizing heavy endpoints', 'Reduce page load times and network waterfall'], achievements: ['Sustained performance gains on web apps', 'Target TTFB and FCP metrics met'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 8 (2 Jun - 8 Jun)', focus: 'App performance Optimization', status: 'upcoming', leadTasks: ['Improve loading time for tabs (especially data heavy)'], achievements: ['No tab takes more than 3 seconds to load'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 9 (9 Jun - 15 Jun)', focus: 'Mobile iOS builds', status: 'upcoming', leadTasks: ['Github Action to build iOS app', 'Put 1 tenant on iOS app store', 'Document all the process (including TestFlight)'], achievements: ['iOS build automated via GitHub Actions', '1 tenant successfully submitted to iOS App Store', 'Documentation complete for iOS builds and TestFlight'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 10 (16 Jun - 22 Jun)', focus: 'iOS App Expansion', status: 'upcoming', leadTasks: ['Put 1 more tenant on iOS app store', 'Update Firebase to create iOS apps for all tenants'], achievements: ['2nd tenant on iOS app store', 'Firebase correctly generating iOS apps for all tenants'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 11 (23 Jun - 29 Jun)', focus: 'Frontend logging planning', status: 'upcoming', leadTasks: ['Explore Frontend logging (compare 2 tools, finalise 1)', 'Try frontend logging for 1 tenant\'s 5 slowest screens', 'Document process'], achievements: ['Frontend logging tool finalised', 'Logging successfully implemented for 5 slowest screens on 1 tenant', 'Process fully documented'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 12 (30 Jun - 6 Jul)', focus: 'Execute Frontend logging & Alerts', status: 'upcoming', leadTasks: ['Add full fledged frontend logging for 1 web app', 'Add alerts for slow rendering pages'], achievements: ['Full fledged frontend logging active for 1 web app', 'Alerts successfully added for slow rendering pages'], leadNotes: ['Add reflections and notes here...'] }
       ],
       impact: {
         sections: [
@@ -680,7 +680,7 @@ export const kpiData = {
       leadNotes: ['Add reflections and notes here...'],
       weeklyProgress: [
         {
-          week: 'Week 1',
+          week: 'Week 1 (14 Apr - 20 Apr)',
           focus: 'Ownership + Feedback Foundation',
           status: 'in-progress',
           targetOutcomes: [
@@ -700,7 +700,7 @@ export const kpiData = {
           ]
         },
         {
-          week: 'Week 2',
+          week: 'Week 2 (21 Apr - 27 Apr)',
           focus: 'Autonomy + First Feedback Cycle',
           status: 'in-progress',
           leadTasks: ['Devs propose solutions', 'Conduct 1st feedback session'],
@@ -711,14 +711,14 @@ export const kpiData = {
           ],
           leadNotes: ['Need dashboards requested in previous discussion with Nikhil to track developer progress']
         },
-        { week: 'Week 3', focus: 'KPI Alignment + Velocity System + Quality', status: 'upcoming', leadTasks: ['Map all tasks to KPI 1, 2, 3', 'Start estimating in story points (not hours)', 'Improve task breakdown', 'Strong pre-QA validation'], achievements: ['100% KPI mapping', 'Story point estimation adopted', 'Reopened tickets trending <15%'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 4', focus: 'Independent Delivery + Feedback Cycle 2', status: 'upcoming', leadTasks: ['Devs execute features independently', 'Conduct 2nd feedback session', 'Implement improvements from feedback'], achievements: ['≥50% independent delivery', 'Second feedback cycle completed', 'Visible improvement from feedback'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 5', focus: 'Velocity Optimization (Team Level)', status: 'upcoming', leadTasks: ['Track team velocity in story points', 'Identify bottlenecks', 'Improve sprint planning'], achievements: ['Team velocity increases by 20%', 'More predictable sprint delivery'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 6', focus: 'Ownership Maturity', status: 'upcoming', leadTasks: ['Web owner handles all web decisions', 'Mobile owner handles all mobile decisions', 'Devs drive execution independently'], achievements: ['Lead intervention <30%', 'Strong ownership across domains'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 7', focus: 'Cross-Domain Contribution', status: 'upcoming', leadTasks: ['Cross-domain contributions', 'Apply learnings from feedback cycles'], achievements: ['1 cross-domain contribution/dev', 'Improved system understanding across team'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 8', focus: 'Feedback Impact + System Stability', status: 'upcoming', leadTasks: ['Evaluate impact of past feedback', 'Refine workflows'], achievements: ['Measurable improvements from feedback cycles', 'Stable delivery system'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 9', focus: 'Advanced Execution Capability', status: 'upcoming', leadTasks: ['Take up difficult tasks (Performance optimization, Complex flows)', 'Deliver complex tasks end-to-end'], achievements: ['Complex tasks delivered successfully', 'Team demonstrates high engineering maturity'], leadNotes: ['Add reflections and notes here...'] },
-        { week: 'Week 10', focus: 'Leadership Maturity + System Completion', status: 'upcoming', leadTasks: ['Conduct final feedback cycle', 'Evaluate overall system maturity'], achievements: ['Lead dependency <10%', 'Reopened tickets <10%', 'Feedback system institutionalized', 'Consistent, predictable delivery achieved'], leadNotes: ['Add reflections and notes here...'] }
+        { week: 'Week 3 (28 Apr - 4 May)', focus: 'KPI Alignment + Velocity System + Quality', status: 'upcoming', leadTasks: ['Map all tasks to KPI 1, 2, 3', 'Start estimating in story points (not hours)', 'Improve task breakdown', 'Strong pre-QA validation'], achievements: ['100% KPI mapping', 'Story point estimation adopted', 'Reopened tickets trending <15%'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 4 (5 May - 11 May)', focus: 'Independent Delivery + Feedback Cycle 2', status: 'upcoming', leadTasks: ['Devs execute features independently', 'Conduct 2nd feedback session', 'Implement improvements from feedback'], achievements: ['≥50% independent delivery', 'Second feedback cycle completed', 'Visible improvement from feedback'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 5 (12 May - 18 May)', focus: 'Velocity Optimization (Team Level)', status: 'upcoming', leadTasks: ['Track team velocity in story points', 'Identify bottlenecks', 'Improve sprint planning'], achievements: ['Team velocity increases by 20%', 'More predictable sprint delivery'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 6 (19 May - 25 May)', focus: 'Ownership Maturity', status: 'upcoming', leadTasks: ['Web owner handles all web decisions', 'Mobile owner handles all mobile decisions', 'Devs drive execution independently'], achievements: ['Lead intervention <30%', 'Strong ownership across domains'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 7 (26 May - 1 Jun)', focus: 'Cross-Domain Contribution', status: 'upcoming', leadTasks: ['Cross-domain contributions', 'Apply learnings from feedback cycles'], achievements: ['1 cross-domain contribution/dev', 'Improved system understanding across team'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 8 (2 Jun - 8 Jun)', focus: 'Feedback Impact + System Stability', status: 'upcoming', leadTasks: ['Evaluate impact of past feedback', 'Refine workflows'], achievements: ['Measurable improvements from feedback cycles', 'Stable delivery system'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 9 (9 Jun - 15 Jun)', focus: 'Advanced Execution Capability', status: 'upcoming', leadTasks: ['Take up difficult tasks (Performance optimization, Complex flows)', 'Deliver complex tasks end-to-end'], achievements: ['Complex tasks delivered successfully', 'Team demonstrates high engineering maturity'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 10 (16 Jun - 22 Jun)', focus: 'Leadership Maturity + System Completion', status: 'upcoming', leadTasks: ['Conduct final feedback cycle', 'Evaluate overall system maturity'], achievements: ['Lead dependency <10%', 'Reopened tickets <10%', 'Feedback system institutionalized', 'Consistent, predictable delivery achieved'], leadNotes: ['Add reflections and notes here...'] }
       ],
       impact: {
         sections: [
