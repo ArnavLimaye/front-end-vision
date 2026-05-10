@@ -463,7 +463,16 @@ export const kpiData = {
           ],
           leadNotes: ['Ensure zero downtime in shift']
         },
-        { week: 'Week 3 (28 Apr - 4 May)', focus: 'API Abstraction Layer', status: 'upcoming', leadTasks: ['Design common API layer', 'Extract API differences into shared module'], achievements: ['API differences abstracted'], leadNotes: ['Reduce divergence in data fetching logic'] },
+        {
+          week: 'Week 3 (28 Apr - 4 May)',
+          focus: 'API Abstraction Layer',
+          status: 'pending',
+          leadTasks: ['Design common API layer', 'Extract API differences into shared module'],
+          targetOutcomes: [
+            { title: 'API differences abstracted', status: 'pending', notes: 'Created the PR but realised that it was not saving duplication instead was adding the duplication as we are using API routes which had to be kept, hence did not complete the implementation.' }
+          ],
+          leadNotes: ['Reduce divergence in data fetching logic']
+        },
         { week: 'Week 4 (5 May - 11 May)', focus: 'Feature Flag System', status: 'upcoming', leadTasks: ['Create Feature flag system', 'Implement gates for tenant specific features'], achievements: ['Feature flags replace hardcoded conditions'], leadNotes: ['No hardcoded tenant checks in UI'] },
         { week: 'Week 5 (12 May - 18 May)', focus: 'Conditional Visibility & Config', status: 'upcoming', leadTasks: ['Abstract conditional visibility', 'Start config-driven UI behavior logic'], achievements: ['UI differences managed externally'], leadNotes: ['All new differences must go through config'] },
         { week: 'Week 6 (19 May - 25 May)', focus: 'Shared Systems Stabilization', status: 'upcoming', leadTasks: ['Cross-tenant regression testing', 'Validate feature flags & config correctness'], achievements: ['Significant reduction in branch divergence', 'Config correctness tested'], leadNotes: ['Leadership Focus: No new tenant-specific code'] },
@@ -547,7 +556,19 @@ export const kpiData = {
           ],
           leadNotes: ['Add reflections and notes here...']
         },
-        { week: 'Week 3 (28 Apr - 4 May)', focus: 'Build ALL Level 1 Components', status: 'upcoming', leadTasks: ['Button, Input, Textarea, Label', 'Select, Checkbox, Radio, Switch, DatePicker', 'Card, Modal, Drawer, Spinner, Toast'], achievements: ['100% Level 1 components built', 'Same API across platforms', 'All states supported', 'Theme-compliant'], leadNotes: ['Add reflections and notes here...'] },
+        {
+          week: 'Week 3 (28 Apr - 4 May)',
+          focus: 'Build ALL Level 1 Components',
+          status: 'in-progress',
+          leadTasks: ['Button, Input, Textarea, Label', 'Select, Checkbox, Radio, Switch, DatePicker', 'Card, Modal, Drawer, Spinner, Toast'],
+          targetOutcomes: [
+            { title: '100% Level 1 components built', status: 'completed', notes: '100% complete as per existing base components.' },
+            { title: 'Same API across platforms', status: 'pending', link: 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8156', notes: 'API mismatch is found in 3 components. We have different packages for web and mobile hence we will be picking this up later (nice to have).' },
+            { title: 'All states supported', status: 'completed' },
+            { title: 'Theme-compliant', status: 'completed' }
+          ],
+          leadNotes: ['Add reflections and notes here...']
+        },
         { week: 'Week 4 (5 May - 11 May)', focus: 'Adopt Level 1 Components', status: 'upcoming', leadTasks: ['Replace base components in apps', 'Use Level 1 in real screens'], achievements: ['≥50% screens using L1', '5 key screens migrated/platform', 'No new base components created', 'Duplicate components removed'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 5 (12 May - 18 May)', focus: 'Build Level 2 (Forms + Data)', status: 'upcoming', leadTasks: ['FormField, FormSection, ErrorMessage', 'AsyncSelect, FieldWrapper', 'DataTable, ListCard'], achievements: ['Core form abstraction ready', 'Data components support states', 'APIs consistent across platforms'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 6 (19 May - 25 May)', focus: 'Build Level 2 (Nav + Structure)', status: 'upcoming', leadTasks: ['Tabs, Accordion', 'Pagination, EmptyState', 'SectionHeader, PageHeader'], achievements: ['Full L2 library complete', 'Works with feature flags', 'Components tested in isolation'], leadNotes: ['Add reflections and notes here...'] },
@@ -633,7 +654,18 @@ export const kpiData = {
           ],
           leadNotes: ['Add reflections and notes here...']
         },
-        { week: 'Week 3 (28 Apr - 4 May)', focus: 'Log coverage & Visibility', status: 'upcoming', leadTasks: ['Decide log levels and json log for each level', 'JSON api logging using winston/bunyan on web apps (info, warn, error)', 'Document Crashlytics logging for mobile app API errors', 'App -> tenant + version tagging'], achievements: ['Logs logged for each api route; All tenants start logging properly', 'Crashlytics logging documented', 'Tenant and version tagging active'], leadNotes: ['Add reflections and notes here...'] },
+        {
+          week: 'Week 3 (28 Apr - 4 May)',
+          focus: 'Log coverage & Visibility',
+          status: 'pending',
+          leadTasks: ['Decide log levels and json log for each level', 'JSON api logging using winston/bunyan on web apps (info, warn, error)', 'Document Crashlytics logging for mobile app API errors', 'App -> tenant + version tagging'],
+          targetOutcomes: [
+            { title: 'Logs logged for each api route; All tenants start logging properly', status: 'pending', link: 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I7993' },
+            { title: 'Crashlytics logging documented', status: 'pending' },
+            { title: 'Tenant and version tagging active', status: 'pending' }
+          ],
+          leadNotes: ['Nothing is completed from these outcomes. Reason -> Delivery tickets took precedence -> but not justifiable as log hours are less than 40']
+        },
         { week: 'Week 4 (5 May - 11 May)', focus: 'ELK setup (Prioritize Production)', status: 'upcoming', leadTasks: ['Pull logs from 1 tenant web app and show on Kibana', 'Show other 3 tenants web app logs on Kibana', 'Explore how to monitor Front-end logs for performance monitoring'], achievements: ['Logs pulled and visualized on Kibana for all 4 tenants', 'Front-end log monitoring approach defined'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 5 (12 May - 18 May)', focus: 'Alerting Setup', status: 'upcoming', leadTasks: ['Configure alerts for anomalies/errors', 'Set up Slack notifications for critical alerts'], achievements: ['Alerting successfully configured', 'Real-time notifications working for critical errors'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 6 (19 May - 25 May)', focus: 'Web Performance Optimization', status: 'upcoming', leadTasks: ['Analyze slow rendering web pages', 'Optimize web performance bottlenecks'], achievements: ['Visible improvement in load times', 'Performance metrics captured'], leadNotes: ['Add reflections and notes here...'] },
@@ -711,7 +743,22 @@ export const kpiData = {
           ],
           leadNotes: ['Need dashboards requested in previous discussion with Nikhil to track developer progress']
         },
-        { week: 'Week 3 (28 Apr - 4 May)', focus: 'KPI Alignment + Velocity System + Quality', status: 'upcoming', leadTasks: ['Map all tasks to KPI 1, 2, 3', 'Start estimating in story points (not hours)', 'Improve task breakdown', 'Strong pre-QA validation'], achievements: ['100% KPI mapping', 'Story point estimation adopted', 'Reopened tickets trending <15%'], leadNotes: ['Add reflections and notes here...'] },
+        {
+          week: 'Week 3 (28 Apr - 4 May)',
+          focus: 'KPI Alignment + Velocity System + Quality',
+          status: 'in-progress',
+          leadTasks: ['Map all tasks to KPI 1, 2, 3', 'Start estimating in story points (not hours)', 'Improve task breakdown', 'Strong pre-QA validation'],
+          targetOutcomes: [
+            { title: '100% KPI mapping', status: 'completed', notes: 'We have created epics per KPI and all tasks are getting mapped to those.' },
+            { title: 'Story point estimation adopted', status: 'pending', notes: 'Not started. Will be explaining this to Dhruv and Neeraj on 11th may and ask them to estimate story points.' },
+            { title: 'Reopened tickets trending <15%', status: 'pending', notes: 'Need trend from Nikhil\'s analytics board.' }
+          ],
+          leadNotes: ['Add reflections and notes here...'],
+          actionItems: [
+            { title: 'Explain story points to Dhruv and Neeraj and ask them to estimate', owner: 'Arnav', dueDate: '11 May 2026' },
+            { title: 'Provide trend analytics for reopened tickets', owner: 'Nikhil', dueDate: '15 May 2026' }
+          ]
+        },
         { week: 'Week 4 (5 May - 11 May)', focus: 'Independent Delivery + Feedback Cycle 2', status: 'upcoming', leadTasks: ['Devs execute features independently', 'Conduct 2nd feedback session', 'Implement improvements from feedback'], achievements: ['≥50% independent delivery', 'Second feedback cycle completed', 'Visible improvement from feedback'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 5 (12 May - 18 May)', focus: 'Velocity Optimization (Team Level)', status: 'upcoming', leadTasks: ['Track team velocity in story points', 'Identify bottlenecks', 'Improve sprint planning'], achievements: ['Team velocity increases by 20%', 'More predictable sprint delivery'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 6 (19 May - 25 May)', focus: 'Ownership Maturity', status: 'upcoming', leadTasks: ['Web owner handles all web decisions', 'Mobile owner handles all mobile decisions', 'Devs drive execution independently'], achievements: ['Lead intervention <30%', 'Strong ownership across domains'], leadNotes: ['Add reflections and notes here...'] },
