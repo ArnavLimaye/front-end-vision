@@ -473,7 +473,16 @@ export const kpiData = {
           ],
           leadNotes: ['Reduce divergence in data fetching logic']
         },
-        { week: 'Week 4 (5 May - 11 May)', focus: 'Feature Flag System', status: 'upcoming', leadTasks: ['Create Feature flag system', 'Implement gates for tenant specific features'], achievements: ['Feature flags replace hardcoded conditions'], leadNotes: ['No hardcoded tenant checks in UI'] },
+        {
+          week: 'Week 4 (5 May - 11 May)',
+          focus: 'Feature Flag System',
+          status: 'completed',
+          leadTasks: ['Create Feature flag system', 'Implement gates for tenant specific features'],
+          targetOutcomes: [
+            { title: 'Feature flags replace hardcoded conditions', status: 'completed', notes: 'Config feature flags have been shifted to common package and is completed 100%.' }
+          ],
+          leadNotes: ['No hardcoded tenant checks in UI']
+        },
         { week: 'Week 5 (12 May - 18 May)', focus: 'Conditional Visibility & Config', status: 'upcoming', leadTasks: ['Abstract conditional visibility', 'Start config-driven UI behavior logic'], achievements: ['UI differences managed externally'], leadNotes: ['All new differences must go through config'] },
         { week: 'Week 6 (19 May - 25 May)', focus: 'Shared Systems Stabilization', status: 'upcoming', leadTasks: ['Cross-tenant regression testing', 'Validate feature flags & config correctness'], achievements: ['Significant reduction in branch divergence', 'Config correctness tested'], leadNotes: ['Leadership Focus: No new tenant-specific code'] },
         { week: 'Week 7 (26 May - 1 Jun)', focus: 'Advisor Mobile App Init', status: 'upcoming', leadTasks: ['Develop advisor mobile app inside monorepo', 'Hook up shared config and API layer'], achievements: ['Mobile app builds in monorepo'], leadNotes: ['Reuse web foundation'] },
@@ -569,7 +578,22 @@ export const kpiData = {
           ],
           leadNotes: ['Add reflections and notes here...']
         },
-        { week: 'Week 4 (5 May - 11 May)', focus: 'Adopt Level 1 Components', status: 'upcoming', leadTasks: ['Replace base components in apps', 'Use Level 1 in real screens'], achievements: ['≥50% screens using L1', '5 key screens migrated/platform', 'No new base components created', 'Duplicate components removed'], leadNotes: ['Add reflections and notes here...'] },
+        {
+          week: 'Week 4 (5 May - 11 May)',
+          focus: 'Adopt Level 1 Components',
+          status: 'in-progress',
+          leadTasks: ['Replace base components in apps', 'Use Level 1 in real screens'],
+          targetOutcomes: [
+            { title: '≥50% screens using L1', status: 'in-progress', notes: 'Web is in progress (base components usage started). Mobile did not start due to emergency leaves.', links: ['https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8053', 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8054'] },
+            { title: '5 key screens migrated/platform', status: 'pending' },
+            { title: 'No new base components created', status: 'completed' },
+            { title: 'Duplicate components removed', status: 'pending', notes: 'Not yet, once base components from shared packages are used, we will remove this.' }
+          ],
+          leadNotes: ['Add reflections and notes here...'],
+          actionItems: [
+            { title: 'Remove duplicate base components', owner: 'Frontend Team', dueDate: '15 May 2026' }
+          ]
+        },
         { week: 'Week 5 (12 May - 18 May)', focus: 'Build Level 2 (Forms + Data)', status: 'upcoming', leadTasks: ['FormField, FormSection, ErrorMessage', 'AsyncSelect, FieldWrapper', 'DataTable, ListCard'], achievements: ['Core form abstraction ready', 'Data components support states', 'APIs consistent across platforms'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 6 (19 May - 25 May)', focus: 'Build Level 2 (Nav + Structure)', status: 'upcoming', leadTasks: ['Tabs, Accordion', 'Pagination, EmptyState', 'SectionHeader, PageHeader'], achievements: ['Full L2 library complete', 'Works with feature flags', 'Components tested in isolation'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 7 (26 May - 1 Jun)', focus: 'Adopt Level 2 Components', status: 'upcoming', leadTasks: ['Refactor forms and data screens', 'Replace implementations with shared components'], achievements: ['≥70% forms use FormField', '≥60% data views use shared', '5 screens migrated per app', 'Reduction in duplicate logic'], leadNotes: ['Add reflections and notes here...'] },
@@ -666,7 +690,17 @@ export const kpiData = {
           ],
           leadNotes: ['Nothing is completed from these outcomes. Reason -> Delivery tickets took precedence -> but not justifiable as log hours are less than 40']
         },
-        { week: 'Week 4 (5 May - 11 May)', focus: 'ELK setup (Prioritize Production)', status: 'upcoming', leadTasks: ['Pull logs from 1 tenant web app and show on Kibana', 'Show other 3 tenants web app logs on Kibana', 'Explore how to monitor Front-end logs for performance monitoring'], achievements: ['Logs pulled and visualized on Kibana for all 4 tenants', 'Front-end log monitoring approach defined'], leadNotes: ['Add reflections and notes here...'] },
+        {
+          week: 'Week 4 (5 May - 11 May)',
+          focus: 'ELK setup (Prioritize Production)',
+          status: 'in-progress',
+          leadTasks: ['Pull logs from 1 tenant web app and show on Kibana', 'Show other 3 tenants web app logs on Kibana', 'Explore how to monitor Front-end logs for performance monitoring'],
+          targetOutcomes: [
+            { title: 'Logs pulled and visualized on Kibana for all 4 tenants', status: 'pending', notes: 'Not started.', links: ['https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8159', 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8160'] },
+            { title: 'Front-end log monitoring approach defined', status: 'completed', notes: 'For now create api route to log front-end logs, then explore Sentry/Datadog etc.', link: 'https://github.com/Spring-money/manthan-os-monorepo/blob/master/packages/logger/README.md#future-front-end--browser-logging' }
+          ],
+          leadNotes: ['Add reflections and notes here...']
+        },
         { week: 'Week 5 (12 May - 18 May)', focus: 'Alerting Setup', status: 'upcoming', leadTasks: ['Configure alerts for anomalies/errors', 'Set up Slack notifications for critical alerts'], achievements: ['Alerting successfully configured', 'Real-time notifications working for critical errors'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 6 (19 May - 25 May)', focus: 'Web Performance Optimization', status: 'upcoming', leadTasks: ['Analyze slow rendering web pages', 'Optimize web performance bottlenecks'], achievements: ['Visible improvement in load times', 'Performance metrics captured'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 7 (26 May - 1 Jun)', focus: 'Web Performance Optimization (continue)', status: 'upcoming', leadTasks: ['Continue optimizing heavy endpoints', 'Reduce page load times and network waterfall'], achievements: ['Sustained performance gains on web apps', 'Target TTFB and FCP metrics met'], leadNotes: ['Add reflections and notes here...'] },
@@ -759,7 +793,21 @@ export const kpiData = {
             { title: 'Provide trend analytics for reopened tickets', owner: 'Nikhil', dueDate: '15 May 2026' }
           ]
         },
-        { week: 'Week 4 (5 May - 11 May)', focus: 'Independent Delivery + Feedback Cycle 2', status: 'upcoming', leadTasks: ['Devs execute features independently', 'Conduct 2nd feedback session', 'Implement improvements from feedback'], achievements: ['≥50% independent delivery', 'Second feedback cycle completed', 'Visible improvement from feedback'], leadNotes: ['Add reflections and notes here...'] },
+        {
+          week: 'Week 4 (5 May - 11 May)',
+          focus: 'Independent Delivery + Feedback Cycle 2',
+          status: 'in-progress',
+          leadTasks: ['Devs execute features independently', 'Conduct 2nd feedback session', 'Implement improvements from feedback'],
+          targetOutcomes: [
+            { title: '≥50% independent delivery', status: 'completed', notes: 'Happening now.' },
+            { title: 'Second feedback cycle completed', status: 'pending', notes: 'Not completed. Will start with first feedback cycle this week.', link: 'https://ur6lgcxkeq.zite.so/' },
+            { title: 'Visible improvement from feedback', status: 'pending', notes: 'Dependency on feedback cycle.' }
+          ],
+          leadNotes: ['Add reflections and notes here...'],
+          actionItems: [
+            { title: 'Start first feedback cycle', owner: 'Arnav' }
+          ]
+        },
         { week: 'Week 5 (12 May - 18 May)', focus: 'Velocity Optimization (Team Level)', status: 'upcoming', leadTasks: ['Track team velocity in story points', 'Identify bottlenecks', 'Improve sprint planning'], achievements: ['Team velocity increases by 20%', 'More predictable sprint delivery'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 6 (19 May - 25 May)', focus: 'Ownership Maturity', status: 'upcoming', leadTasks: ['Web owner handles all web decisions', 'Mobile owner handles all mobile decisions', 'Devs drive execution independently'], achievements: ['Lead intervention <30%', 'Strong ownership across domains'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 7 (26 May - 1 Jun)', focus: 'Cross-Domain Contribution', status: 'upcoming', leadTasks: ['Cross-domain contributions', 'Apply learnings from feedback cycles'], achievements: ['1 cross-domain contribution/dev', 'Improved system understanding across team'], leadNotes: ['Add reflections and notes here...'] },
