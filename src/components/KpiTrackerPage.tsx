@@ -507,20 +507,22 @@ function WeeklyProgressContent({ wp, mode = 'both' }: { wp: any; mode?: 'plan' |
                             const title = typeof act === 'string' ? act : act.title;
                             const owner = typeof act === 'string' ? null : act.owner;
                             const dueDate = typeof act === 'string' ? null : act.dueDate;
+                            const isDone = typeof act === 'string' ? false : act.isDone;
+
                             return (
-                              <li key={j} className="text-sm text-blue-700/90 flex items-start gap-2 leading-relaxed font-medium bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
-                                <span className="text-blue-500 mt-0.5">→</span>
+                              <li key={j} className={`text-sm flex items-start gap-2 leading-relaxed font-medium p-2.5 rounded-lg border ${isDone ? 'border-gray-200/50 bg-gray-50/50 opacity-70 text-gray-500' : 'border-blue-100/50 bg-blue-50/50 text-blue-700/90'}`}>
+                                <span className={`${isDone ? 'text-gray-400 font-bold' : 'text-blue-500'} mt-0.5`}>{isDone ? '✓' : '→'}</span>
                                 <div className="flex-1">
-                                  <span>{title}</span>
+                                  <span className={isDone ? 'line-through' : ''}>{title}</span>
                                   {(owner || dueDate) && (
                                     <div className="mt-2 flex flex-col gap-1.5">
                                       {owner && (
-                                        <span className="w-fit bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded-md border border-blue-200">
+                                        <span className={`w-fit text-[10px] font-bold px-2 py-0.5 rounded-md border ${isDone ? 'bg-gray-200/50 text-gray-500 border-gray-200' : 'bg-blue-100 text-blue-800 border-blue-200'}`}>
                                           👤 {owner}
                                         </span>
                                       )}
                                       {dueDate && (
-                                        <span className="w-fit bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-md border border-amber-200">
+                                        <span className={`w-fit text-[10px] font-bold px-2 py-0.5 rounded-md border ${isDone ? 'bg-gray-200/50 text-gray-500 border-gray-200' : 'bg-amber-100 text-amber-800 border-amber-200'}`}>
                                           📅 Due: {dueDate}
                                         </span>
                                       )}

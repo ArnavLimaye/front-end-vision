@@ -440,7 +440,7 @@ export const kpiData = {
             'Started creating tenant-manthan -> which is a super set of the all the features that we have across tenants'
           ],
           actionItems: [
-            { title: 'In some tenants, borders are not shown as existing borders. Will be picked up in April week 4 sprint.', owner: 'Frontend Team', dueDate: '24 Apr 2026' }
+            { title: 'In some tenants, borders are not shown as existing borders. Will be picked up in April week 4 sprint.', owner: 'Frontend Team', dueDate: '24 Apr 2026', isDone: true }
           ],
           founderMom: [
             {
@@ -656,8 +656,8 @@ export const kpiData = {
             'Firebase distriubtion setup for all Humfauji, NSW and Prudeno'
           ],
           actionItems: [
-            { title: 'Identify safe tenant to test UAT monorepo deployment', owner: 'Omkar', dueDate: '21 Apr 2026' },
-            { title: 'Finalize monorepo migration plan', owner: 'Nikhil & Arnav', dueDate: '22 Apr 2026' }
+            { title: 'Identify safe tenant to test UAT monorepo deployment', owner: 'Omkar', dueDate: '21 Apr 2026', isDone: true },
+            { title: 'Finalize monorepo migration plan', owner: 'Nikhil & Arnav', dueDate: '22 Apr 2026', isDone: true }
           ],
           founderMom: [
             {
@@ -694,9 +694,9 @@ export const kpiData = {
           week: 'Week 4 (5 May - 11 May)',
           focus: 'ELK setup (Prioritize Production)',
           status: 'in-progress',
-          leadTasks: ['Pull logs from 1 tenant web app and show on Kibana', 'Show other 3 tenants web app logs on Kibana', 'Explore how to monitor Front-end logs for performance monitoring'],
+          leadTasks: ['Pull logs from 1 tenant web app and show on Cloudwatch', 'Show other 3 tenants web app logs on Cloudwatch', 'Explore how to monitor Front-end logs for performance monitoring'],
           targetOutcomes: [
-            { title: 'Logs pulled and visualized on Kibana for all 4 tenants', status: 'pending', notes: 'Not started.', links: ['https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8159', 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8160'] },
+            { title: 'Logs pulled and visualized on Cloudwatch for all 4 tenants', status: 'pending', notes: 'Decided to use cloudwatch instead of Kibana for log viewing. Google doc for this -> https://docs.google.com/document/d/182vYNEnuj3LBEgDCCk-FhF9IL07_YvXeYVnP-6czTA0/edit?tab=t.0#heading=h.aijcjxe47u0r', links: ['https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8159', 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8160'] },
             { title: 'Front-end log monitoring approach defined', status: 'completed', notes: 'For now create api route to log front-end logs, then explore Sentry/Datadog etc.', link: 'https://github.com/Spring-money/manthan-os-monorepo/blob/master/packages/logger/README.md#future-front-end--browser-logging' }
           ],
           leadNotes: ['Add reflections and notes here...']
@@ -755,7 +755,7 @@ export const kpiData = {
           ],
           leadNotes: ['Need help from Nikhil in finalising Feedback format'],
           actionItems: [
-            { title: 'Schedule feedback sessions with the whole team.', owner: 'Arnav', dueDate: '22 Apr 2026' }
+            { title: 'Schedule feedback sessions with the whole team.', owner: 'Arnav', dueDate: '22 Apr 2026', isDone: true }
           ],
           founderMom: [
             {
@@ -805,7 +805,7 @@ export const kpiData = {
           ],
           leadNotes: ['Add reflections and notes here...'],
           actionItems: [
-            { title: 'Start first feedback cycle', owner: 'Arnav' }
+            { title: 'Start first feedback cycle', owner: 'Arnav', isDone: true }
           ]
         },
         { week: 'Week 5 (12 May - 18 May)', focus: 'Velocity Optimization (Team Level)', status: 'upcoming', leadTasks: ['Track team velocity in story points', 'Identify bottlenecks', 'Improve sprint planning'], achievements: ['Team velocity increases by 20%', 'More predictable sprint delivery'], leadNotes: ['Add reflections and notes here...'] },
