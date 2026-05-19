@@ -483,7 +483,7 @@ export const kpiData = {
           ],
           leadNotes: ['No hardcoded tenant checks in UI']
         },
-        { week: 'Week 5 (12 May - 18 May)', focus: 'Conditional Visibility & Config', status: 'upcoming', leadTasks: ['Abstract conditional visibility', 'Start config-driven UI behavior logic'], achievements: ['UI differences managed externally'], leadNotes: ['All new differences must go through config'] },
+        { week: 'Week 5 (12 May - 18 May)', focus: 'Conditional Visibility & Config', status: 'in-progress', leadTasks: ['Abstract conditional visibility', 'Start config-driven UI behavior logic'], targetOutcomes: [{ title: 'UI differences managed externally', status: 'completed' }], leadNotes: ['All new differences must go through config'] },
         { week: 'Week 6 (19 May - 25 May)', focus: 'Shared Systems Stabilization', status: 'upcoming', leadTasks: ['Cross-tenant regression testing', 'Validate feature flags & config correctness'], achievements: ['Significant reduction in branch divergence', 'Config correctness tested'], leadNotes: ['Leadership Focus: No new tenant-specific code'] },
         { week: 'Week 7 (26 May - 1 Jun)', focus: 'Advisor Mobile App Init', status: 'upcoming', leadTasks: ['Develop advisor mobile app inside monorepo', 'Hook up shared config and API layer'], achievements: ['Mobile app builds in monorepo'], leadNotes: ['Reuse web foundation'] },
         { week: 'Week 8 (2 Jun - 8 Jun)', focus: 'Mobile Core Systems & Flows', status: 'upcoming', leadTasks: ['Integrate validation system', 'Build mobile app flows (login, client view, tasks)', 'Cross-platform consistency tests'], achievements: ['Advisor mobile app functional', 'Consistent behavior web vs mobile'], leadNotes: ['Ensure parity between web and mobile experiences'] },
@@ -584,17 +584,17 @@ export const kpiData = {
           status: 'in-progress',
           leadTasks: ['Replace base components in apps', 'Use Level 1 in real screens'],
           targetOutcomes: [
-            { title: '≥50% screens using L1', status: 'in-progress', notes: 'Web is in progress (base components usage started). Mobile did not start due to emergency leaves.', links: ['https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8053', 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8054'] },
-            { title: '5 key screens migrated/platform', status: 'pending' },
+            { title: '≥50% screens using L1', status: 'completed', links: ['https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8053', 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8054'] },
+            { title: '5 key screens migrated/platform', status: 'completed' },
             { title: 'No new base components created', status: 'completed' },
-            { title: 'Duplicate components removed', status: 'pending', notes: 'Not yet, once base components from shared packages are used, we will remove this.' }
+            { title: 'Duplicate components removed', status: 'in-progress', notes: 'Done on mobile, remaining on web.' }
           ],
           leadNotes: ['Add reflections and notes here...'],
           actionItems: [
             { title: 'Remove duplicate base components', owner: 'Frontend Team', dueDate: '15 May 2026' }
           ]
         },
-        { week: 'Week 5 (12 May - 18 May)', focus: 'Build Level 2 (Forms + Data)', status: 'upcoming', leadTasks: ['FormField, FormSection, ErrorMessage', 'AsyncSelect, FieldWrapper', 'DataTable, ListCard'], achievements: ['Core form abstraction ready', 'Data components support states', 'APIs consistent across platforms'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 5 (12 May - 18 May)', focus: 'Build Level 2 (Forms + Data)', status: 'in-progress', leadTasks: ['FormField, FormSection, ErrorMessage', 'AsyncSelect, FieldWrapper', 'DataTable, ListCard'], targetOutcomes: [{ title: 'Core form abstraction ready', status: 'in-progress', notes: 'Done on mobile. Remaining on web.' }, { title: 'Data components support states', status: 'completed', notes: 'Done on both' }, { title: 'APIs consistent across platforms', status: 'completed', notes: 'Not needed as anyways api on mobile and web will be different.' }], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 6 (19 May - 25 May)', focus: 'Build Level 2 (Nav + Structure)', status: 'upcoming', leadTasks: ['Tabs, Accordion', 'Pagination, EmptyState', 'SectionHeader, PageHeader'], achievements: ['Full L2 library complete', 'Works with feature flags', 'Components tested in isolation'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 7 (26 May - 1 Jun)', focus: 'Adopt Level 2 Components', status: 'upcoming', leadTasks: ['Refactor forms and data screens', 'Replace implementations with shared components'], achievements: ['≥70% forms use FormField', '≥60% data views use shared', '5 screens migrated per app', 'Reduction in duplicate logic'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 8 (2 Jun - 8 Jun)', focus: 'Build Level 3 (Batch 1)', status: 'upcoming', leadTasks: ['OTPInput', 'AddressForm', 'ProfileSection'], achievements: ['3–4 reusable business components', 'No tenant-specific logic', 'Used in at least 1 app'], leadNotes: ['Add reflections and notes here...'] },
@@ -670,10 +670,10 @@ export const kpiData = {
         {
           week: 'Week 2 (21 Apr - 27 Apr)',
           focus: 'Execution: ZDD & Firebase distribution',
-          status: 'in-progress',
+          status: 'completed',
           leadTasks: ['Add ZDD actions for all tenants on Production and deploy', 'Automate firebase distribution for NSW and Prudeno'],
           targetOutcomes: [
-            { title: 'Successful deployment on Production; EC2 shows traefik containers', status: 'in-progress', link: 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I7992', notes: 'Did not do production. Wanted to see if UAT is working properly. Now that it is working properly, This is a zoho ticket created for Production as well as Humfauji and Moneylancer' },
+            { title: 'Successful deployment on Production; EC2 shows traefik containers', status: 'completed', link: 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I7992', notes: 'Did not do production. Wanted to see if UAT is working properly. Now that it is working properly, This is a zoho ticket created for Production as well as Humfauji and Moneylancer' },
             { title: 'Firebase distribution automated for NSW and Prudeno', status: 'completed' }
           ],
           leadNotes: ['Add reflections and notes here...']
@@ -681,27 +681,27 @@ export const kpiData = {
         {
           week: 'Week 3 (28 Apr - 4 May)',
           focus: 'Log coverage & Visibility',
-          status: 'pending',
+          status: 'in-progress',
           leadTasks: ['Decide log levels and json log for each level', 'JSON api logging using winston/bunyan on web apps (info, warn, error)', 'Document Crashlytics logging for mobile app API errors', 'App -> tenant + version tagging'],
           targetOutcomes: [
-            { title: 'Logs logged for each api route; All tenants start logging properly', status: 'pending', link: 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I7993' },
-            { title: 'Crashlytics logging documented', status: 'pending' },
-            { title: 'Tenant and version tagging active', status: 'pending' }
+            { title: 'Logs logged for each api route; All tenants start logging properly', status: 'completed', link: 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I7993', notes: 'by observing the logs, found out that in many apis, request body and response was not getting logged, hence updated that. Fixed on master.' },
+            { title: 'Crashlytics logging documented', status: 'completed' },
+            { title: 'Tenant and version tagging active', status: 'in-progress', notes: 'Version not getting logged as of now.' }
           ],
           leadNotes: ['Nothing is completed from these outcomes. Reason -> Delivery tickets took precedence -> but not justifiable as log hours are less than 40']
         },
         {
           week: 'Week 4 (5 May - 11 May)',
           focus: 'ELK setup (Prioritize Production)',
-          status: 'in-progress',
+          status: 'completed',
           leadTasks: ['Pull logs from 1 tenant web app and show on Cloudwatch', 'Show other 3 tenants web app logs on Cloudwatch', 'Explore how to monitor Front-end logs for performance monitoring'],
           targetOutcomes: [
-            { title: 'Logs pulled and visualized on Cloudwatch for all 4 tenants', status: 'pending', notes: 'Decided to use cloudwatch instead of Kibana for log viewing. Google doc for this -> https://docs.google.com/document/d/182vYNEnuj3LBEgDCCk-FhF9IL07_YvXeYVnP-6czTA0/edit?tab=t.0#heading=h.aijcjxe47u0r', links: ['https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8159', 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8160'] },
+            { title: 'Logs pulled and visualized on Cloudwatch for all 4 tenants', status: 'completed', notes: 'Decided to use cloudwatch instead of Kibana for log viewing. Google doc for this -> https://docs.google.com/document/d/182vYNEnuj3LBEgDCCk-FhF9IL07_YvXeYVnP-6czTA0/edit?tab=t.0#heading=h.aijcjxe47u0r', links: ['https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8159', 'https://sprints.zoho.in/workspace/springmoney#P21/itemdetails/I8160'] },
             { title: 'Front-end log monitoring approach defined', status: 'completed', notes: 'For now create api route to log front-end logs, then explore Sentry/Datadog etc.', link: 'https://github.com/Spring-money/manthan-os-monorepo/blob/master/packages/logger/README.md#future-front-end--browser-logging' }
           ],
           leadNotes: ['Add reflections and notes here...']
         },
-        { week: 'Week 5 (12 May - 18 May)', focus: 'Alerting Setup', status: 'upcoming', leadTasks: ['Configure alerts for anomalies/errors', 'Set up Slack notifications for critical alerts'], achievements: ['Alerting successfully configured', 'Real-time notifications working for critical errors'], leadNotes: ['Add reflections and notes here...'] },
+        { week: 'Week 5 (12 May - 18 May)', focus: 'Alerting Setup', status: 'in-progress', leadTasks: ['Configure alerts for anomalies/errors', 'Set up Slack notifications for critical alerts'], targetOutcomes: [{ title: 'Alerting successfully configured', status: 'in-progress', link: 'https://ap-south-1.console.aws.amazon.com/cloudwatch/home?region=ap-south-1#dashboards/dashboard/portal-monitoring?var_app=planner-portal&var_tenant=nswealth-uat&var_interval=5m', notes: 'Dashboard is configured. Alarms cannot be configured yet because Custom metric was not visible yesterday. But today it is visible.' }, { title: 'Real-time notifications working for critical errors', status: 'pending', notes: 'dependent on first hence not done' }], actionItems: [{ title: 'Create alarms on Cloudwatch', owner: 'Arnav', dueDate: '20 May 2026' }], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 6 (19 May - 25 May)', focus: 'Web Performance Optimization', status: 'upcoming', leadTasks: ['Analyze slow rendering web pages', 'Optimize web performance bottlenecks'], achievements: ['Visible improvement in load times', 'Performance metrics captured'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 7 (26 May - 1 Jun)', focus: 'Web Performance Optimization (continue)', status: 'upcoming', leadTasks: ['Continue optimizing heavy endpoints', 'Reduce page load times and network waterfall'], achievements: ['Sustained performance gains on web apps', 'Target TTFB and FCP metrics met'], leadNotes: ['Add reflections and notes here...'] },
         { week: 'Week 8 (2 Jun - 8 Jun)', focus: 'App performance Optimization', status: 'upcoming', leadTasks: ['Improve loading time for tabs (especially data heavy)'], achievements: ['No tab takes more than 3 seconds to load'], leadNotes: ['Add reflections and notes here...'] },
@@ -768,12 +768,12 @@ export const kpiData = {
         {
           week: 'Week 2 (21 Apr - 27 Apr)',
           focus: 'Autonomy + First Feedback Cycle',
-          status: 'in-progress',
+          status: 'completed',
           leadTasks: ['Devs propose solutions', 'Conduct 1st feedback session'],
           targetOutcomes: [
             { title: '≥60% tasks with dev-led approach', status: 'completed', notes: 'Started assigning stories to devs and discuss it with them after they create subtasks/plan' },
-            { title: 'First feedback cycle completed', status: 'in-progress', link: 'https://docs.google.com/document/d/1MavMfg9XbhvUQwslzbUQll6Ve4XMaGX58E_xgm_1ZD0/edit?tab=t.0', notes: 'Was waiting for Nikhil\'s feedback on the feedback format, but started with this format' },
-            { title: 'Improvement areas identified', status: 'pending', notes: 'Not yet as feedback cycle is not completed' }
+            { title: 'First feedback cycle completed', status: 'completed', link: 'https://docs.google.com/document/d/1MavMfg9XbhvUQwslzbUQll6Ve4XMaGX58E_xgm_1ZD0/edit?tab=t.0', notes: 'Was waiting for Nikhil\'s feedback on the feedback format, but started with this format' },
+            { title: 'Improvement areas identified', status: 'completed' }
           ],
           leadNotes: ['Need dashboards requested in previous discussion with Nikhil to track developer progress']
         },
