@@ -356,7 +356,7 @@ const slides: SlideData[] = [
     id: 17,
     tag: 'Empowerment',
     title: 'Own this function.\nWe have your back.',
-    subtitle: "A message from Manthan & the leadership team",
+    subtitle: "A message from Arnav & the leadership team",
     body: (
       <div className="flex flex-col gap-4 text-xs md:text-sm">
         <p className="text-white/70 leading-relaxed">
