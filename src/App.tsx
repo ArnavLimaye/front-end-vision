@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Sidebar from './components/Sidebar.tsx'
 import FrontendVisionPage from './components/FrontendVisionPage.tsx'
 import KpiTrackerPage from './components/KpiTrackerPage.tsx'
+import LeadRolePitch from './components/LeadRolePitch.tsx'
 
 export type ActiveSection =
   | 'overview' | 'environments' | 'multi-tenant' | 'app-architecture'
@@ -12,6 +13,18 @@ export type ActiveSection =
 export default function App() {
   const [activeSection, setActiveSection] = useState<ActiveSection>('overview')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [hash, setHash] = useState(window.location.hash)
+
+  useEffect(() => {
+    const onHash = () => setHash(window.location.hash)
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [])
+
+  // Show pitch deck when URL ends with #pitch
+  if (hash === '#pitch') {
+    return <LeadRolePitch />
+  }
 
   const isKpi = activeSection.startsWith('kpi-')
 
@@ -55,3 +68,4 @@ export default function App() {
     </div>
   )
 }
+
