@@ -115,6 +115,160 @@ const slides: SlideData[] = [
   },
   {
     id: 6,
+    tag: 'Growth Areas',
+    title: '1. Product Thinking',
+    subtitle: '“You have earned the opportunity. But leadership is not recognition of where you are today. It is a bet on who you can become.”',
+    body: (
+      <div className="flex flex-col gap-3">
+        <p className="text-white/80">
+          Today, your thinking is often focused on the <strong>implementation details</strong>.
+        </p>
+        <p className="text-white/60">
+          A Front-end Lead must think beyond the happy path:
+        </p>
+        <ul className="list-disc pl-5 text-white/50 space-y-1 my-1">
+          <li>What happens if the API fails or returns incomplete data?</li>
+          <li>What happens if the user abandons midway?</li>
+          <li>What happens on older devices or edge cases?</li>
+        </ul>
+        <p className="text-white/85 font-medium mt-1">
+          🧠 Leadership requires understanding the product, not just the screens.
+        </p>
+      </div>
+    ),
+    accentClass: 'from-orange-500 to-rose-500',
+    accentHex: '#f97316',
+    icon: '🧠',
+    image: `${BASE}pitch/slide_06.png`,
+  },
+  {
+    id: 7,
+    tag: 'Growth Areas',
+    title: '2. Proactive Ownership',
+    subtitle: '“You have earned the opportunity. But leadership is not recognition of where you are today. It is a bet on who you can become.”',
+    body: (
+      <div className="flex flex-col gap-3">
+        <p className="text-white/80">
+          Today, most actions happen <strong>after</strong> an issue becomes visible.
+        </p>
+        <p className="text-white/60">
+          A Front-end Lead is expected to:
+        </p>
+        <ul className="list-disc pl-5 text-white/50 space-y-1 my-1">
+          <li>Identify risks before they occur</li>
+          <li>Raise concerns early and suggest improvements without being asked</li>
+          <li>Create visibility before stakeholders ask for it</li>
+        </ul>
+        <p className="text-white/85 font-medium mt-1">
+          🔭 Leadership is fundamentally proactive, not reactive.
+        </p>
+      </div>
+    ),
+    accentClass: 'from-rose-500 to-pink-600',
+    accentHex: '#f43f5e',
+    icon: '🔭',
+    image: `${BASE}pitch/slide_07.png`,
+  },
+  {
+    id: 8,
+    tag: 'Growth Areas',
+    title: '3. Front-end Depth',
+    subtitle: '“None of these are reasons you cannot become a Front-end Lead. These are the reasons you need to become one.”',
+    body: (
+      <div className="flex flex-col gap-3">
+        <p className="text-white/80">
+          You have built good execution capability. The next level requires <strong>stronger engineering expertise</strong> in:
+        </p>
+        <ul className="list-disc pl-5 text-white/50 space-y-1 my-1">
+          <li>Performance optimization & rendering efficiency</li>
+          <li>Architecture decisions & scalability patterns</li>
+          <li>Reusability, maintainability, and front-end best practices</li>
+        </ul>
+        <p className="text-white/85 font-medium mt-1">
+          ⚙️ The team should look to you for answers and direction.
+        </p>
+      </div>
+    ),
+    accentClass: 'from-violet-500 to-purple-600',
+    accentHex: '#8b5cf6',
+    icon: '⚙️',
+    image: `${BASE}pitch/slide_08.png`,
+  },
+  {
+    id: 9,
+    tag: 'Accountability',
+    title: '1. Quality',
+    subtitle: '“As Front-end Lead, you own the outcome.”',
+    body: (
+      <div className="flex flex-col gap-3">
+        <p className="text-white/80">
+          The quality of the product is <strong>your responsibility</strong>.
+        </p>
+        <ul className="list-disc pl-5 text-white/50 space-y-1 my-1">
+          <li>Not just the bugs you write yourself.</li>
+          <li>Not just the tasks explicitly assigned to you.</li>
+        </ul>
+        <p className="text-white/85 font-medium mt-1">
+          ✅ You own the overall quality bar of the entire front-end function.
+        </p>
+      </div>
+    ),
+    accentClass: 'from-emerald-500 to-teal-600',
+    accentHex: '#10b981',
+    icon: '✅',
+    image: `${BASE}pitch/slide_09.png`,
+  },
+  {
+    id: 10,
+    tag: 'Accountability',
+    title: '2. Scalability & Maintainability',
+    subtitle: '“As Front-end Lead, you own the outcome.”',
+    body: (
+      <div className="flex flex-col gap-3">
+        <p className="text-white/80">
+          You are responsible for ensuring that the front-end:
+        </p>
+        <ul className="list-disc pl-5 text-white/50 space-y-1 my-1">
+          <li>Scales smoothly alongside the business growth</li>
+          <li>Is configurable where needed, clean, and well-documented</li>
+          <li>Is easily maintainable by future developers</li>
+        </ul>
+        <p className="text-white/85 font-medium mt-1">
+          🏗️ You avoid short-term decisions that create long-term pain.
+        </p>
+      </div>
+    ),
+    accentClass: 'from-cyan-500 to-teal-500',
+    accentHex: '#06b6d4',
+    icon: '🏗️',
+    image: `${BASE}pitch/slide_10.png`,
+  },
+  {
+    id: 11,
+    tag: 'Accountability',
+    title: '3. Predictability',
+    subtitle: '“Your success is no longer measured by the code you write. It is measured by the outcomes the front-end team consistently delivers.”',
+    body: (
+      <div className="flex flex-col gap-3">
+        <p className="text-white/85">
+          Leadership is measured by <strong>predictability</strong>. The organization should be able to trust:
+        </p>
+        <ul className="list-disc pl-5 text-white/50 space-y-1 my-1">
+          <li>What will be delivered & when it will be delivered</li>
+          <li>What risks exist & what support is needed</li>
+        </ul>
+        <p className="text-white/85 font-medium mt-1">
+          📈 Surprises should become rare.
+        </p>
+      </div>
+    ),
+    accentClass: 'from-blue-500 to-indigo-600',
+    accentHex: '#3b82f6',
+    icon: '📈',
+    image: `${BASE}pitch/slide_11.png`,
+  },
+  {
+    id: 12,
     tag: 'The Startup Advantage',
     title: 'You left a large company\nfor a reason.',
     body: (
@@ -131,10 +285,10 @@ const slides: SlideData[] = [
     accentClass: 'from-cyan-500 to-teal-500',
     accentHex: '#06b6d4',
     icon: '⚡',
-    image: `${BASE}pitch/slide_06.png`,
+    image: `${BASE}pitch/slide_12.png`,
   },
   {
-    id: 7,
+    id: 13,
     tag: 'The Moment',
     title: 'This is one\nof those moments.',
     body: (
@@ -149,10 +303,10 @@ const slides: SlideData[] = [
     accentClass: 'from-yellow-500 to-orange-500',
     accentHex: '#eab308',
     icon: '🌟',
-    image: `${BASE}pitch/slide_07.png`,
+    image: `${BASE}pitch/slide_13.png`,
   },
   {
-    id: 8,
+    id: 14,
     tag: 'On Mistakes',
     title: "You will make mistakes.\nThat's expected.",
     body: (
@@ -166,10 +320,10 @@ const slides: SlideData[] = [
     accentClass: 'from-indigo-500 to-violet-600',
     accentHex: '#6366f1',
     icon: '💪',
-    image: `${BASE}pitch/slide_08.png`,
+    image: `${BASE}pitch/slide_14.png`,
   },
   {
-    id: 9,
+    id: 15,
     tag: 'The Path Forward',
     title: "You won't be\ndoing this alone.",
     body: (
@@ -185,10 +339,10 @@ const slides: SlideData[] = [
     accentClass: 'from-teal-500 to-emerald-600',
     accentHex: '#14b8a6',
     icon: '🤝',
-    image: `${BASE}pitch/slide_09.png`,
+    image: `${BASE}pitch/slide_15.png`,
   },
   {
-    id: 10,
+    id: 16,
     tag: 'Closing',
     title: 'This is your\nnatural next step.',
     subtitle: "I have confidence that you'll do well. — Manthan",
@@ -196,7 +350,37 @@ const slides: SlideData[] = [
     accentClass: 'from-emerald-500 to-teal-600',
     accentHex: '#10b981',
     icon: '🎉',
-    image: `${BASE}pitch/slide_10.png`,
+    image: `${BASE}pitch/slide_16.png`,
+  },
+  {
+    id: 17,
+    tag: 'Empowerment',
+    title: 'Own this function.\nWe have your back.',
+    subtitle: "A message from Manthan & the leadership team",
+    body: (
+      <div className="flex flex-col gap-4 text-xs md:text-sm">
+        <p className="text-white/70 leading-relaxed">
+          To build a world-class front-end, you need the authority, resources, and trust to make decisions. <strong>This role is yours to shape.</strong>
+        </p>
+        
+        <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4 my-2 text-center">
+          <p className="font-semibold text-emerald-300 text-sm md:text-base leading-relaxed">
+            We need you to own this function end-to-end.
+          </p>
+          <p className="text-white/80 text-xs md:text-sm mt-2">
+            Whatever tools, resources, training, or support you need and want — <strong>you can ask of us.</strong> We've got your back.
+          </p>
+        </div>
+
+        <p className="text-white/60 italic text-center">
+          Let's build the future of Spring Money's front-end, together.
+        </p>
+      </div>
+    ),
+    accentClass: 'from-amber-400 to-orange-500',
+    accentHex: '#f59e0b',
+    icon: '🔑',
+    image: `${BASE}pitch/slide_17.png`,
   },
 ]
 
